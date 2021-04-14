@@ -87,4 +87,37 @@ private static final String TAG = "BaseFragment";
 		super.onDetach();
 		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onDetach");
 	}
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onAttach");
+	}
+
+	@Nullable
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onCreateView");
+		View view=inflater.inflate(getLayoutId(),null);
+		return view;
+	}
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		initView(view);
+		initData();
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onViewCreated");
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onActivityCreated");
+	}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: setUserVisibleHint " + isVisibleToUser);
+	}
 }
