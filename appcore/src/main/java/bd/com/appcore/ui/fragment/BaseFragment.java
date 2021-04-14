@@ -17,4 +17,60 @@ import android.widget.Toast;
 
 
 public abstract class BaseFragment extends Fragment {
+private static final String TAG = "BaseFragment";
+    protected boolean mResumed;
+    protected boolean mCreate;
+    protected boolean mStopped;
+    protected boolean mDestroyed;
+	protected boolean mHidden;
+
+	private boolean mResumedForFirstTime;
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mDestroyed = false;
+		mCreate = true;
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onCreate, Hidden = " + mHidden);
+	}
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mStopped = false;
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onStart, Hidden = " + mHidden);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+		mHidden = hidden;
+        Log.d(TAG, "[" + getClass().getSimpleName() + "]: onHiddenChanged " + hidden);
+    }
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		mResumed = true;
+		if(!mResumedForFirstTime) {
+			mResumedForFirstTime = true;
+		}
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onResume, Hidden = " + mHidden);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		mResumed = false;
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onPause, Hidden = " + mHidden);
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		mStopped = true;
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onStop, Hidden = " + mHidden);
+	}
+
 }
