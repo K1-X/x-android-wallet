@@ -73,4 +73,18 @@ private static final String TAG = "BaseFragment";
 		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onStop, Hidden = " + mHidden);
 	}
 
+@Override
+	public void onDestroy() {
+		super.onDestroy();
+
+		mDestroyed = true;
+		mResumedForFirstTime = false;
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onDestroy, Hidden = " + mHidden);
+	}
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		Log.d(TAG, "[" + getClass().getSimpleName() + "]: onDetach");
+	}
 }
