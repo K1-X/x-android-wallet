@@ -13,5 +13,23 @@ import io.reactivex.functions.Consumer;
 
 public abstract class BaseDialogFragment extends BaseFragment{
     
+ //handler code
+    public static final int DISMISS_DIALOG = 1;
+    public static final int DIALOG_SHOW_TIME = 2 * 1000;
 
+    private ToastDialog customerDialog;
+    /**
+     * 
+     * @param content    
+     * @param cancelable 
+     */
+    public  void showSuccessToast(final String content, final String contentDes, final boolean cancelable) {
+        Observable.timer(200, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        startToast(content,contentDes,cancelable);
+                    }
+                });
+    }
 }
