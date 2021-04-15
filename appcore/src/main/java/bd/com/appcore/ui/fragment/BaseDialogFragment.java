@@ -50,4 +50,22 @@ public abstract class BaseDialogFragment extends BaseFragment{
     public  void showErrorToast( String content, String contentDes, boolean cancelable) {
         showDialog(getActivity(),content,contentDes, R.mipmap.error,false,cancelable);
     }
+	/**
+     * 
+     * @param content    
+     * @param cancelable 
+     */
+    public  void showWarningToast( String content, String contentDes, boolean cancelable) {
+        dismissLoading();
+        showDialog(getActivity(),content,contentDes,R.mipmap.hint,false,cancelable);
+    }
+
+    /**
+     * loading
+     * @param content    
+     * @param cancelable 
+     */
+    public void showLoading(String content, String contentDes, boolean cancelable) {
+        showDialog(getActivity(),content,contentDes,R.mipmap.hint,true,cancelable);
+    }
 }
