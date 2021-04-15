@@ -12,8 +12,7 @@ import io.reactivex.functions.Consumer;
 
 
 public abstract class BaseDialogFragment extends BaseFragment{
-    
- //handler code
+    //handler code
     public static final int DISMISS_DIALOG = 1;
     public static final int DIALOG_SHOW_TIME = 2 * 1000;
 
@@ -50,7 +49,9 @@ public abstract class BaseDialogFragment extends BaseFragment{
     public  void showErrorToast( String content, String contentDes, boolean cancelable) {
         showDialog(getActivity(),content,contentDes, R.mipmap.error,false,cancelable);
     }
-	/**
+
+
+    /**
      * 
      * @param content    
      * @param cancelable 
@@ -69,7 +70,8 @@ public abstract class BaseDialogFragment extends BaseFragment{
         showDialog(getActivity(),content,contentDes,R.mipmap.hint,true,cancelable);
     }
 
-	protected   void  dismissDialog() {
+
+    protected   void  dismissDialog() {
         if (customerDialog != null) {
             if (customerDialog.isShowing()) {
                 customerDialog.dismiss();
@@ -91,7 +93,8 @@ public abstract class BaseDialogFragment extends BaseFragment{
             customerDialog.show();
         }
     }
-	public void dismissLoading() {
+
+    public void dismissLoading() {
         dismissDialog();
         LoadingDialog.cancleDialog();
     }
@@ -108,4 +111,5 @@ public abstract class BaseDialogFragment extends BaseFragment{
         super.onDetach();
         dismissDialog();
     }
+
 }
