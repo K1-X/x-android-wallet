@@ -68,4 +68,27 @@ public abstract class BaseDialogFragment extends BaseFragment{
     public void showLoading(String content, String contentDes, boolean cancelable) {
         showDialog(getActivity(),content,contentDes,R.mipmap.hint,true,cancelable);
     }
+
+	protected   void  dismissDialog() {
+        if (customerDialog != null) {
+            if (customerDialog.isShowing()) {
+                customerDialog.dismiss();
+            }
+            customerDialog=null;
+        }
+    }
+
+
+    private   void showDialog(Activity activity, String parameter, String des, int resID, boolean isLoading, boolean cancelable) {
+        dismissDialog();
+        if (activity != null) {
+            customerDialog = new ToastDialog(activity, R.style.DialogTranslucentNoTitle);
+            customerDialog.showLoadingDialog(parameter, des,resID, isLoading,cancelable);
+        } else {
+            if(customerDialog.isShowing()){
+                customerDialog.dismiss();
+            }
+            customerDialog.show();
+        }
+    }
 }
