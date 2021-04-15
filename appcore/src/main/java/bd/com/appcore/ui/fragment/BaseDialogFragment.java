@@ -91,4 +91,21 @@ public abstract class BaseDialogFragment extends BaseFragment{
             customerDialog.show();
         }
     }
+	public void dismissLoading() {
+        dismissDialog();
+        LoadingDialog.cancleDialog();
+    }
+
+    /**
+     * loading
+     */
+    public void showDefaultLoading() {
+        LoadingDialog.loadingDialog(getActivity());
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        dismissDialog();
+    }
 }
