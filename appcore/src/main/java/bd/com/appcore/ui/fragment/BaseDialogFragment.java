@@ -32,4 +32,22 @@ public abstract class BaseDialogFragment extends BaseFragment{
                     }
                 });
     }
+
+    /**
+     * 
+     * @param content
+     * @param contentDes
+     * @param cancelable
+     */
+    private void startToast(final String content, final String contentDes, final boolean cancelable){
+        showDialog(getActivity(),content,contentDes,R.mipmap.complete,false,cancelable);
+    }
+    /**
+     * 
+     * @param content    
+     * @param cancelable 
+     */
+    public  void showErrorToast( String content, String contentDes, boolean cancelable) {
+        showDialog(getActivity(),content,contentDes, R.mipmap.error,false,cancelable);
+    }
 }
