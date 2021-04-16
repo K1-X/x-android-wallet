@@ -16,7 +16,7 @@ import bd.com.appcore.ui.view.LoadingDialog;
 
 
 public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBaseView> extends BaseDialogFragment implements IBaseView {
- /** ，*/
+    /** ，*/
     protected CommonActionBar actionBar;
     protected ViewGroup containerView;
     protected ViewGroup bottomContainer;
@@ -32,8 +32,8 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
     protected abstract P initPresenter();
 
     protected abstract V initView();
-  
-@Override
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mPresenter =initPresenter();
@@ -91,7 +91,7 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
 
     }
 
-   @Override
+    @Override
     public void onDetach() {
         if (mPresenter != null) {
             mPresenter.onDetachView();
@@ -146,6 +146,20 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
     /**
      * 
      */
+    protected void removeExceptionView() {
+        if(errorView!=null){
+            errorView.setVisibility(View.GONE);
+        }
+        if(emptyView!=null){
+            emptyView.setVisibility(View.GONE);
+        }
+//        containerView.removeView(errorView);
+//        containerView.removeView(emptyView);
+    }
+
+    /**
+     * 
+     */
     protected void showEmptyView() {
         //removeerrorView
        // removeExceptionView();
@@ -164,7 +178,7 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         });
     }
 
-   public void showToast(String msg){
+    public void showToast(String msg){
         Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
     }
 
