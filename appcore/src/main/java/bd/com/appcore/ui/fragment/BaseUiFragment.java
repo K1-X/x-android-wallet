@@ -33,4 +33,13 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
 
     protected abstract V initView();
   
+@Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mPresenter =initPresenter();
+        if (mPresenter != null && view != null) {
+            mPresenter.onAttachView(view);
+        }
+
+    }
 }
