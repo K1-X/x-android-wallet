@@ -163,4 +163,28 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
             }
         });
     }
+
+   public void showToast(String msg){
+        Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * ，errorView 
+     */
+    protected void onErroViewClicked(){
+
+    }
+
+
+
+    /**
+     * 
+     */
+    protected void initData() {
+    }
+
+    @Override
+    public void exit() {
+        getActivity().finish();
+    }
 }
