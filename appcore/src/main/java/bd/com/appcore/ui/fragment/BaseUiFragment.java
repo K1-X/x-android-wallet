@@ -142,4 +142,25 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
             }
         });
     }
+
+    /**
+     * 
+     */
+    protected void showEmptyView() {
+        //removeerrorView
+       // removeExceptionView();
+        if(emptyView!=null){
+            emptyView.setVisibility(View.VISIBLE);
+            return;
+        }
+        emptyView = View.inflate(getActivity(), R.layout.empty_layout, null);
+        containerView.addView(emptyView);
+        emptyView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //，
+                onErroViewClicked();
+            }
+        });
+    }
 }
