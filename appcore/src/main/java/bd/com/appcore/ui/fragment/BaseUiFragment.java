@@ -42,4 +42,23 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         }
 
     }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ViewGroup baseRootView = (ViewGroup) inflater.inflate(R.layout.activity_base,null);
+        View contentView =  inflater.inflate(getLayoutId(), null);
+        containerView=(ViewGroup) baseRootView.findViewById(R.id.container);
+        bottomContainer=baseRootView.findViewById(R.id.bottom_container);
+        topContaniner=baseRootView.findViewById(R.id.top_container);
+        containerView.addView(contentView);
+        initTooBar(baseRootView);
+        initContentView(baseRootView);
+        //
+        view = initView();
+        if(view!=null) {
+            mPresenter.onAttachView(view);
+        }
+        return baseRootView;
+    }
 }
