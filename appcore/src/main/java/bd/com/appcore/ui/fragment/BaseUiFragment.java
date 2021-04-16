@@ -78,4 +78,16 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         actionBar.setBackgroundResource(R.color.cyan_normal);
         setTitle("");
     }
+
+    /**
+     * 
+     * @param text
+     */
+    protected void setTitle(String text) {
+        actionBar.setTitle(text);
+    }
+
+    protected void setListener(){
+
+    }
 }
