@@ -16,5 +16,21 @@ import bd.com.appcore.ui.view.LoadingDialog;
 
 
 public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBaseView> extends BaseDialogFragment implements IBaseView {
+ /** ，*/
+    protected CommonActionBar actionBar;
+    protected ViewGroup containerView;
+    protected ViewGroup bottomContainer;
+    protected ViewGroup topContaniner;
+    //，
+    protected View errorView;
+    //，
+    protected View emptyView;
+    protected P mPresenter;
+
+    protected V view;
+
+    protected abstract P initPresenter();
+
+    protected abstract V initView();
   
 }
