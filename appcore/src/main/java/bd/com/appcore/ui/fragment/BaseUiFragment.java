@@ -68,4 +68,14 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         setListener();
         initData();
     }
+
+    protected void initContentView(ViewGroup contentView){
+
+    }
+
+    protected void initTooBar(ViewGroup rootView) {
+        actionBar = (CommonActionBar) rootView.findViewById(R.id.action_bar);
+        actionBar.setBackgroundResource(R.color.cyan_normal);
+        setTitle("");
+    }
 }
