@@ -61,4 +61,11 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         }
         return baseRootView;
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        setListener();
+        initData();
+    }
 }
