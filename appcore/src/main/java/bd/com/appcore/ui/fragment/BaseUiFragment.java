@@ -113,4 +113,13 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
     public void hideLoadingDialog() {
         showLoading(false);
     }
+
+    public void showLoading(boolean show) {
+        if(show){
+            showDefaultLoading();
+        }else {
+            LoadingDialog.cancleDialog();
+            dismissDialog();
+        }
+    }
 }
