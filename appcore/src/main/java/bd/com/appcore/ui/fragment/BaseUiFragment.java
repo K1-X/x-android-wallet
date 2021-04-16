@@ -101,4 +101,16 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
         super.onDetach();
     }
 
+
+    protected abstract int getLayoutId();
+
+    @Override
+    public void showLoadingDialog() {
+        showLoading( true);
+    }
+
+    @Override
+    public void hideLoadingDialog() {
+        showLoading(false);
+    }
 }
