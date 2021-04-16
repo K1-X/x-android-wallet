@@ -122,4 +122,24 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
             dismissDialog();
         }
     }
+
+    /**
+     * 
+     */
+    protected void showErrorView() {
+        //view
+       // removeExceptionView();
+        if(errorView!=null){
+            errorView.setVisibility(View.VISIBLE);
+            return;
+        }
+        errorView = View.inflate(getActivity(), R.layout.error_layout, null);
+        containerView.addView(errorView);
+        errorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onErroViewClicked();
+            }
+        });
+    }
 }
