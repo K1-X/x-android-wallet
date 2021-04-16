@@ -90,4 +90,15 @@ public abstract class BaseUiFragment<P extends IBasePresenter<V>,V extends IBase
     protected void setListener(){
 
     }
+
+   @Override
+    public void onDetach() {
+        if (mPresenter != null) {
+            mPresenter.onDetachView();
+            mPresenter = null;
+        }
+        hideLoadingDialog();
+        super.onDetach();
+    }
+
 }
