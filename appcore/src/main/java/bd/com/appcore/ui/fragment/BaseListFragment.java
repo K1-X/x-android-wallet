@@ -111,4 +111,14 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         }
 
     }
+
+    /**
+     * ，false，
+     *
+     * @return
+     */
+    protected boolean setCanRefresh() {
+        return false;
+    }
+
 }
