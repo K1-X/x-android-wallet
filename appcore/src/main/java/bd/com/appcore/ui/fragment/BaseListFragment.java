@@ -206,4 +206,23 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         return layoutManager;
     }
+
+     /**
+     * 
+     *
+     * @param position
+     */
+    public void notifyItemChanged(int position) {
+        mRecyclerView.notifyItemChanged(position);
+    }
+
+    /**
+     * 
+     *
+     * @param data
+     * @param position
+     */
+    public void notifyItemChanged(int position, T data) {
+        mRecyclerView.notifyItemChanged(position, data);
+    }
 }
