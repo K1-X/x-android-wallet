@@ -300,4 +300,37 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         mRecyclerView.loadMoreComplete();
         safetyToast("");
     }
+
+   /**
+     * ，
+     */
+    protected void onErroViewClicked() {
+        //showLoadingDialog();
+        removeExceptionView();
+//        Observable.timer(500,TimeUnit.MILLISECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//                        mRecyclerView.refresh();
+//                    }
+//                });
+
+        fetchListItems(getFetchListItemsParams());
+    }
+
+
+    @Override
+    public void onRefresh() {
+        pageNumber = 1;
+        fetchListItems(getFetchListItemsParams());
+        Log.e(TAG, "============================>onRefresh");
+    }
+
+    @Override
+    public void onLoadMore() {
+        fetchMoreListItems(getFetchListItemsParams());
+        Log.e(TAG, "============================>onLoadMore");
+    }
+
 }
