@@ -46,14 +46,14 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     private ItemTouchHelper mItemTouchHelper;
     //，offset limit，
     protected int pageNumber = 1;
-    protected int pageSize=10;    
+    protected int pageSize=10;
 
     @Override
     protected int getLayoutId() {
         return R.layout.base_list_layout;
     }
 
-  @Override
+    @Override
     protected void initContentView(ViewGroup contentView) {
         super.initContentView(contentView);
         mRecyclerView = contentView.findViewById(R.id.recycler_view);
@@ -148,7 +148,7 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         fetchListItems(params);
     }
 
-     /**
+    /**
      * 
      *
      * @param params
@@ -207,7 +207,7 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         return layoutManager;
     }
 
-     /**
+    /**
      * 
      *
      * @param position
@@ -301,7 +301,7 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         safetyToast("");
     }
 
-   /**
+    /**
      * ，
      */
     protected void onErroViewClicked() {
@@ -333,7 +333,6 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         Log.e(TAG, "============================>onLoadMore");
     }
 
-
     /**
      * view
      *
@@ -362,4 +361,5 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected void onItemViewClick(RecyclerView.ViewHolder vh, T entity) {
 
     }
+
 }
