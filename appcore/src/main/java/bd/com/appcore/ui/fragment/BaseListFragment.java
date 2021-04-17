@@ -52,4 +52,63 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected int getLayoutId() {
         return R.layout.base_list_layout;
     }
+
+  @Override
+    protected void initContentView(ViewGroup contentView) {
+        super.initContentView(contentView);
+        mRecyclerView = contentView.findViewById(R.id.recycler_view);
+        mAdapter = createAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(buildLayoutManager());
+        List<? extends RecyclerView.ItemDecoration> decorations = buildItemDecorations();
+        if (decorations != null && decorations.size() > 0) {
+            for (RecyclerView.ItemDecoration itemDecoration : buildItemDecorations()) {
+                mRecyclerView.addItemDecoration(itemDecoration);
+            }
+        }
+        mRecyclerView.setLoadingListener(this);
+
+        mRecyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(mRecyclerView) {
+
+            @Override
+            public void onItemClick(RecyclerView.ViewHolder vh) {
+                int pos = vh.getAdapterPosition() - mRecyclerView.getHeaders_includingRefreshCount();
+                Log.e("BaseList", "pos=" + pos);
+                if (pos >= 0 && pos < datas.size()) {
+                    onItemViewClick(vh, datas.get(pos));
+                }
+            }
+
+            @Override
+            public void onItemLongClick(RecyclerView.ViewHolder vh) {
+                Log.e(ItemTouchHelperCallBack.class.getSimpleName(), "onItemLongClick");
+
+                //，
+                if (vh.getLayoutPosition() >= mRecyclerView.getHeaders_includingRefreshCount()) {
+                    //
+                    // mRecyclerView.setPullRefreshEnabled(false);
+                    if (setDrager()) {
+                        mItemTouchHelper.startDrag(vh);
+
+                        //
+                        Vibrator vib = (Vibrator) getActivity().getSystemService(Service.VIBRATOR_SERVICE);//70
+                        vib.vibrate(70);
+                    }
+                }
+            }
+        });
+
+        mItemTouchHelper = new ItemTouchHelper(buildItemTouchHelperCallBack());
+
+        if (setDrager()) {
+            mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+        }
+
+        mRecyclerView.setPullRefreshEnabled(setCanRefresh());
+        mRecyclerView.setLoadingMoreEnabled(setCanLoadMore());
+        if (setCanRefresh()) {
+            mRecyclerView.refresh();
+        }
+
+    }
 }
