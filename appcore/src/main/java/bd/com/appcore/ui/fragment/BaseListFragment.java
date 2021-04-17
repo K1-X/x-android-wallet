@@ -48,4 +48,8 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected int pageNumber = 1;
     protected int pageSize=10;    
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.base_list_layout;
+    }
 }
