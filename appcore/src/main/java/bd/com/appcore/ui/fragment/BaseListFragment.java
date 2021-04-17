@@ -257,4 +257,23 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         pageNumber++;
         mAdapter.notifyDataSetChanged();
     }
+
+    /**
+     * 
+     *
+     * @param msg
+     */
+    public void loadFailed(String msg) {
+        mRecyclerView.refreshComplete();
+        hideLoadingDialog();
+        showErrorView();
+    }
+
+    /**
+     * 
+     */
+    public void loadEmpty() {
+        hideLoadingDialog();
+        showEmptyView();
+    }
 }
