@@ -147,4 +147,24 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected void fetchMoreListItems(@NonNull Map<String, Object> params) {
         fetchListItems(params);
     }
+
+     /**
+     * 
+     *
+     * @param params
+     */
+    protected abstract void fetchListItems(@NonNull Map<String, Object> params);
+
+    /**
+     * ，
+     *
+     * @return
+     */
+    @NonNull
+    protected Map<String, Object> getFetchListItemsParams() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("pageNumber", pageNumber);
+        params.put("pageSize",pageSize);
+        return params;
+    }
 }
