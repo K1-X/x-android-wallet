@@ -225,4 +225,36 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     public void notifyItemChanged(int position, T data) {
         mRecyclerView.notifyItemChanged(position, data);
     }
+
+    /**
+     * 
+     *
+     * @param position
+     * @param newDatas
+     */
+    public void notifyItemChanged(List<T> newDatas, int position) {
+        mRecyclerView.notifyItemInserted(newDatas, position);
+    }
+
+    /**
+     * ,
+     *
+     * @param items
+     */
+    public void loadSuccess(List<T> items) {
+        hideLoadingDialog();
+        mRecyclerView.refreshComplete();
+        removeExceptionView();
+        if(items==null||items.size()==0){
+            datas.clear();
+            mAdapter.notifyDataSetChanged();
+            showEmptyView();
+            return;
+        }
+
+        datas.clear();
+        datas.addAll(items);
+        pageNumber++;
+        mAdapter.notifyDataSetChanged();
+    }
 }
