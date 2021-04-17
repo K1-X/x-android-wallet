@@ -167,4 +167,23 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         params.put("pageSize",pageSize);
         return params;
     }
+
+    /**
+     * RecyclerView Adapter , Item
+     */
+    protected abstract CommonAdapter<T> createAdapter();
+
+    public CommonAdapter<T> getAdapter() {
+        return mAdapter;
+    }
+
+
+    /**
+     * itemtouchhelpercallback，.
+     *
+     * @return
+     */
+    protected ItemTouchHelper.Callback buildItemTouchHelperCallBack() {
+        return new ItemTouchHelperCallBack(mRecyclerView, datas, getAdapter());
+    }
 }
