@@ -276,4 +276,28 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         hideLoadingDialog();
         showEmptyView();
     }
+
+    /**
+     * 
+     *
+     * @param moreDatas
+     */
+    public void loadMoreSuccess(List<T> moreDatas) {
+        mRecyclerView.loadMoreComplete();
+        if(moreDatas==null||moreDatas.size()==0){
+            mRecyclerView.setNoMore(true);
+            return;
+        }
+        datas.addAll(moreDatas);
+        mAdapter.notifyDataSetChanged();
+        if (moreDatas.size() < pageSize) {
+            mRecyclerView.setNoMore(true);
+        }
+        pageNumber++;
+    }
+
+    public void loadMoreFailed() {
+        mRecyclerView.loadMoreComplete();
+        safetyToast("");
+    }
 }
