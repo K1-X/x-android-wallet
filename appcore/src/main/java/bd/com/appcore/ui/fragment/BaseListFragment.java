@@ -333,4 +333,33 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         Log.e(TAG, "============================>onLoadMore");
     }
 
+
+    /**
+     * view
+     *
+     * @param view
+     */
+    public void addTopFloatView(View view) {
+        topContaniner.addView(view);
+    }
+
+    /**
+     * view
+     *
+     * @param view
+     */
+    public void addBottomFloatView(View view) {
+        bottomContainer.addView(view);
+    }
+
+
+
+    /**
+     * item
+     *
+     * @param vh
+     */
+    protected void onItemViewClick(RecyclerView.ViewHolder vh, T entity) {
+
+    }
 }
