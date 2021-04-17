@@ -186,4 +186,24 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected ItemTouchHelper.Callback buildItemTouchHelperCallBack() {
         return new ItemTouchHelperCallBack(mRecyclerView, datas, getAdapter());
     }
+
+    /**
+     * ，。
+     *
+     * @return
+     */
+    protected List<? extends RecyclerView.ItemDecoration> buildItemDecorations() {
+        return null;
+    }
+
+    /**
+     * recycle layoutmanager
+     *
+     * @return
+     */
+    protected RecyclerView.LayoutManager buildLayoutManager() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        return layoutManager;
+    }
 }
