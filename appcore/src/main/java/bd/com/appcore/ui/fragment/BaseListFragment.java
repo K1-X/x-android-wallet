@@ -138,4 +138,13 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
     protected boolean setDrager() {
         return false;
     }
+
+    /**
+     * ,，
+     *
+     * @param params
+     */
+    protected void fetchMoreListItems(@NonNull Map<String, Object> params) {
+        fetchListItems(params);
+    }
 }
