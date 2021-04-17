@@ -38,6 +38,14 @@ import rx.schedulers.Schedulers;
 
 
 public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IBaseView, T> extends BaseUiFragment<P, V> implements XRecyclerView.LoadingListener {
-    
+    private static final String TAG = BaseListFragment.class.getSimpleName();
+    protected XRecyclerView mRecyclerView;
+    protected CommonAdapter mAdapter;
+
+    protected List<T> datas = new ArrayList<>();
+    private ItemTouchHelper mItemTouchHelper;
+    //，offset limit，
+    protected int pageNumber = 1;
+    protected int pageSize=10;    
 
 }
