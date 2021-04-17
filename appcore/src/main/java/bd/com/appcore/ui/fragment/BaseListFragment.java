@@ -130,4 +130,12 @@ public abstract class BaseListFragment<P extends IBasePresenter<V>, V extends IB
         return false;
     }
 
+    /**
+     * ，false，
+     *
+     * @return
+     */
+    protected boolean setDrager() {
+        return false;
+    }
 }
