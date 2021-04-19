@@ -70,4 +70,10 @@ public class ActivityManager {
    public boolean isForeGround() {
         return this.isForeGround;
     }
+
+    public void setActivityAttribute(Activity act) {
+        act.requestWindowFeature(Window.FEATURE_NO_TITLE); // 
+        act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);// 
+        act.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 
+    }
 }
