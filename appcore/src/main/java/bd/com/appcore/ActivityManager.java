@@ -46,4 +46,8 @@ public class ActivityManager {
     public void removeManagedActivity(Activity act) {
         managedActivityList.remove(act);
     }
+
+    public void setCurrActivity(Activity act) {
+        currActivity = act;
+    }
 }
