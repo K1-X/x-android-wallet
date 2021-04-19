@@ -42,4 +42,8 @@ public class ActivityManager {
     public void addManagedActivity(Activity act) {
         managedActivityList.push(act);
     }
+
+    public void removeManagedActivity(Activity act) {
+        managedActivityList.remove(act);
+    }
 }
