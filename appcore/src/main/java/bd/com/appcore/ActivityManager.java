@@ -23,4 +23,11 @@ public class ActivityManager {
 
     private static ActivityManager instance = new ActivityManager();
     
+	private ActivityManager() {
+        managedActivityList = new Stack<Activity>();
+    }
+
+    public static ActivityManager getInstance() {
+        return instance;
+    }
 }
