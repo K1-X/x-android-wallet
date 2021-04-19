@@ -84,4 +84,18 @@ public class ActivityManager {
     public boolean contains(Activity act) {
         return managedActivityList.contains(act);
     }
+
+    // ManagedActivity，。
+    public void startActivity(Intent intent) {
+        currActivity.startActivity(intent);
+    }
+
+    public void finishAll() {
+        currActivity = null;
+        // ManagedActivity
+        while (!managedActivityList.isEmpty()) {
+            Activity act = managedActivityList.pop();
+            act.finish();
+        }
+    }
 }
