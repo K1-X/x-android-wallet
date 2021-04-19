@@ -30,4 +30,8 @@ public class ActivityManager {
     public static ActivityManager getInstance() {
         return instance;
     }
+
+	public void addForeGroundObserver(ForeGroundObserver o) {
+        this.foreGroundObserverList.add(o);
+    }
 }
