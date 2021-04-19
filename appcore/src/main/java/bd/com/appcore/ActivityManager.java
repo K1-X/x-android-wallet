@@ -66,4 +66,8 @@ public class ActivityManager {
         }
     }
 
+
+   public boolean isForeGround() {
+        return this.isForeGround;
+    }
 }
