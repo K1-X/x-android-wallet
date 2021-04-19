@@ -98,4 +98,13 @@ public class ActivityManager {
             act.finish();
         }
     }
+
+    public void backToRoot() {
+        // pop ManagedActivity，，1。
+        // Root
+        while (managedActivityList.size() > 1) {
+            Activity act = managedActivityList.pop();
+            act.finish();
+        }
+    }
 }
