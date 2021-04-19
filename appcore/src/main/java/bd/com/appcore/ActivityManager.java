@@ -50,4 +50,20 @@ public class ActivityManager {
     public void setCurrActivity(Activity act) {
         currActivity = act;
     }
+    
+    public void setIsForeGround(boolean isForeGround) {
+        this.isForeGround = isForeGround;
+        if (isForeGround) {
+            // ，removeObserver，。
+            List<ForeGroundObserver> tmpList = new ArrayList<ForeGroundObserver>();
+            for (ForeGroundObserver o : foreGroundObserverList) {
+                tmpList.add(o);
+            }
+
+            for (ForeGroundObserver o : tmpList) {
+                o.notifyForeGround();
+            }
+        }
+    }
+
 }
