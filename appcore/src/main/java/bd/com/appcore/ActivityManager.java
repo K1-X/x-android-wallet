@@ -34,4 +34,8 @@ public class ActivityManager {
 	public void addForeGroundObserver(ForeGroundObserver o) {
         this.foreGroundObserverList.add(o);
     }
+
+	public void removeForeGroundObserver(ForeGroundObserver o) {
+        this.foreGroundObserverList.remove(o);
+    }
 }
