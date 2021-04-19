@@ -107,4 +107,19 @@ public class ActivityManager {
             act.finish();
         }
     }
+
+    public Activity getRootActivity() {
+        if (managedActivityList.isEmpty()) {
+            return null;
+        }
+        return managedActivityList.lastElement();
+    }
+
+    public boolean isActivityNone() {
+        return managedActivityList.isEmpty();
+    }
+
+    public interface ForeGroundObserver {
+        void notifyForeGround();
+    }
 }
