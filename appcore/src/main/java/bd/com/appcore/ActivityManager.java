@@ -14,5 +14,13 @@ import java.util.Stack;
  * 。，。
  */
 public class ActivityManager {
+
+	private Stack<Activity> managedActivityList;
+    private Activity currActivity;
+
+    private List<ForeGroundObserver> foreGroundObserverList = new ArrayList<ForeGroundObserver>();
+    private boolean isForeGround = false;
+
+    private static ActivityManager instance = new ActivityManager();
     
 }
