@@ -38,4 +38,8 @@ public class ActivityManager {
 	public void removeForeGroundObserver(ForeGroundObserver o) {
         this.foreGroundObserverList.remove(o);
     }
+
+    public void addManagedActivity(Activity act) {
+        managedActivityList.push(act);
+    }
 }
