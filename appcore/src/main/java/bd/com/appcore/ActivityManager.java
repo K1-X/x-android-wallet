@@ -76,4 +76,12 @@ public class ActivityManager {
         act.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);// 
         act.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 
     }
+
+    public Activity getCurrActivity() {
+        return this.currActivity;
+    }
+
+    public boolean contains(Activity act) {
+        return managedActivityList.contains(act);
+    }
 }
