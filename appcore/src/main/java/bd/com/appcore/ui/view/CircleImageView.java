@@ -76,4 +76,16 @@ private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
             mSetupPending = false;
         }
     }
+
+   @Override
+    public ScaleType getScaleType() {
+        return SCALE_TYPE;
+    }
+
+    @Override
+    public void setScaleType(ScaleType scaleType) {
+        if (scaleType != SCALE_TYPE) {
+            throw new IllegalArgumentException(String.format("ScaleType %s not supported.", scaleType));
+        }
+    }
 }
