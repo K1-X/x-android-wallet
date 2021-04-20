@@ -38,5 +38,14 @@ private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
     private int mBorderColor = DEFAULT_BORDER_COLOR;
     private int mBorderWidth = DEFAULT_BORDER_WIDTH;   
+    private Bitmap mBitmap;
+    private BitmapShader mBitmapShader;
+    private int mBitmapWidth;
+    private int mBitmapHeight;
 
+    private float mDrawableRadius;
+    private float mBorderRadius;
+
+    private boolean mReady;
+    private boolean mSetupPending;
 }
