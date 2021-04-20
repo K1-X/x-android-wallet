@@ -52,4 +52,8 @@ private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
     public CircleImageView(Context context) {
         super(context);
     }
+
+    public CircleImageView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 }
