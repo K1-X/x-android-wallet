@@ -48,4 +48,8 @@ private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
     private boolean mReady;
     private boolean mSetupPending;
+
+    public CircleImageView(Context context) {
+        super(context);
+    }
 }
