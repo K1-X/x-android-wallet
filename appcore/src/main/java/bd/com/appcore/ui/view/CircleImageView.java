@@ -21,6 +21,22 @@ import bd.com.appcore.R;
 
 public class CircleImageView extends ImageView {
 
-   
+private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
+
+    private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
+    private static final int COLORDRAWABLE_DIMENSION = 1;
+
+    private static final int DEFAULT_BORDER_WIDTH = 0;
+    private static final int DEFAULT_BORDER_COLOR = Color.TRANSPARENT;
+
+    private final RectF mDrawableRect = new RectF();
+    private final RectF mBorderRect = new RectF();
+
+    private final Matrix mShaderMatrix = new Matrix();
+    private final Paint mBitmapPaint = new Paint();
+    private final Paint mBorderPaint = new Paint();
+
+    private int mBorderColor = DEFAULT_BORDER_COLOR;
+    private int mBorderWidth = DEFAULT_BORDER_WIDTH;   
 
 }
