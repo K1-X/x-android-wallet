@@ -118,4 +118,8 @@ private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
         mBorderPaint.setColor(mBorderColor);
         invalidate();
     }
+
+    public int getBorderWidth() {
+        return mBorderWidth;
+    }
 }
