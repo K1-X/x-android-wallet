@@ -97,5 +97,17 @@ public class CommonActionBar extends RelativeLayout {
         mMenu2Iv.setVisibility(isShow ? VISIBLE : INVISIBLE);
         return this;
     }
+
+   public CommonActionBar setTitle(String title) {
+        mTitleTv.setText(title);
+        return this;
+    }
+
+    @SuppressLint("ResourceType")
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public CommonActionBar setTitleStyle(@StyleableRes int styleResID) {
+        mTitleTv.setTextAppearance(styleResID);
+        return this;
+    }
  
 }
