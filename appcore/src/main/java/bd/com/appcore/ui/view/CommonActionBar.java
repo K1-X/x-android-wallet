@@ -21,20 +21,22 @@ import bd.com.appcore.R;
  * 
  */
 public class CommonActionBar extends RelativeLayout {
+
     private ImageView mBackIv;
 
     private ImageView mMenu1Iv;
     private ImageView mMenu2Iv;
     private TextView mTitleTv;
     private TextView mRightTv;
+
     private boolean showBack;
     private boolean showMenu1;
     private boolean showMenu2;
     private int backResId = -1;
     private int menu1ResId = -1;
     private int menu2ResId = -1;
-    private String title;    
- 
+    private String title;
+
     View mCommonDividerV;
 
     public CommonActionBar(Context context) {
@@ -82,13 +84,15 @@ public class CommonActionBar extends RelativeLayout {
         mRightTv=(TextView)findViewById(R.id.right_tv);
         mCommonDividerV = findViewById(R.id.action_bar_common_divider_v);
     }
-    
+
+
+
     public CommonActionBar showBack(boolean isShow) {
         mBackIv.setVisibility(isShow ? VISIBLE : INVISIBLE);
         return this;
     }
 
-     public CommonActionBar showMenu1(boolean isShow) {
+    public CommonActionBar showMenu1(boolean isShow) {
         mMenu1Iv.setVisibility(isShow ? VISIBLE : INVISIBLE);
         return this;
     }
@@ -98,7 +102,7 @@ public class CommonActionBar extends RelativeLayout {
         return this;
     }
 
-   public CommonActionBar setTitle(String title) {
+    public CommonActionBar setTitle(String title) {
         mTitleTv.setText(title);
         return this;
     }
@@ -120,7 +124,7 @@ public class CommonActionBar extends RelativeLayout {
         return this;
     }
 
-   public CommonActionBar setRightTv(String title){
+    public CommonActionBar setRightTv(String title){
         mRightTv.setVisibility(VISIBLE);
         mRightTv.setText(title);
         return this;
@@ -132,7 +136,6 @@ public class CommonActionBar extends RelativeLayout {
         return this;
     }
 
-
     public CommonActionBar setOnBackClickListener(OnClickListener listener) {
         mBackIv.setOnClickListener(listener);
         return this;
@@ -140,9 +143,8 @@ public class CommonActionBar extends RelativeLayout {
     public CommonActionBar setBackIconVisible(boolean visible) {
         mBackIv.setVisibility(visible?VISIBLE:GONE);
         return this;
-    } 
-
-   public CommonActionBar setOnMenu1ClickListener(OnClickListener listener) {
+    }
+    public CommonActionBar setOnMenu1ClickListener(OnClickListener listener) {
         mMenu1Iv.setOnClickListener(listener);
         return this;
     }
@@ -152,7 +154,7 @@ public class CommonActionBar extends RelativeLayout {
         return this;
     }
 
-  public CommonActionBar setBackResource(@DrawableRes int resId) {
+    public CommonActionBar setBackResource(@DrawableRes int resId) {
         mBackIv.setImageResource(resId);
         return this;
     }
@@ -167,5 +169,28 @@ public class CommonActionBar extends RelativeLayout {
         mMenu2Iv.setImageResource(resId);
         mMenu2Iv.setVisibility(VISIBLE);
         return this;
+    }
+
+    public TextView getTitleTv() {
+        return mTitleTv;
+    }
+
+    public CommonActionBar setActionbarDividerVisiable(boolean visiable) {
+        if (mCommonDividerV != null) {
+            mCommonDividerV.setVisibility(visiable ? VISIBLE : GONE);
+        }
+        return this;
+    }
+
+    public void setActionbarDividerVisiable(int visiable) {
+        if (mCommonDividerV != null) {
+            mCommonDividerV.setVisibility(visiable);
+        }
+    }
+
+    public void setOnRightTvClickListener(OnClickListener listener){
+        if(mRightTv!=null){
+            mRightTv.setOnClickListener(listener);
+        }
     }
 }
