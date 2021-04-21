@@ -119,5 +119,17 @@ public class CommonActionBar extends RelativeLayout {
         mTitleTv.setText(title);
         return this;
     }
+
+   public CommonActionBar setRightTv(String title){
+        mRightTv.setVisibility(VISIBLE);
+        mRightTv.setText(title);
+        return this;
+    }
+
+    public CommonActionBar setRightTv(@StringRes int title){
+        mRightTv.setVisibility(VISIBLE);
+        mRightTv.setText(title);
+        return this;
+    }
  
 }
