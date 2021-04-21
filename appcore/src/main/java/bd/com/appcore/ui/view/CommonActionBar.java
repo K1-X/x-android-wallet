@@ -82,6 +82,10 @@ public class CommonActionBar extends RelativeLayout {
         mRightTv=(TextView)findViewById(R.id.right_tv);
         mCommonDividerV = findViewById(R.id.action_bar_common_divider_v);
     }
-
+    
+    public CommonActionBar showBack(boolean isShow) {
+        mBackIv.setVisibility(isShow ? VISIBLE : INVISIBLE);
+        return this;
+    }
  
 }
