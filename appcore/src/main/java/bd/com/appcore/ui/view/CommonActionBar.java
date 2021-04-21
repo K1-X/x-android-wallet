@@ -34,4 +34,11 @@ public class CommonActionBar extends RelativeLayout {
     private int menu1ResId = -1;
     private int menu2ResId = -1;
     private String title;    
+ 
+    View mCommonDividerV;
+
+    public CommonActionBar(Context context) {
+        this(context, null);
+    }
+ 
 }
