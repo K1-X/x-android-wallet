@@ -40,5 +40,22 @@ public class CommonActionBar extends RelativeLayout {
     public CommonActionBar(Context context) {
         this(context, null);
     }
+
+    public CommonActionBar(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public CommonActionBar(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        View.inflate(context, R.layout.layout_actionbar_common_merge, this);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonActionBar);
+        showBack = a.getBoolean(R.styleable.CommonActionBar_showBack, true);
+        showMenu1 = a.getBoolean(R.styleable.CommonActionBar_showMenu1, false);
+        showMenu2 = a.getBoolean(R.styleable.CommonActionBar_showMenu2, false);
+        backResId = a.getResourceId(R.styleable.CommonActionBar_backSrc, -1);
+        menu1ResId = a.getResourceId(R.styleable.CommonActionBar_menu1Src, -1);
+        menu2ResId = a.getResourceId(R.styleable.CommonActionBar_menu2Src, -1);
+        title = a.getString(R.styleable.CommonActionBar_titleText);
+    }
  
 }
