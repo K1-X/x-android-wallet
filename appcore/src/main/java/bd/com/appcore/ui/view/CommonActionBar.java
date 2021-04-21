@@ -21,6 +21,11 @@ import bd.com.appcore.R;
  * 
  */
 public class CommonActionBar extends RelativeLayout {
+    private ImageView mBackIv;
 
+    private ImageView mMenu1Iv;
+    private ImageView mMenu2Iv;
+    private TextView mTitleTv;
+    private TextView mRightTv;
     
 }
