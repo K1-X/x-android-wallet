@@ -27,5 +27,11 @@ public class CommonActionBar extends RelativeLayout {
     private ImageView mMenu2Iv;
     private TextView mTitleTv;
     private TextView mRightTv;
-    
+    private boolean showBack;
+    private boolean showMenu1;
+    private boolean showMenu2;
+    private int backResId = -1;
+    private int menu1ResId = -1;
+    private int menu2ResId = -1;
+    private String title;    
 }
