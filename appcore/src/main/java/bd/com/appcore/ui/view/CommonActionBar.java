@@ -92,5 +92,10 @@ public class CommonActionBar extends RelativeLayout {
         mMenu1Iv.setVisibility(isShow ? VISIBLE : INVISIBLE);
         return this;
     }
+
+    public CommonActionBar showMenu2(boolean isShow) {
+        mMenu2Iv.setVisibility(isShow ? VISIBLE : INVISIBLE);
+        return this;
+    }
  
 }
