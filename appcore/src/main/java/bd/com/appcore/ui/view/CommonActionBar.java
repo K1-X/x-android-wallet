@@ -131,5 +131,14 @@ public class CommonActionBar extends RelativeLayout {
         mRightTv.setText(title);
         return this;
     }
- 
+
+
+    public CommonActionBar setOnBackClickListener(OnClickListener listener) {
+        mBackIv.setOnClickListener(listener);
+        return this;
+    }
+    public CommonActionBar setBackIconVisible(boolean visible) {
+        mBackIv.setVisibility(visible?VISIBLE:GONE);
+        return this;
+    } 
 }
