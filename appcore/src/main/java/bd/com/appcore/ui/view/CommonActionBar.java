@@ -141,4 +141,14 @@ public class CommonActionBar extends RelativeLayout {
         mBackIv.setVisibility(visible?VISIBLE:GONE);
         return this;
     } 
+
+   public CommonActionBar setOnMenu1ClickListener(OnClickListener listener) {
+        mMenu1Iv.setOnClickListener(listener);
+        return this;
+    }
+
+    public CommonActionBar setOnMenu2ClickListener(OnClickListener listener) {
+        mMenu2Iv.setOnClickListener(listener);
+        return this;
+    }
 }
