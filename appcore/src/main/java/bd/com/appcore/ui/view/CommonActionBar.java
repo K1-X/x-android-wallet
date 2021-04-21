@@ -57,5 +57,31 @@ public class CommonActionBar extends RelativeLayout {
         menu2ResId = a.getResourceId(R.styleable.CommonActionBar_menu2Src, -1);
         title = a.getString(R.styleable.CommonActionBar_titleText);
     }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mBackIv = (ImageView) findViewById(R.id.iv_back);
+
+        mBackIv.setVisibility(showBack ? VISIBLE : INVISIBLE);
+        if (backResId != -1)
+            mBackIv.setImageResource(backResId);
+
+        mMenu1Iv = (ImageView) findViewById(R.id.iv_menu1);
+        mMenu1Iv.setVisibility(showMenu1 ? VISIBLE : INVISIBLE);
+        if (menu1ResId != -1)
+            mMenu1Iv.setImageResource(menu1ResId);
+
+        mMenu2Iv = (ImageView) findViewById(R.id.iv_menu2);
+        mMenu2Iv.setVisibility(showMenu2 ? VISIBLE : INVISIBLE);
+        if (menu2ResId != -1)
+            mMenu2Iv.setImageResource(menu2ResId);
+
+        mTitleTv = (TextView) findViewById(R.id.tv_title);
+        mTitleTv.setText(title);
+        mRightTv=(TextView)findViewById(R.id.right_tv);
+        mCommonDividerV = findViewById(R.id.action_bar_common_divider_v);
+    }
+
  
 }
