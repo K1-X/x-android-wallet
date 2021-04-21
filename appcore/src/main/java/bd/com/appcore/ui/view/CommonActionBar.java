@@ -109,5 +109,15 @@ public class CommonActionBar extends RelativeLayout {
         mTitleTv.setTextAppearance(styleResID);
         return this;
     }
+
+    public CommonActionBar setTitleColor(int color) {
+        mTitleTv.setTextColor(color);
+        return this;
+    }
+
+    public CommonActionBar setTitle(@StringRes int title) {
+        mTitleTv.setText(title);
+        return this;
+    }
  
 }
