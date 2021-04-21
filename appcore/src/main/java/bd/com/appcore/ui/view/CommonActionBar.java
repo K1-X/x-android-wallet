@@ -151,4 +151,21 @@ public class CommonActionBar extends RelativeLayout {
         mMenu2Iv.setOnClickListener(listener);
         return this;
     }
+
+  public CommonActionBar setBackResource(@DrawableRes int resId) {
+        mBackIv.setImageResource(resId);
+        return this;
+    }
+
+    public CommonActionBar setMenu1Resource(@DrawableRes int resId) {
+        mMenu1Iv.setImageResource(resId);
+        mMenu1Iv.setVisibility(VISIBLE);
+        return this;
+    }
+
+    public CommonActionBar setMenu2Resource(@DrawableRes int resId) {
+        mMenu2Iv.setImageResource(resId);
+        mMenu2Iv.setVisibility(VISIBLE);
+        return this;
+    }
 }
