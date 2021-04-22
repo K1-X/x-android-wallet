@@ -19,4 +19,16 @@ import bd.com.appcore.R;
 public class CommonLineTextView extends RelativeLayout {
 	private TextView mContentTv;
     private TextView mTitleTv;    
+
+    private ImageView rightIv;
+    private View lineView, topLine, bottomLine;
+    private String title;
+    private String content;
+    private boolean showLeftIcon;
+    private boolean showRightIcon;
+    private boolean showTextLine;
+    private boolean showTopLine;
+    private boolean showBottomLine;
+    private int leftSrc;
+    private int rightSrc;
 }
