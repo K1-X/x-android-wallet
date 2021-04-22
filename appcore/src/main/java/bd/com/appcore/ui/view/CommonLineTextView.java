@@ -85,4 +85,9 @@ public class CommonLineTextView extends RelativeLayout {
             topLine.setVisibility(VISIBLE);
         }
     }
+
+     public CommonLineTextView setTitle(String title) {
+        mTitleTv.setText(title);
+        return this;
+    }
 }
