@@ -17,5 +17,6 @@ import bd.com.appcore.R;
  */
 
 public class CommonLineTextView extends RelativeLayout {
-    
+	private TextView mContentTv;
+    private TextView mTitleTv;    
 }
