@@ -105,5 +105,7 @@ public class CommonLineTextView extends RelativeLayout {
         mContentTv.setText(content);
         return this;
     }
-
+    public String getContent() {
+        return mContentTv.getText().toString();
+    }
 }
