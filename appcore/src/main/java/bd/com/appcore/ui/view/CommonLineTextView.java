@@ -55,4 +55,34 @@ public class CommonLineTextView extends RelativeLayout {
         leftSrc = a.getResourceId(R.styleable.CommonLineTextView_text_left_src, -1);
         rightSrc = a.getResourceId(R.styleable.CommonLineTextView_text_right_src, -1);
     }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mTitleTv = (TextView) findViewById(R.id.tv_m_name);
+        mContentTv = (TextView) findViewById(R.id.tv_m_data);
+
+        lineView = findViewById(R.id.line_view);
+        topLine = findViewById(R.id.line_top);
+        bottomLine = findViewById(R.id.line_bottom);
+        mContentTv.setText(content);
+        mTitleTv.setText(title);
+
+        if (!showRightIcon) {
+            mContentTv.setCompoundDrawables(null, null, null, null);
+        }
+
+        if (!showTextLine) {
+            lineView.setVisibility(GONE);
+        }
+
+        if (showBottomLine) {
+            lineView.setVisibility(GONE);
+            bottomLine.setVisibility(VISIBLE);
+        }
+
+        if (showTopLine) {
+            topLine.setVisibility(VISIBLE);
+        }
+    }
 }
