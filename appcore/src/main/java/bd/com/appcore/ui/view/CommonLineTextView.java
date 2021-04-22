@@ -90,4 +90,10 @@ public class CommonLineTextView extends RelativeLayout {
         mTitleTv.setText(title);
         return this;
     }
+   
+    public CommonLineTextView setTitle(@StringRes int title) {
+        mTitleTv.setText(title);
+        return this;
+    }
+
 }
