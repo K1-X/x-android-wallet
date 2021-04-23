@@ -18,5 +18,11 @@ import bd.com.appcore.base.ModelCallBack;
 import bd.com.appcore.util.GsonUtil;
 
 public abstract class CommonBuilder<T> {
+
+private String TAG = CommonBuilder.class.getSimpleName();
+
+    public abstract String getUrl();
+
+    public abstract RequestMethod getMethod();
     
 }
