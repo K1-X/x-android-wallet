@@ -32,4 +32,10 @@ private String TAG = CommonBuilder.class.getSimpleName();
         headers.putAll(headers);
         return this;
     }    
+    
+    public CommonBuilder<T> addBody(Object reqBean) {
+        this.reqBean = reqBean;
+        return this;
+    }
+
 }
