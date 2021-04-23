@@ -135,4 +135,10 @@ private String TAG = CommonBuilder.class.getSimpleName();
             s.replace("\"archives\":\"\"","\"archives\":null");
         }
     }
+
+    private void setHeader(Request<JSONObject> request) {
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+            request.set(entry.getKey(), entry.getValue());
+        }
+    }
 }
