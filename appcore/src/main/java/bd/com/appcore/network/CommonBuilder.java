@@ -38,4 +38,9 @@ private String TAG = CommonBuilder.class.getSimpleName();
         return this;
     }
 
+    public CommonBuilder<T> addBody(Map<String, Object> reqBean) {
+        this.reqBean = reqBean;
+        return this;
+    }
+
 }
