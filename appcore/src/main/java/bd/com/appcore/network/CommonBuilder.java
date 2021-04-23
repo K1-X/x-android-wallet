@@ -70,4 +70,60 @@ private String TAG = CommonBuilder.class.getSimpleName();
         return null;
     }
 
+    /**
+     * 
+     *
+     * @param callBack
+     */
+    public void buildAsync(final ModelCallBack<T> callBack) {
+        Request<JSONObject> request = NoHttp.createJsonObjectRequest(getUrl(), getMethod());
+        String json = "";
+        if (reqBean instanceof Map) {
+            json = GsonUtil.mapToJson((Map<String, Object>) reqBean);
+        } else {
+            json = GsonUtil.objectToJson(reqBean, reqBean.getClass());
+        }
+        request.setDefineRequestBodyForJson(json);
+        if (headers != null) {
+            setHeader(request);
+        }
+        Log.i(TAG, "buildAsync method=" + getMethod() + "   reqJson===>" + json);
+        HttpServer.getInstance().request(request.hashCode(), request, new SimpleResponseListener<JSONObject>() {
+
+            @Override
+            public void onSucceed(int what, final Response<JSONObject> response) {
+                Log.i(TAG, "buildAsync method=" + getMethod() + "   onSucceed====>" + response.get().toString());
+                super.onSucceed(what, response);
+                if (response.isSucceed()) {
+                    JSONObject jsonObject = response.get();
+                    int status = jsonObject.optInt("status");
+                    String msg = jsonObject.optString("msg");
+                    String dataJson = jsonObject.optString("data");
+                  //  checkout(jsonObject.toString());
+                    if (status == 0) {
+                        T resp = null;
+                        resp = GsonUtil.jsonToObject(jsonObject.toString(), getTClass());
+//                        if (TextUtils.isEmpty(dataJson)) {
+//                            resp = GsonUtil.jsonToObject(jsonObject.toString(), getTClass());
+//                        } else {
+//                            resp = GsonUtil.jsonToObject(dataJson, getTClass());
+//
+//                        }
+
+                        callBack.onResponseSuccess(resp);
+
+                    } else {
+                        callBack.onResponseFailed(status, msg);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailed(int what, Response<JSONObject> response) {
+                super.onFailed(what, response);
+                Log.i(TAG, "buildAsync method=" + getMethod() + "   onFailed====>code=" + response.responseCode() + "::message=" + response.getException().getMessage());
+                callBack.onResponseFailed(response.responseCode(), response.getException().getMessage());
+            }
+        });
+    }
 }
