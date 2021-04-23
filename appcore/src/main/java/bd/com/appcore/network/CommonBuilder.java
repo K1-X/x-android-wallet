@@ -43,4 +43,31 @@ private String TAG = CommonBuilder.class.getSimpleName();
         return this;
     }
 
+    /**
+     * 
+     *
+     * @return
+     */
+    public T buildSync() {
+        Request<JSONObject> request = NoHttp.createJsonObjectRequest(getUrl(), getMethod());
+        final String json = GsonUtil.objectToJson(reqBean, reqBean.getClass());
+        if (headers != null) {
+            setHeader(request);
+        }
+        request.setDefineRequestBodyForJson(json);
+        // ，。
+        Response<JSONObject> response = NoHttp.startRequestSync(request);
+        if (response != null && response.isSucceed()) {
+            JSONObject jsonObject = response.get();
+            int status = jsonObject.optInt("status");
+            String msg = jsonObject.optString("msg");
+            String dataJson = jsonObject.optString("data");
+            if (status == 0) {
+                T resp = GsonUtil.jsonToObject(dataJson, getTClass());
+                return resp;
+            }
+        }
+        return null;
+    }
+
 }
