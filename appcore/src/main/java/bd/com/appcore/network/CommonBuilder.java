@@ -18,21 +18,21 @@ import bd.com.appcore.base.ModelCallBack;
 import bd.com.appcore.util.GsonUtil;
 
 public abstract class CommonBuilder<T> {
-
-private String TAG = CommonBuilder.class.getSimpleName();
+    private String TAG = CommonBuilder.class.getSimpleName();
 
     public abstract String getUrl();
 
     public abstract RequestMethod getMethod();
 
-     private Map<String, String> headers;
+
+    private Map<String, String> headers;
     private Object reqBean;
 
     public CommonBuilder<T> addHeader(Map<String, Object> headers) {
         headers.putAll(headers);
         return this;
-    }    
-    
+    }
+
     public CommonBuilder<T> addBody(Object reqBean) {
         this.reqBean = reqBean;
         return this;
@@ -142,7 +142,8 @@ private String TAG = CommonBuilder.class.getSimpleName();
         }
     }
 
-lass<T> getTClass() {
+    private Class<T> getTClass() {
         Class<T> tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return tClass;
     }
+}
