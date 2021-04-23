@@ -141,4 +141,8 @@ private String TAG = CommonBuilder.class.getSimpleName();
             request.set(entry.getKey(), entry.getValue());
         }
     }
-}
+
+lass<T> getTClass() {
+        Class<T> tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        return tClass;
+    }
