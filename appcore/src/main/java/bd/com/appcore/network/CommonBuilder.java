@@ -126,4 +126,13 @@ private String TAG = CommonBuilder.class.getSimpleName();
             }
         });
     }
+
+    protected  void checkout(String s){
+        if(TextUtils.isEmpty(s)){
+            return;
+        }
+        if(s.contains("\"archives\":\"\"")){
+            s.replace("\"archives\":\"\"","\"archives\":null");
+        }
+    }
 }
