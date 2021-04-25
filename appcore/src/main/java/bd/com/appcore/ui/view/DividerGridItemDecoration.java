@@ -97,4 +97,29 @@ public abstract class DividerGridItemDecoration extends RecyclerView.ItemDecorat
         c.drawRect(left, top, right, bottom, mPaint);
     }
 
+
+    @Override
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        //outRect RectoutRectleft,right,top,bottom,
+        //left,right,top,bottom
+        int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
+        boolean[] sideOffsetBooleans = getItemSidesIsHaveOffsets(itemPosition);
+
+        //，，
+        //  Grid ，，，
+        //
+        int left = sideOffsetBooleans[0] ? lineWidth/2 : 0;
+        int top = sideOffsetBooleans[1] ? lineWidth : 0;
+        int right = sideOffsetBooleans[2] ? lineWidth/2 : 0;
+        int bottom = sideOffsetBooleans[3] ? lineWidth : 0;
+
+        outRect.set(left, top, right, bottom);
+    }
+
+    /**
+     * :left, top, right, bottom
+     *
+     * @return boolean[4]
+     */
+    public abstract boolean[] getItemSidesIsHaveOffsets(int itemPosition);
 }
