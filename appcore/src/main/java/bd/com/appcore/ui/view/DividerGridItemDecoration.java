@@ -9,14 +9,16 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 
-/**
- * author:     xumin
- * date:       2018/5/16
- * email:      xumin2@evergrande.cn
- * GridView 
- */
 public abstract class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
-    
+    private Paint mPaint;
+    private int   lineWidth;//px 
+
+    public DividerGridItemDecoration(Context context, float lineWidthDp, @ColorInt int colorRGB) {
+        this.lineWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, lineWidthDp, context.getResources().getDisplayMetrics());
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(colorRGB);
+        mPaint.setStyle(Paint.Style.FILL);
+    }    
 
 }
