@@ -52,4 +52,15 @@ public abstract class DividerGridItemDecoration extends RecyclerView.ItemDecorat
             }
         }
     }
+
+    private void drawChildBottomHorizontal(View child, Canvas c, RecyclerView parent) {
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
+                .getLayoutParams();
+        int left = child.getLeft() - params.leftMargin - lineWidth;
+        int right = child.getRight() + params.rightMargin + lineWidth;
+        int top = child.getBottom() + params.bottomMargin;
+        int bottom = top + lineWidth;
+
+        c.drawRect(left, top, right, bottom, mPaint);
+    }
 }
