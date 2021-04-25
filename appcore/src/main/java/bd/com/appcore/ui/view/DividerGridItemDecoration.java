@@ -20,5 +20,8 @@ public abstract class DividerGridItemDecoration extends RecyclerView.ItemDecorat
         mPaint.setColor(colorRGB);
         mPaint.setStyle(Paint.Style.FILL);
     }    
-
+    
+    public DividerGridItemDecoration(Context context, int lineWidthDp, @ColorInt int colorRGB) {
+        this(context, (float) lineWidthDp, colorRGB);
+    }
 }
