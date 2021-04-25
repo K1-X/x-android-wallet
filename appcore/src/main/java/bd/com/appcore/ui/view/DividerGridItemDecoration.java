@@ -24,4 +24,32 @@ public abstract class DividerGridItemDecoration extends RecyclerView.ItemDecorat
     public DividerGridItemDecoration(Context context, int lineWidthDp, @ColorInt int colorRGB) {
         this(context, (float) lineWidthDp, colorRGB);
     }
+
+    @Override
+    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        //left, top, right, bottom
+        int childCount1 = parent.getChildCount();
+        //        int childCount2 = parent.getLayoutManager().getChildCount();
+        //        int childCount3 = parent.getAdapter().getItemCount();
+        //        Log.e("count", "getChildCount()=" + childCount1 + "-----getLayoutManager().getChildCount()=" + childCount2 + "----getAdapter().getItemCount()=" + childCount3);
+        for (int i = 0; i < childCount1; i++) {
+            View child = parent.getChildAt(i);
+
+            int itemPosition = ((RecyclerView.LayoutParams) child.getLayoutParams()).getViewLayoutPosition();
+
+            boolean[] sideOffsetBooleans = getItemSidesIsHaveOffsets(itemPosition);
+            if (sideOffsetBooleans[0]) {
+                drawChildLeftVertical(child, c, parent);
+            }
+            if (sideOffsetBooleans[1]) {
+                drawChildTopHorizontal(child, c, parent);
+            }
+            if (sideOffsetBooleans[2]) {
+                drawChildRightVertical(child, c, parent);
+            }
+            if (sideOffsetBooleans[3]) {
+                drawChildBottomHorizontal(child, c, parent);
+            }
+        }
+    }
 }
