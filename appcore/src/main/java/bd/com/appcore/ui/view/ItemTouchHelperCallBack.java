@@ -27,5 +27,27 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
         this.datas = datas;
         this.adapter = adapter;
     }
+
+    /**
+     *   RecyclerViewUPDOWN，RecyclerViewLEFTRIGHT
+     * @param recyclerView
+     * @param viewHolder
+     * @return
+     */
+    @Override
+    public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        Log.e(TAG,"getMovementFlags");
+        if (recyclerView.getLayoutManager() instanceof GridLayoutManager) {
+            final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN |
+                    ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+            final int swipeFlags = 0;
+            return makeMovementFlags(dragFlags, swipeFlags);
+        } else {
+            final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+            final int swipeFlags = 0;
+//                    final int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+            return makeMovementFlags(dragFlags, swipeFlags);
+        }
+    }
    
 }
