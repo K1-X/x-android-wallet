@@ -16,5 +16,10 @@ import bd.com.appcore.ui.adapter.MultiItemTypeAdapter;
 
 
 public class ItemTouchHelperCallBack<T> extends ItemTouchHelper.Callback {
+
+private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
+    private XRecyclerView mRecyclerVIew;
+    private List<T> datas;
+    private MultiItemTypeAdapter<T> adapter;
    
 }
