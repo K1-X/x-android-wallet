@@ -83,5 +83,13 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
         adapter.notifyItemMoved(fromPosition, toPosition);
         return true;
     }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        Log.e(TAG,"onSwiped");
+//                int position = viewHolder.getAdapterPosition();
+//                myAdapter.notifyItemRemoved(position);
+//                datas.remove(position);
+    }
    
 }
