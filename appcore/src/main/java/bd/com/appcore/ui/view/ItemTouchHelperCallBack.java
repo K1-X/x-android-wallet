@@ -101,5 +101,21 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
         Log.e(TAG,"isLongPressDragEnabled");
         return false;
     }
+
+    /**
+     * Item
+     *
+     * @param viewHolder
+     * @param actionState
+     */
+    @Override
+    public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+        Log.e(TAG,"onSelectedChanged");
+        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+            Log.e(TAG,"onSelectedChanged  actionState="+actionState);
+            viewHolder.itemView.setBackgroundColor(Color.LTGRAY);
+        }
+        super.onSelectedChanged(viewHolder, actionState);
+    }
    
 }
