@@ -91,5 +91,15 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
 //                myAdapter.notifyItemRemoved(position);
 //                datas.remove(position);
     }
+
+    /**
+     * 
+     * @return
+     */
+    @Override
+    public boolean isLongPressDragEnabled() {
+        Log.e(TAG,"isLongPressDragEnabled");
+        return false;
+    }
    
 }
