@@ -21,5 +21,11 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
     private XRecyclerView mRecyclerVIew;
     private List<T> datas;
     private MultiItemTypeAdapter<T> adapter;
+
+    public ItemTouchHelperCallBack(XRecyclerView mRecyclerVIew, List<T> datas, MultiItemTypeAdapter<T> adapter) {
+        this.mRecyclerVIew = mRecyclerVIew;
+        this.datas = datas;
+        this.adapter = adapter;
+    }
    
 }
