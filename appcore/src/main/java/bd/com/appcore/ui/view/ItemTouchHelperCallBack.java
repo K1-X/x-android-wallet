@@ -49,5 +49,39 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
             return makeMovementFlags(dragFlags, swipeFlags);
         }
     }
+
+    @Override
+    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        Log.e(TAG,"onMove");
+        if(datas.size()<=1){
+            return false;
+        }
+        //viewHolderPosition
+        int fromPosition = viewHolder.getAdapterPosition();
+
+        //itemviewHolder
+        int toPosition = target.getAdapterPosition();
+
+        int headerCount=mRecyclerVIew.getHeaders_includingRefreshCount();
+        Log.e("BaseList","fromPosition="+fromPosition+"   toPosition="+toPosition);
+        int fromIndex=fromPosition-headerCount;
+        int toIndex=toPosition-headerCount;
+        if(fromIndex<0||toIndex<0){
+            return false;
+        }
+        if (fromIndex < toIndex) {
+            if(toIndex>=datas.size())return false;
+            for (int i = fromIndex; i < toIndex; i++) {
+                Collections.swap(datas, i, i + 1);
+            }
+        } else {
+            if(fromIndex>=datas.size())return false;
+            for (int i = fromIndex; i > toIndex; i--) {
+                Collections.swap(datas, i, i - 1);
+            }
+        }
+        adapter.notifyItemMoved(fromPosition, toPosition);
+        return true;
+    }
    
 }
