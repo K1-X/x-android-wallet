@@ -117,5 +117,19 @@ private final static String TAG=ItemTouchHelperCallBack.class.getSimpleName();
         }
         super.onSelectedChanged(viewHolder, actionState);
     }
+
+    /**
+     * 
+     * @param recyclerView
+     * @param viewHolder
+     */
+    @Override
+    public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        Log.e(TAG,"clearView");
+        super.clearView(recyclerView, viewHolder);
+        viewHolder.itemView.setBackgroundColor(0);
+        //item，true
+        mRecyclerVIew.setPullRefreshEnabled(true);
+    }
    
 }
