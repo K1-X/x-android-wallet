@@ -11,4 +11,5 @@ import bd.com.appcore.R;
 public class LoadingDialog {
      private static LoadingDialog mLoading;    
 
+    public static Dialog loadingDialog;
 }
