@@ -21,4 +21,21 @@ public class LoadingDialog {
         loadingDialog.setCanceledOnTouchOutside(false);
         loadingDialog.show();
     }
+
+    public static void cancleDialog() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                if (loadingDialog.getWindow().getDecorView().isAttachedToWindow()) {
+//                    loadingDialog.dismiss();
+//                } else {
+//                    Log.d("", " warn dialog not attached to window!!!");
+//                }
+//            } else {
+//                loadingDialog.dismiss();
+//            }
+        }
+        loadingDialog = null;
+
+    }
 }
