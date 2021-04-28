@@ -103,4 +103,18 @@ public class GsonUtil {
         }
         return str;
     }
+
+    public static String mapToJson(Map<String, Object> map) {
+        String str = null;
+        try {
+            str = gson.toJson(map);
+        } catch (Exception e) {
+            Log.e("GsonUtil error", "map");
+        }
+        return str;
+    }
+
+    public static Gson getGson() {
+        return builder.create();
+    }
 }
