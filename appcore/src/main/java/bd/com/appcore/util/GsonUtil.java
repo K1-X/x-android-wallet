@@ -89,4 +89,18 @@ public class GsonUtil {
         }
         return s;
     }
+
+    /**
+     * @param list
+     * @return ListJson
+     */
+    public static<T> String listToJson(List<T> list) {
+        String str = null;
+        try {
+            str = gson.toJson(list);
+        } catch (Exception e) {
+            Log.e("GsonUtil error", "Listjson");
+        }
+        return str;
+    }
 }
