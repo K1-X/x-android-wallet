@@ -13,5 +13,24 @@ import java.util.Map;
 
 
 public class GsonUtil {
+
+    private static GsonBuilder builder = new GsonBuilder();
+    private static Gson gson = builder.create();
+
+    /**
+     * @param jsonStr
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public static <T> T jsonToObject(String jsonStr, Type type) {
+        T t = null;
+        try {
+            t = gson.fromJson(jsonStr, type);
+        } catch (Exception e) {
+            Log.e("GsonUtil error", "json " + e);
+        }
+        return t;
+    }
     
 }
