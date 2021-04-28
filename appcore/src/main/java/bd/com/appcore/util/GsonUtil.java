@@ -53,4 +53,25 @@ public class GsonUtil {
         }
         return null;
     }    
+
+    /**
+     * :
+     * TypeToken<Map<T, Object>> typeToken = new TypeToken<Map<T, Object>>() {}.getType()
+     * ArrayList<MyItem> arrayList = getArray(typeToken);
+     *
+     * @param jsonStr
+     * @param typeToken
+     * @param <T>
+     * @return
+     */
+    public static <T> Map<T, Object> jsonToMap(String jsonStr, TypeToken typeToken) {
+        if (jsonStr != null) {
+            try {
+                return (Map<T, Object>) gson.fromJson(jsonStr, typeToken.getType());
+            } catch (Exception e) {
+                Log.e("GsonUtil error", "json " + e);
+            }
+        }
+        return null;
+    }
 }
