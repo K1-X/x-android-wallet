@@ -74,4 +74,19 @@ public class GsonUtil {
         }
         return null;
     }
+
+    /**
+     * @param object
+     * @param type
+     * @return objectjson，
+     */
+    public static String objectToJson(Object object, Type type) {
+        String s = null;
+        try {
+            s = gson.toJson(object, type);
+        } catch (Exception e) {
+            Log.e("GsonUtil error", "json");
+        }
+        return s;
+    }
 }
