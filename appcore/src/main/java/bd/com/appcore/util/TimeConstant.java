@@ -49,4 +49,14 @@ public class TimeConstant {
         onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.day_30),TimeConstant.day_30));
 
     }
+
+    public static class GestureTime{
+        public String timeName;
+        public long time;
+
+        public GestureTime(String timeName, long time) {
+            this.timeName = timeName;
+            this.time = time;
+        }
+    }
 }
