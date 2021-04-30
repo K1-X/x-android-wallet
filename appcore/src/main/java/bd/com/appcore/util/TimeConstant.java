@@ -8,5 +8,8 @@ import bd.com.appcore.R;
 
 
 public class TimeConstant {
-    
+
+    /** */
+    public static List<String> times = new ArrayList<>();
+    public static List<GestureTime> timeObjs = new ArrayList<>();    
 }
