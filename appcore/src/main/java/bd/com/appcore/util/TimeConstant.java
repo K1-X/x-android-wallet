@@ -24,4 +24,29 @@ public class TimeConstant {
     public static final long three_day=3*24*60*60*1000;
     public static final long seven_day=7*24*60*60*1000;
     public static final long day_30=30*24*60*60*1000;
+
+    static {
+        times.add(TDString.getStr(R.string.min_10));
+        times.add(TDString.getStr(R.string.min_30));
+        times.add(TDString.getStr(R.string.one_hour));
+        times.add(TDString.getStr(R.string.one_day));
+        times.add(TDString.getStr(R.string.three_day));
+        timeObjs.add(new GestureTime(TDString.getStr(R.string.min_10), TimeConstant.min_10));
+        timeObjs.add(new GestureTime(TDString.getStr(R.string.min_30),TimeConstant.min_30));
+        timeObjs.add(new GestureTime(TDString.getStr(R.string.one_hour),TimeConstant.one_hour));
+        timeObjs.add(new GestureTime(TDString.getStr(R.string.one_day),TimeConstant.one_hour));
+        timeObjs.add(new GestureTime(TDString.getStr(R.string.three_day),TimeConstant.three_day));
+
+        onlineTimes.add(TDString.getStr(R.string.six_hour));
+        onlineTimes.add(TDString.getStr(R.string.one_day));
+        onlineTimes.add(TDString.getStr(R.string.three_day));
+        onlineTimes.add(TDString.getStr(R.string.seven_day));
+        onlineTimes.add(TDString.getStr(R.string.day_30));
+        onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.six_hour),TimeConstant.six_hour));
+        onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.one_day),TimeConstant.one_day));
+        onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.three_day),TimeConstant.three_day));
+        onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.seven_day),TimeConstant.seven_day));
+        onlineTimeObjs.add(new GestureTime(TDString.getStr(R.string.day_30),TimeConstant.day_30));
+
+    }
 }
