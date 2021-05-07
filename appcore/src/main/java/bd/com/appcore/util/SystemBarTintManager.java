@@ -217,4 +217,17 @@ public class SystemBarTintManager {
             mStatusBarTintView.setBackgroundDrawable(drawable);
         }
     }
+
+    /**
+     * Apply the specified alpha to the system status bar.
+     *
+     * @param alpha The alpha to use
+     */
+    @TargetApi(11)
+    @SuppressWarnings("ResourceType")
+    public void setStatusBarAlpha(float alpha) {
+        if (mStatusBarAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mStatusBarTintView.setAlpha(alpha);
+        }
+    }
 }
