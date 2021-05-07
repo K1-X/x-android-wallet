@@ -194,4 +194,15 @@ public class SystemBarTintManager {
             mStatusBarTintView.setBackgroundColor(color);
         }
     }
+
+    /**
+     * Apply the specified drawable or color resource to the system status bar.
+     *
+     * @param res The identifier of the resource.
+     */
+    public void setStatusBarTintResource(int res) {
+        if (mStatusBarAvailable) {
+            mStatusBarTintView.setBackgroundResource(res);
+        }
+    }
 }
