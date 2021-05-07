@@ -163,4 +163,24 @@ public class SystemBarTintManager {
         setStatusBarTintResource(res);
         setNavigationBarTintResource(res);
     }
+
+   /**
+     * Apply the specified drawable to all system UI bars.
+     *
+     * @param drawable The drawable to use as the background, or null to remove it.
+     */
+    public void setTintDrawable(Drawable drawable) {
+        setStatusBarTintDrawable(drawable);
+        setNavigationBarTintDrawable(drawable);
+    }
+
+    /**
+     * Apply the specified alpha to all system UI bars.
+     *
+     * @param alpha The alpha to use
+     */
+    public void setTintAlpha(float alpha) {
+        setStatusBarAlpha(alpha);
+        setNavigationBarAlpha(alpha);
+    }
 }
