@@ -44,4 +44,18 @@ public class SystemBarTintManager {
         }
     }    
 
+    /**
+     * The default system bar tint color value.
+     */
+    public static final int DEFAULT_TINT_COLOR = 0x99000000;
+
+    private static String sNavBarOverride;
+
+    private final SystemBarConfig mConfig;
+    private boolean mStatusBarAvailable;
+    private boolean mNavBarAvailable;
+    private boolean mStatusBarTintEnabled;
+    private boolean mNavBarTintEnabled;
+    private View mStatusBarTintView;
+    private View mNavBarTintView;
 }
