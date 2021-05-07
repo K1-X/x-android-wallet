@@ -127,4 +127,20 @@ public class SystemBarTintManager {
             mStatusBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
         }
     }
+    
+    /**
+     * Enable tinting of the system navigation bar.
+     *
+     * If the platform does not have soft navigation keys, is running Jelly Bean
+     * or earlier, or translucent system UI modes have not been enabled in either
+     * the theme or via window flags, then this method does nothing.
+     *
+     * @param enabled True to enable tinting, false to disable it (default).
+     */
+    public void setNavigationBarTintEnabled(boolean enabled) {
+        mNavBarTintEnabled = enabled;
+        if (mNavBarAvailable) {
+            mNavBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        }
+    }
 }
