@@ -241,4 +241,15 @@ public class SystemBarTintManager {
             mNavBarTintView.setBackgroundColor(color);
         }
     }
+
+    /**
+     * Apply the specified drawable or color resource to the system navigation bar.
+     *
+     * @param res The identifier of the resource.
+     */
+    public void setNavigationBarTintResource(int res) {
+        if (mNavBarAvailable) {
+            mNavBarTintView.setBackgroundResource(res);
+        }
+    }
 }
