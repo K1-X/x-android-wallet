@@ -143,4 +143,24 @@ public class SystemBarTintManager {
             mNavBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
         }
     }
+
+    /**
+     * Apply the specified color tint to all system UI bars.
+     *
+     * @param color The color of the background tint.
+     */
+    public void setTintColor(int color) {
+        setStatusBarTintColor(color);
+        setNavigationBarTintColor(color);
+    }
+
+    /**
+     * Apply the specified drawable or color resource to all system UI bars.
+     *
+     * @param res The identifier of the resource.
+     */
+    public void setTintResource(int res) {
+        setStatusBarTintResource(res);
+        setNavigationBarTintResource(res);
+    }
 }
