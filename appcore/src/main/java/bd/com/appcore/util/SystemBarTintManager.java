@@ -205,4 +205,16 @@ public class SystemBarTintManager {
             mStatusBarTintView.setBackgroundResource(res);
         }
     }
+
+    /**
+     * Apply the specified drawable to the system status bar.
+     *
+     * @param drawable The drawable to use as the background, or null to remove it.
+     */
+    @SuppressWarnings("deprecation")
+    public void setStatusBarTintDrawable(Drawable drawable) {
+        if (mStatusBarAvailable) {
+            mStatusBarTintView.setBackgroundDrawable(drawable);
+        }
+    }
 }
