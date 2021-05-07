@@ -111,4 +111,20 @@ public class SystemBarTintManager {
         }
 
     }
+
+    /**
+     * Enable tinting of the system status bar.
+     *
+     * If the platform is running Jelly Bean or earlier, or translucent system
+     * UI modes have not been enabled in either the theme or via window flags,
+     * then this method does nothing.
+     *
+     * @param enabled True to enable tinting, false to disable it (default).
+     */
+    public void setStatusBarTintEnabled(boolean enabled) {
+        mStatusBarTintEnabled = enabled;
+        if (mStatusBarAvailable) {
+            mStatusBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        }
+    }
 }
