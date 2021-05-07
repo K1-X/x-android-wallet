@@ -230,4 +230,15 @@ public class SystemBarTintManager {
             mStatusBarTintView.setAlpha(alpha);
         }
     }
+
+    /**
+     * Apply the specified color tint to the system navigation bar.
+     *
+     * @param color The color of the background tint.
+     */
+    public void setNavigationBarTintColor(int color) {
+        if (mNavBarAvailable) {
+            mNavBarTintView.setBackgroundColor(color);
+        }
+    }
 }
