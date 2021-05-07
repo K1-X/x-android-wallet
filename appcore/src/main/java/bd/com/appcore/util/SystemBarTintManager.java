@@ -264,4 +264,16 @@ public class SystemBarTintManager {
             mNavBarTintView.setBackgroundDrawable(drawable);
         }
     }
+
+    /**
+     * Apply the specified alpha to the system navigation bar.
+     *
+     * @param alpha The alpha to use
+     */
+    @TargetApi(11)
+    public void setNavigationBarAlpha(float alpha) {
+        if (mNavBarAvailable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mNavBarTintView.setAlpha(alpha);
+        }
+    }
 }
