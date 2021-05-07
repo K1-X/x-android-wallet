@@ -252,4 +252,16 @@ public class SystemBarTintManager {
             mNavBarTintView.setBackgroundResource(res);
         }
     }
+
+    /**
+     * Apply the specified drawable to the system navigation bar.
+     *
+     * @param drawable The drawable to use as the background, or null to remove it.
+     */
+    @SuppressWarnings("deprecation")
+    public void setNavigationBarTintDrawable(Drawable drawable) {
+        if (mNavBarAvailable) {
+            mNavBarTintView.setBackgroundDrawable(drawable);
+        }
+    }
 }
