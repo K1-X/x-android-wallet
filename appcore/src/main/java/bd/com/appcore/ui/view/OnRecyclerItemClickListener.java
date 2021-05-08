@@ -52,4 +52,8 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
             }
         }
     }
+
+    public abstract void onItemClick(RecyclerView.ViewHolder vh);
+
+    public abstract void onItemLongClick(RecyclerView.ViewHolder vh);
 }
