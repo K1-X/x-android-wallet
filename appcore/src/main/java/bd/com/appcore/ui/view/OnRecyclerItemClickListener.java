@@ -16,4 +16,10 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
         this.recyclerView = recyclerView;
         mGestureDetector = new GestureDetectorCompat(recyclerView.getContext(), new ItemTouchHelperGestureListener());
     }
+
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        mGestureDetector.onTouchEvent(e);
+        return false;
+    }
 }
