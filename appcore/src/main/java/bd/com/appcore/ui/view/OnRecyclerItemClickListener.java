@@ -31,4 +31,25 @@ public abstract class OnRecyclerItemClickListener implements RecyclerView.OnItem
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
     }
+
+    private class ItemTouchHelperGestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+            if (child != null) {
+                RecyclerView.ViewHolder vh = recyclerView.getChildViewHolder(child);
+                onItemClick(vh);
+            }
+            return true;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+            if (child != null) {
+                RecyclerView.ViewHolder vh = recyclerView.getChildViewHolder(child);
+                onItemLongClick(vh);
+            }
+        }
+    }
 }
