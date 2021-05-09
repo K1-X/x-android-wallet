@@ -285,4 +285,13 @@ public class SystemBarTintManager {
     public SystemBarConfig getConfig() {
         return mConfig;
     }
+
+    /**
+     * Is tinting enabled for the system status bar?
+     *
+     * @return True if enabled, False otherwise.
+     */
+    public boolean isStatusBarTintEnabled() {
+        return mStatusBarTintEnabled;
+    }
 }
