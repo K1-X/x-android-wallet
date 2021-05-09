@@ -303,4 +303,17 @@ public class SystemBarTintManager {
     public boolean isNavBarTintEnabled() {
         return mNavBarTintEnabled;
     }
+
+    private void setupStatusBarView(Context context, ViewGroup decorViewGroup) {
+        mStatusBarTintView = new View(context);
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mConfig.getStatusBarHeight());
+        params.gravity = Gravity.TOP;
+        if (mNavBarAvailable && !mConfig.isNavigationAtBottom()) {
+            params.rightMargin = mConfig.getNavigationBarWidth();
+        }
+        mStatusBarTintView.setLayoutParams(params);
+        mStatusBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);
+        mStatusBarTintView.setVisibility(View.GONE);
+        decorViewGroup.addView(mStatusBarTintView);
+    }
 }
