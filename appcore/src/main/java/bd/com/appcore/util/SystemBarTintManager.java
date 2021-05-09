@@ -332,4 +332,52 @@ public class SystemBarTintManager {
         mNavBarTintView.setVisibility(View.GONE);
         decorViewGroup.addView(mNavBarTintView);
     }
+
+    /**
+     * Class which describes system bar sizing and other characteristics for the current
+     * device configuration.
+     *
+     */
+    public static class SystemBarConfig {
+
+        private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
+        private static final String NAV_BAR_HEIGHT_RES_NAME = "navigation_bar_height";
+        private static final String NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME = "navigation_bar_height_landscape";
+        private static final String NAV_BAR_WIDTH_RES_NAME = "navigation_bar_width";
+        private static final String SHOW_NAV_BAR_RES_NAME = "config_showNavigationBar";
+
+        private final boolean mTranslucentStatusBar;
+        private final boolean mTranslucentNavBar;
+        private final int mStatusBarHeight;
+        private final int mActionBarHeight;
+        private final boolean mHasNavigationBar;
+        private final int mNavigationBarHeight;
+        private final int mNavigationBarWidth;
+        private final boolean mInPortrait;
+        private final float mSmallestWidthDp;
+
+        private SystemBarConfig(Activity activity, boolean translucentStatusBar, boolean traslucentNavBar) {
+            Resources res = activity.getResources();
+            mInPortrait = (res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);
+            mSmallestWidthDp = getSmallestWidthDp(activity);
+            mStatusBarHeight = getInternalDimensionSize(res, STATUS_BAR_HEIGHT_RES_NAME);
+            mActionBarHeight = getActionBarHeight(activity);
+            mNavigationBarHeight = getNavigationBarHeight(activity);
+            mNavigationBarWidth = getNavigationBarWidth(activity);
+            mHasNavigationBar = (mNavigationBarHeight > 0);
+            mTranslucentStatusBar = translucentStatusBar;
+            mTranslucentNavBar = traslucentNavBar;
+        }
+
+        @TargetApi(14)
+        private int getActionBarHeight(Context context) {
+            int result = 0;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                TypedValue tv = new TypedValue();
+                context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+                result = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+            }
+            return result;
+        }
+    }
 }
