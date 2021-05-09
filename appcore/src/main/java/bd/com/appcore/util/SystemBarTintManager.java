@@ -408,6 +408,142 @@ public class SystemBarTintManager {
                 }
             }
             return result;
+
+        }
+
+        @TargetApi(14)
+        private boolean hasNavBar(Context context) {
+            Resources res = context.getResources();
+            int resourceId = res.getIdentifier(SHOW_NAV_BAR_RES_NAME, "bool", "android");
+            if (resourceId != 0) {
+                boolean hasNav = res.getBoolean(resourceId);
+                // check override flag (see static block)
+                if ("1".equals(sNavBarOverride)) {
+                    hasNav = false;
+                } else if ("0".equals(sNavBarOverride)) {
+                    hasNav = true;
+                }
+                return hasNav;
+            } else { // fallback
+                return !ViewConfiguration.get(context).hasPermanentMenuKey();
+            }
+        }
+
+        private int getInternalDimensionSize(Resources res, String key) {
+            int result = 0;
+            int resourceId = res.getIdentifier(key, "dimen", "android");
+            if (resourceId > 0) {
+                result = res.getDimensionPixelSize(resourceId);
+            }
+            return result;
+        }
+
+        @SuppressLint("NewApi")
+        private float getSmallestWidthDp(Activity activity) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            } else {
+                // TODO this is not correct, but we don't really care pre-kitkat
+                activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            }
+            float widthDp = metrics.widthPixels / metrics.density;
+            float heightDp = metrics.heightPixels / metrics.density;
+            return Math.min(widthDp, heightDp);
+        }
+
+        /**
+         * Should a navigation bar appear at the bottom of the screen in the current
+         * device configuration? A navigation bar may appear on the right side of
+         * the screen in certain configurations.
+         *
+         * @return True if navigation should appear at the bottom of the screen, False otherwise.
+         */
+        public boolean isNavigationAtBottom() {
+            return (mSmallestWidthDp >= 600 || mInPortrait);
+        }
+
+        /**
+         * Get the height of the system status bar.
+         *
+         * @return The height of the status bar (in pixels).
+         */
+        public int getStatusBarHeight() {
+            return mStatusBarHeight;
+        }
+
+        /**
+         * Get the height of the action bar.
+         *
+         * @return The height of the action bar (in pixels).
+         */
+        public int getActionBarHeight() {
+            return mActionBarHeight;
+        }
+
+        /**
+         * Does this device have a system navigation bar?
+         *
+         * @return True if this device uses soft key navigation, False otherwise.
+         */
+        public boolean hasNavigtionBar() {
+            return mHasNavigationBar;
+        }
+
+        /**
+         * Get the height of the system navigation bar.
+         *
+         * @return The height of the navigation bar (in pixels). If the device does not have
+         * soft navigation keys, this will always return 0.
+         */
+        public int getNavigationBarHeight() {
+            return mNavigationBarHeight;
+        }
+
+        /**
+         * Get the width of the system navigation bar when it is placed vertically on the screen.
+         *
+         * @return The width of the navigation bar (in pixels). If the device does not have
+         * soft navigation keys, this will always return 0.
+         */
+        public int getNavigationBarWidth() {
+            return mNavigationBarWidth;
+        }
+
+        /**
+         * Get the layout inset for any system UI that appears at the top of the screen.
+         *
+         * @param withActionBar True to include the height of the action bar, False otherwise.
+         * @return The layout inset (in pixels).
+         */
+        public int getPixelInsetTop(boolean withActionBar) {
+            return (mTranslucentStatusBar ? mStatusBarHeight : 0) + (withActionBar ? mActionBarHeight : 0);
+        }
+
+        /**
+         * Get the layout inset for any system UI that appears at the bottom of the screen.
+         *
+         * @return The layout inset (in pixels).
+         */
+        public int getPixelInsetBottom() {
+            if (mTranslucentNavBar && isNavigationAtBottom()) {
+                return mNavigationBarHeight;
+            } else {
+                return 0;
+            }
+        }
+
+        /**
+         * Get the layout inset for any system UI that appears at the right of the screen.
+         *
+         * @return The layout inset (in pixels).
+         */
+        public int getPixelInsetRight() {
+            if (mTranslucentNavBar && !isNavigationAtBottom()) {
+                return mNavigationBarWidth;
+            } else {
+                return 0;
+            }
         }
     }
 
