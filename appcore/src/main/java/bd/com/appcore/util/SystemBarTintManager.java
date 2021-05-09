@@ -276,4 +276,13 @@ public class SystemBarTintManager {
             mNavBarTintView.setAlpha(alpha);
         }
     }
+
+    /**
+     * Get the system bar configuration.
+     *
+     * @return The system bar configuration for the current device configuration.
+     */
+    public SystemBarConfig getConfig() {
+        return mConfig;
+    }
 }
