@@ -316,4 +316,20 @@ public class SystemBarTintManager {
         mStatusBarTintView.setVisibility(View.GONE);
         decorViewGroup.addView(mStatusBarTintView);
     }
+
+    private void setupNavBarView(Context context, ViewGroup decorViewGroup) {
+        mNavBarTintView = new View(context);
+        LayoutParams params;
+        if (mConfig.isNavigationAtBottom()) {
+            params = new LayoutParams(LayoutParams.MATCH_PARENT, mConfig.getNavigationBarHeight());
+            params.gravity = Gravity.BOTTOM;
+        } else {
+            params = new LayoutParams(mConfig.getNavigationBarWidth(), LayoutParams.MATCH_PARENT);
+            params.gravity = Gravity.RIGHT;
+        }
+        mNavBarTintView.setLayoutParams(params);
+        mNavBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);
+        mNavBarTintView.setVisibility(View.GONE);
+        decorViewGroup.addView(mNavBarTintView);
+    }
 }
