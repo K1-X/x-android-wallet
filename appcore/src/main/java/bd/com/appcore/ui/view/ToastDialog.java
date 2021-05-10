@@ -37,4 +37,25 @@ public class ToastDialog extends Dialog {
         this.setContentView(v);
         this.context = context;
     }
+
+    public void showLoadingDialog(final String parameter,String des, int resId,boolean loading, final boolean cancelable) {
+            final Activity activity = (Activity) context;
+            // TODO Auto-generated method stub
+            if (activity != null && !activity.isFinishing()) {
+                tipTextView.setText(parameter);
+                img.setImageResource(resId);
+                if(!TextUtils.isEmpty(des)){
+                    desTv.setVisibility(View.VISIBLE);
+                    desTv.setText(des);
+                }
+                if(loading){
+                    loadingView.setVisibility(View.VISIBLE);
+                    img.setVisibility(View.GONE);
+                }
+                ToastDialog.this.setCancelable(cancelable);
+                ToastDialog.this.setCanceledOnTouchOutside(cancelable);
+                ToastDialog.this.show();
+            }
+
+    }
 }
