@@ -26,4 +26,15 @@ public class ToastDialog extends Dialog {
     public ToastDialog(Context context) {
         super(context);
     }
+
+    public ToastDialog(Context context, int themeResId) {
+        super(context, themeResId);
+        v = View.inflate(CoreApp.getAppInstance(), R.layout.customer_dialog, null);
+        tipTextView = (TextView) v.findViewById(R.id.tipTextView);
+        desTv=(TextView)v.findViewById(R.id.toast_des_tv);
+        img = (ImageView) v.findViewById(R.id.img);
+        loadingView=(AVLoadingIndicatorView)v.findViewById(R.id.av_loading_view);
+        this.setContentView(v);
+        this.context = context;
+    }
 }
