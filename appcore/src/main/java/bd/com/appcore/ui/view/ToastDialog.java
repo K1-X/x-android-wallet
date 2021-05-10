@@ -15,5 +15,11 @@ import bd.com.appcore.R;
 
 
 public class ToastDialog extends Dialog {
-   
+
+    private View v;
+    private TextView tipTextView;
+    private ImageView img;
+    private TextView desTv;
+    private Context context;
+    private AVLoadingIndicatorView loadingView;   
 }
