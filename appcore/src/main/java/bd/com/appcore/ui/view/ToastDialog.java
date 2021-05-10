@@ -38,7 +38,8 @@ public class ToastDialog extends Dialog {
         this.context = context;
     }
 
-    public void showLoadingDialog(final String parameter,String des, int resId,boolean loading, final boolean cancelable) {
+    public void showLoadingDialog(final String parameter,String des, 
+        int resId,boolean loading, final boolean cancelable) {
             final Activity activity = (Activity) context;
             // TODO Auto-generated method stub
             if (activity != null && !activity.isFinishing()) {
