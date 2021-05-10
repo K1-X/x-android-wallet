@@ -22,4 +22,8 @@ public class ToastDialog extends Dialog {
     private TextView desTv;
     private Context context;
     private AVLoadingIndicatorView loadingView;   
+
+    public ToastDialog(Context context) {
+        super(context);
+    }
 }
