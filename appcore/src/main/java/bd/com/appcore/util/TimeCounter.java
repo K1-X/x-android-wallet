@@ -43,4 +43,18 @@ public class TimeCounter {
   private int getLeftTime(long current) {
 		int count = mMaxSec - (int) ((current - startTime) / 1000.0F);
 		return count;
-	}}
+	}
+
+    /**
+	 * 
+	 * @param maxSec 
+	 * @param listener 
+	 */
+	public void setup(int maxSec, TimeCountListener listener) {
+		mMaxSec = maxSec;
+		mListener = listener;
+	}
+
+}
+
+
