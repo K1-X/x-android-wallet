@@ -38,4 +38,9 @@ public class TimeCounter {
 		int left = getLeftTime(System.currentTimeMillis());
 		return left >= 0 && left <= mMaxSec;
 	}
-}
+
+
+  private int getLeftTime(long current) {
+		int count = mMaxSec - (int) ((current - startTime) / 1000.0F);
+		return count;
+	}}
