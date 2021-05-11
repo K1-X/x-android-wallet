@@ -20,4 +20,14 @@ public class TimeCounter {
 	private long startTime;
 	private int mMaxSec;
 	private TimeCountListener mListener;
+
+    // tag TimeCounter，tagTimeCounter
+	public static TimeCounter getTimeCounter(String tag) {
+		TimeCounter tc = sCouters.get(tag);
+		if (tc == null) {
+			tc = new TimeCounter();
+			sCouters.put(tag, tc);
+		}
+		return tc;
+	}
 }
