@@ -30,4 +30,12 @@ public class TimeCounter {
 		}
 		return tc;
 	}
+
+    private TimeCounter() {
+	}
+
+	public boolean isRunning() {
+		int left = getLeftTime(System.currentTimeMillis());
+		return left >= 0 && left <= mMaxSec;
+	}
 }
