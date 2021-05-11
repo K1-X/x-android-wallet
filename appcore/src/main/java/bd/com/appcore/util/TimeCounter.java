@@ -55,6 +55,61 @@ public class TimeCounter {
 		mListener = listener;
 	}
 
+
+    // 
+	// FIXME: ，activity，，,
+	// Activity，quit()
+	public void startTick() {
+		long current = System.currentTimeMillis();
+		if (!isRunning()) {
+			startTime = current;
+		}
+		mHandler.removeCallbacksAndMessages(null);
+		mHandler.post(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				long current = System.currentTimeMillis();
+				int count = getLeftTime(current);
+				Log.d(TAG, "handleMessage " + count + ", current=" + current + ", startTime=" + startTime);
+				if (count >= 0 && count <= mMaxSec) {
+					mHandler.postDelayed(this, 1000);
+					if (mListener != null) {
+						mListener.onTicked(count);
+					}
+				}
+			}
+		});
+	}
+	
+	// tick，
+	public void quit(){
+		mHandler.removeCallbacksAndMessages(null);
+	}
+
+	public interface TimeCountListener {
+		void onTicked(int count);
+	}
+
+
+	public static void timerBack(final TextView textView, long totalTime, long intervalTime) {
+		CountDownTimer timer = new CountDownTimer(totalTime, intervalTime) {
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				textView.setEnabled(false);
+				textView.setText(millisUntilFinished / 1000 + "s");
+			}
+
+			@Override
+			public void onFinish() {
+				textView.setEnabled(true);
+				textView.setText("");
+
+			}
+		};
+		timer.start();
+	}
 }
 
 
