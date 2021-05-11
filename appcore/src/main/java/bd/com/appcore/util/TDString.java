@@ -8,8 +8,5 @@ import bd.com.appcore.CoreApp;
  */
 public class TDString {
 
-    public static String getStr(int resId) {
-        return CoreApp.getAppInstance().getResources().getString(resId);
-    }
 
 }
