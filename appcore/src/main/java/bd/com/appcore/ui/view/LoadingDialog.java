@@ -1,5 +1,4 @@
-package bd.com.appcore.ui.view;
-
+package bd.com.appcore.ui.view; 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,15 +24,6 @@ public class LoadingDialog {
     public static void cancleDialog() {
         if (loadingDialog != null) {
             loadingDialog.dismiss();
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                if (loadingDialog.getWindow().getDecorView().isAttachedToWindow()) {
-//                    loadingDialog.dismiss();
-//                } else {
-//                    Log.d("", " warn dialog not attached to window!!!");
-//                }
-//            } else {
-//                loadingDialog.dismiss();
-//            }
         }
         loadingDialog = null;
 
