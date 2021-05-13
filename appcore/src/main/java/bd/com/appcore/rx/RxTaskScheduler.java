@@ -123,5 +123,50 @@ public class RxTaskScheduler {
                     }
                 });
     }
+
+    /**
+     * UI   Scheduler。
+     *
+     * @param rxTaskCallBack
+     * @param <T>
+     */
+    public static <T> void postUiTask(final RxTaskCallBack<T> rxTaskCallBack) {
+        Observable.create(new ObservableOnSubscribe<T>() {
+            @Override
+            public void subscribe(ObservableEmitter<T> e) throws Exception {
+                T t = rxTaskCallBack.doWork();
+                if (t != null) {
+                    e.onNext(t);
+                } else {
+                    //onnextnull
+                    rxTaskCallBack.onSuccess(null);
+                }
+                e.onComplete();
+            }
+        })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .safeSubscribe(new Observer<T>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        rxTaskCallBack.onStart(d);
+                    }
+
+                    @Override
+                    public void onNext(T t) {
+                        rxTaskCallBack.onSuccess(t);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        rxTaskCallBack.onFailed(new LogicException(e,-1));
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        rxTaskCallBack.onComplete();
+                    }
+                });
+    }
 }
 
