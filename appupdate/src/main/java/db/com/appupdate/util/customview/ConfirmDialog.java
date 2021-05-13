@@ -12,7 +12,10 @@ import bd.com.appupdate.feature.Callback;
 
 public class ConfirmDialog extends Dialog {
 
-    
+   Callback callback;
+    private TextView content;
+    private TextView sureBtn;
+    private TextView cancleBtn; 
 
 
 }
