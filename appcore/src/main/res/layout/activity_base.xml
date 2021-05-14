@@ -6,6 +6,14 @@
     android:background="@color/bg_layout"
     android:orientation="vertical">
 
+    <bd.com.appcore.ui.view.CommonActionBar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showMenu1="false"
+        app:showMenu2="false">
+
+    </bd.com.appcore.ui.view.CommonActionBar>
 
 
 </LinearLayout>
