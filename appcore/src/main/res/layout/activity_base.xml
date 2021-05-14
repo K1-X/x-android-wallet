@@ -15,5 +15,9 @@
 
     </bd.com.appcore.ui.view.CommonActionBar>
 
+    <FrameLayout
+        android:id="@+id/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
 
 </LinearLayout>
