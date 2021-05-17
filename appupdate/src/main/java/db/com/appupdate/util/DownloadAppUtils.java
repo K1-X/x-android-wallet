@@ -108,6 +108,12 @@ public class DownloadAppUtils {
                     }
                 }).start();
     }
-
+   
+    private static void send(Context context, int progress, String serverVersionName) {
+        Intent intent = new Intent("teprinciple.update");
+        intent.putExtra("progress", progress);
+        intent.putExtra("title", serverVersionName);
+        context.sendBroadcast(intent);
+    }
 
 }
