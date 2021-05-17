@@ -31,4 +31,16 @@ public class DownloadAppUtils {
     public static long downloadUpdateApkId = -1;//Apk Id
     public static String downloadUpdateApkFilePath;//Apk    
 
+    /**
+     * APK
+     *
+     * @param context
+     * @param url
+     */
+    public static void downloadForWebView(Context context, String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 }
