@@ -43,4 +43,22 @@ public class DownloadAppUtils {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+  
+    public static void download(final Context context, String url, final String serverVersionName, final DownLoadCallBack callBack) {
+
+        String packageName = context.getPackageName();
+        String filePath = null;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//
+            filePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        } else {
+            Log.i(TAG, "SD");
+            return;
+        }
+
+        String apkLocalPath = filePath + File.separator + packageName + "_" + serverVersionName + ".apk";
+
+        downloadUpdateApkFilePath = apkLocalPath;
+
+        FileDownloader.setup(context);
+    }
 }
