@@ -26,6 +26,9 @@ import java.io.File;
 
 
 public class DownloadAppUtils {
-   
+
+    private static final String TAG = DownloadAppUtils.class.getSimpleName();
+    public static long downloadUpdateApkId = -1;//Apk Id
+    public static String downloadUpdateApkFilePath;//Apk    
 
 }
