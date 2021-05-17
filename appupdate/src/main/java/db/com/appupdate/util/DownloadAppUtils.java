@@ -60,5 +60,54 @@ public class DownloadAppUtils {
         downloadUpdateApkFilePath = apkLocalPath;
 
         FileDownloader.setup(context);
+    
+        FileDownloader.getImpl().create(url)
+                .setPath(apkLocalPath)
+                .setListener(new FileDownloadLargeFileListener() {
+                    @Override
+                    protected void pending(BaseDownloadTask task, long soFarBytes, long totalBytes) {
+                        if (callBack != null) {
+                            callBack.pending(task, soFarBytes, totalBytes);
+                        }
+                    }
+
+                    @Override
+                    protected void progress(BaseDownloadTask task, long soFarBytes, long totalBytes) {
+                        if (callBack != null) {
+                            callBack.progress(task, (int) (soFarBytes * 100.0 / totalBytes), totalBytes);
+                        }
+                        send(context, (int) (soFarBytes * 100.0 / totalBytes), serverVersionName);
+                    }
+
+                    @Override
+                    protected void paused(BaseDownloadTask task, long soFarBytes, long totalBytes) {
+                        if (callBack != null) {
+                            callBack.paused(task, soFarBytes, totalBytes);
+                        }
+                    }
+
+                    @Override
+                    protected void completed(BaseDownloadTask task) {
+                        if (callBack != null) {
+                            callBack.completed(task);
+
+
+                        }
+                        send(context, 100, serverVersionName);
+                    }
+
+                    @Override
+                    protected void error(BaseDownloadTask task, Throwable e) {
+                        callBack.error(task, e);
+                        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    protected void warn(BaseDownloadTask task) {
+                        callBack.warn(task);
+                    }
+                }).start();
     }
+
+
 }
