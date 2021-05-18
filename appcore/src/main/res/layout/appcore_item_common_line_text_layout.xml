@@ -50,5 +50,13 @@
             android:background="@color/divider" />
 
     </RelativeLayout>
+
+ 	<View
+        android:visibility="gone"
+        android:id="@+id/line_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider" />
     
 </LinearLayout>
