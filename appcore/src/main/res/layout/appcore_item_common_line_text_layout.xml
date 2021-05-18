@@ -40,6 +40,15 @@
             android:maxLines="1"
             android:paddingRight="@dimen/gap_medium"
             android:textAppearance="@style/STextAppearance.Small.Black3" />
+	
+	<View
+            android:id="@+id/line_view"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
     </RelativeLayout>
     
 </LinearLayout>
