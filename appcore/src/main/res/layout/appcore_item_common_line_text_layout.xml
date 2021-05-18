@@ -13,5 +13,20 @@
         android:layout_height="1px"
         android:layout_alignParentBottom="true"
         android:background="@color/divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/edit_text_height">
+
+        <TextView
+            android:id="@+id/tv_m_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/gap_medium"
+            android:text=""
+            android:textAppearance="@style/STextAppearance.Medium.Black1" />
+    </RelativeLayout>
     
 </LinearLayout>
