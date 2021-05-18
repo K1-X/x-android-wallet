@@ -11,4 +11,6 @@ public interface DownLoadCallBack {
     void paused(BaseDownloadTask task, long soFarBytes, long totalBytes);
 
     void completed(BaseDownloadTask task);
+
+    void error(BaseDownloadTask task, Throwable e);
 }
