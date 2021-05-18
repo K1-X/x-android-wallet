@@ -27,6 +27,19 @@
             android:layout_marginLeft="@dimen/gap_medium"
             android:text=""
             android:textAppearance="@style/STextAppearance.Medium.Black1" />
+
+  	<TextView
+            android:id="@+id/tv_m_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_m_name"
+            android:drawablePadding="@dimen/gap_micro"
+            android:drawableRight="@mipmap/enter_into"
+            android:gravity="right"
+            android:maxLines="1"
+            android:paddingRight="@dimen/gap_medium"
+            android:textAppearance="@style/STextAppearance.Small.Black3" />
     </RelativeLayout>
     
 </LinearLayout>
