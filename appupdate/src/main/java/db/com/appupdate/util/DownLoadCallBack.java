@@ -13,4 +13,6 @@ public interface DownLoadCallBack {
     void completed(BaseDownloadTask task);
 
     void error(BaseDownloadTask task, Throwable e);
+
+    void warn(BaseDownloadTask task);
 }
