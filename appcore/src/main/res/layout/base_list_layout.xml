@@ -4,4 +4,13 @@
     android:layout_height="match_parent"
     >
 
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        />
+
 </RelativeLayout>
