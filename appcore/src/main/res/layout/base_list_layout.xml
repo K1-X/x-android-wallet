@@ -25,6 +25,15 @@
             android:padding="@dimen/gap_large"
             android:gravity="center"
             android:background="@mipmap/ico">
+  
+	<TextView
+                android:id="@+id/soso_count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textSize="18sp"
+               android:layout_centerHorizontal="true"
+                android:text="20"/>
     </RelativeLayout>
 
 </RelativeLayout>
