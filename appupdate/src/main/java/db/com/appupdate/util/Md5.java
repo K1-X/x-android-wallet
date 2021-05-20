@@ -25,5 +25,12 @@ public class Md5 {
             e.printStackTrace();
         }
     }
-    
+
+     private static void appendHexPair(byte bt, StringBuffer stringbuffer) {
+
+        char c0 = hexDigits[(bt & 0xf0) >> 4];
+        char c1 = hexDigits[bt & 0xf];
+        stringbuffer.append(c0);
+        stringbuffer.append(c1);
+    }    
 }
