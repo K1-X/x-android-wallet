@@ -33,4 +33,13 @@ public class Md5 {
         stringbuffer.append(c0);
         stringbuffer.append(c1);
     }    
+  
+   private static String bufferToHex(byte bytes[], int m, int n) {
+        StringBuffer stringbuffer = new StringBuffer(2 * n);
+        int k = m + n;
+        for (int l = m; l < k; l++) {
+            appendHexPair(bytes[l], stringbuffer);
+        }
+        return stringbuffer.toString();
+    }
 }
