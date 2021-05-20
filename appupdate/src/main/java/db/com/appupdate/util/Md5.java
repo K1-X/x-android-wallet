@@ -46,4 +46,21 @@ public class Md5 {
     private static String bufferToHex(byte bytes[]) {
         return bufferToHex(bytes, 0, bytes.length);
     }
+
+    /**
+     * md5
+     *
+     * @param input
+     * @return
+     */
+    public static String stringMD5(String input) {
+        // 
+        byte[] inputByteArray = input.getBytes();
+        // inputByteArray
+        messageDigest.update(inputByteArray);
+        // ，，16
+        byte[] resultByteArray = messageDigest.digest();
+        // 
+        return bufferToHex(resultByteArray);
+    }
 }
