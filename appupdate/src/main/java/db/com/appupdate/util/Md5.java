@@ -42,4 +42,8 @@ public class Md5 {
         }
         return stringbuffer.toString();
     }
+
+    private static String bufferToHex(byte bytes[]) {
+        return bufferToHex(bytes, 0, bytes.length);
+    }
 }
