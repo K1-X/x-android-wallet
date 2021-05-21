@@ -9,6 +9,18 @@
               android:minWidth="300dp"
 
               android:orientation="vertical">
+	<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="80dp"
+        android:minWidth="300dp"
+        android:paddingTop="@dimen/gap_medium"
+        android:paddingBottom="@dimen/gap_large"
+        android:paddingRight="@dimen/gap_large"
+        android:background="@mipmap/bg_card_normal"
+        android:orientation="vertical">
 
+	</LinearLayout>
     
 </LinearLayout>
