@@ -20,7 +20,10 @@
         android:paddingRight="@dimen/gap_large"
         android:background="@mipmap/bg_card_normal"
         android:orientation="vertical">
+	<LinearLayout
 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 	</LinearLayout>
     
 </LinearLayout>
