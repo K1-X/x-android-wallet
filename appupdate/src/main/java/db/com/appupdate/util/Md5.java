@@ -63,4 +63,44 @@ public class Md5 {
         // 
         return bufferToHex(resultByteArray);
     }
+
+    /**
+     * md5
+     *
+     * @param inputFile
+     * @return
+     * @throws IOException
+     */
+    public static String fileMD5(File inputFile) {
+        // （）
+        int bufferSize = 256 * 1024;
+        FileInputStream fileInputStream = null;
+        DigestInputStream digestInputStream = null;
+        try {
+            // DigestInputStream
+            fileInputStream = new FileInputStream(inputFile);
+            digestInputStream = new DigestInputStream(fileInputStream, messageDigest);
+            // readMD5，
+            byte[] buffer = new byte[bufferSize];
+            while (digestInputStream.read(buffer) > 0) ;
+            // MessageDigest
+            messageDigest = digestInputStream.getMessageDigest();
+            // ，，16
+            byte[] resultByteArray = messageDigest.digest();
+            // ，
+            return bufferToHex(resultByteArray);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                digestInputStream.close();
+            } catch (Exception e) {
+            }
+            try {
+                fileInputStream.close();
+            } catch (Exception e) {
+            }
+        }
+        return null;
+    }
 }
