@@ -54,5 +54,16 @@
             android:text="!"
             android:textSize="@dimen/middle_text_size" />
 	</LinearLayout>
-    
+<TextView
+        android:id="@+id/toast_des_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"
+        android:layout_marginLeft="60dp"
+        android:singleLine="true"
+        android:text="!"
+        style="@style/STextAppearance.Small.Black3" />
+    </LinearLayout>
+</LinearLayout>    
 </LinearLayout>
