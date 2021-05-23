@@ -74,4 +74,14 @@ public class UpdateAppReceiver extends BroadcastReceiver {
             }
         }
     }
+
+    private boolean checkFileMd5() {
+        if (TextUtils.isEmpty(UpdateAppUtils.apkDigest)) {
+            return true;//，
+        }
+        File apkFile = new File(DownloadAppUtils.downloadUpdateApkFilePath);
+        String md5 = Md5.fileMD5(apkFile);
+        Log.i("md5", "Md5：" + md5 + "=======>md5：" + UpdateAppUtils.apkDigest);
+        return UpdateAppUtils.apkDigest.equals(md5);
+    }
 }
