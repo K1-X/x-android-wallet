@@ -38,5 +38,40 @@ public class UpdateAppReceiver extends BroadcastReceiver {
             nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             nm.notify(notifyId, notification);
         }
+    
+    	if (progress == 100) {
+            if (nm != null) nm.cancel(notifyId);
+
+            if (DownloadAppUtils.downloadUpdateApkFilePath != null) {
+                RxTaskScheduler.postIoMainTask(new RxTaskCallBack<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean aBoolean) {
+                        if (aBoolean) {
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            File apkFile = new File(DownloadAppUtils.downloadUpdateApkFilePath);
+                            if (UpdateAppUtils.needFitAndroidN && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                Uri contentUri = FileProvider.getUriForFile(
+                                        context, context.getPackageName() + ".fileprovider", apkFile);
+                                i.setDataAndType(contentUri, "application/vnd.android.package-archive");
+                            } else {
+                                i.setDataAndType(Uri.fromFile(apkFile),
+                                        "application/vnd.android.package-archive");
+                            }
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(i);
+                        }else {
+                            Toast.makeText(context,"apk!!!",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public Boolean doWork() throws Exception {
+                        return checkFileMd5();
+                    }
+                });
+
+            }
+        }
     }
 }
