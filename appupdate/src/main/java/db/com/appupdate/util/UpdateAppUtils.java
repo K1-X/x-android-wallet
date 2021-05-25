@@ -62,4 +62,19 @@ public class UpdateAppUtils {
     public static UpdateAppUtils from(Activity activity) {
         return new UpdateAppUtils(activity);
     }
+
+    public UpdateAppUtils checkBy(int checkBy) {
+        this.checkBy = checkBy;
+        return this;
+    }
+
+    public UpdateAppUtils apkPath(String apkPath) {
+        this.apkPath = apkPath;
+        return this;
+    }
+
+    public UpdateAppUtils apkDigest(String apkDigest) {
+        this.apkDigest = apkDigest;
+        return this;
+    }
 }
