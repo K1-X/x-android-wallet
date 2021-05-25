@@ -49,4 +49,8 @@ public class UpdateAppUtils {
         return this;
     }    
 
+    public UpdateAppUtils setOnCancelClicked(OnCancelClicked onCancelClicked) {
+        this.onCancelClicked = onCancelClicked;
+        return this;
+    }
 }
