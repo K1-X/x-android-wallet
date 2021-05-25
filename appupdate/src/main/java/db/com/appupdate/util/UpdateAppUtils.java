@@ -53,4 +53,13 @@ public class UpdateAppUtils {
         this.onCancelClicked = onCancelClicked;
         return this;
     }
+
+    private UpdateAppUtils(Activity activity) {
+        this.activity = activity;
+        getAPPLocalVersion(activity);
+    }
+
+    public static UpdateAppUtils from(Activity activity) {
+        return new UpdateAppUtils(activity);
+    }
 }
