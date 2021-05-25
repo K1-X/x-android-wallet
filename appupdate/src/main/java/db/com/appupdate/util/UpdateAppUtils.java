@@ -77,4 +77,19 @@ public class UpdateAppUtils {
         this.apkDigest = apkDigest;
         return this;
     }
+
+    public UpdateAppUtils downloadBy(int downloadBy) {
+        this.downloadBy = downloadBy;
+        return this;
+    }
+
+    public UpdateAppUtils showNotification(boolean showNotification) {
+        this.showNotification = showNotification;
+        return this;
+    }
+
+    public UpdateAppUtils updateInfo(String updateInfo) {
+        this.updateInfo = updateInfo;
+        return this;
+    }
 }
