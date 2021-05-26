@@ -103,4 +103,16 @@ public class UpdateAppUtils {
         showNotification = !isForce;
         return this;
     }
+
+    //apk currentVersionCode
+    private void getAPPLocalVersion(Context ctx) {
+        PackageManager manager = ctx.getPackageManager();
+        try {
+            PackageInfo info = manager.getPackageInfo(ctx.getPackageName(), 0);
+            localVersionName = info.versionName; // 
+            localVersionCode = info.versionCode; // 
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
