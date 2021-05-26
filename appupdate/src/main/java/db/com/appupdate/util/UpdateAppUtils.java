@@ -115,4 +115,82 @@ public class UpdateAppUtils {
             e.printStackTrace();
         }
     }
+
+    private void toUpdate() {
+
+        realUpdate();
+
+    }
+
+    private void realUpdate() {
+        AppUpdateDialog dialog = new AppUpdateDialog(activity, isForce ? R.layout.dialog_app_must_update : R.layout.dialog_app_update);
+        dialog.content(updateInfo, serverVersionName, apkPath);
+        dialog.setCancelable(!isForce);
+        dialog.isForce(isForce);
+        dialog.show();
+//        ConfirmDialog dialog = new ConfirmDialog(activity, new Callback() {
+//            @Override
+//            public void callback(int position) {
+//                switch (position) {
+//                    case 0:  //cancle
+//                        if (onCancelClicked != null) {
+//                            onCancelClicked.canceled(isForce);
+//                        }
+//                        if (isForce) System.exit(0);
+//                        break;
+//
+//                    case 1:  //sure
+//                        if (downloadBy == DOWNLOAD_BY_APP) {
+//                            if (isWifiConnected(activity)) {
+////                                DownloadAppUtils.downloadForAutoInstall(activity, apkPath, "demo.apk", serverVersionName);
+//                                DownloadAppUtils.download(activity, apkPath, serverVersionName);
+//                            } else {
+//                                new ConfirmDialog(activity, new Callback() {
+//                                    @Override
+//                                    public void callback(int position) {
+//                                        if (position == 1) {
+//                                            DownloadAppUtils.download(activity, apkPath, serverVersionName);
+//                                            //DownloadAppUtils.downloadForAutoInstall(activity, apkPath, "demo.apk", serverVersionName);
+//                                        } else {
+//                                            if (isForce) activity.finish();
+//                                        }
+//                                    }
+//                                }).setContent("WiFi\n？").show();
+//                            }
+//
+//                        } else if (downloadBy == DOWNLOAD_BY_BROWSER) {
+//                            DownloadAppUtils.downloadForWebView(activity, apkPath);
+//                        }
+//                        break;
+//                }
+//            }
+//        });
+//
+//        String content = ":" + serverVersionName + "\n?";
+//        if (!TextUtils.isEmpty(updateInfo)) {
+//            content = ":" + serverVersionName + "?\n\n" + updateInfo;
+//        }
+//        dialog.setContent(content);
+//        dialog.setCancelable(false);
+//        dialog.show();
+    }
+
+
+    /**
+     * wifi
+     */
+    public static boolean isWifiConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm != null) {
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public interface OnCancelClicked {
+        void canceled(boolean force);
+    }
 }
