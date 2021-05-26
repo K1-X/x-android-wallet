@@ -27,6 +27,15 @@
             android:text=""
             android:textColor="@color/white"
             android:textSize="18sp" />
+	<ImageView
+            android:id="@+id/iv_menu2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/gap_small"
+            android:padding="@dimen/gap_small"
+            android:visibility="invisible" />	
 
 	</RelativeLayout>    
 
