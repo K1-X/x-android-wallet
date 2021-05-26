@@ -17,6 +17,17 @@
             android:layout_marginLeft="@dimen/gap_small"
             android:padding="@dimen/gap_small"
             android:src="@mipmap/icn_back_white" />
+
+	<TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
 	</RelativeLayout>    
 
 </LinearLayout>
