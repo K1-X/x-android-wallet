@@ -37,6 +37,16 @@
             android:padding="@dimen/gap_small"
             android:visibility="invisible" />	
 
+
+	<ImageView
+            android:id="@+id/iv_menu1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/gap_small"
+            android:layout_toLeftOf="@id/iv_menu2"
+            android:padding="@dimen/gap_small"
+            android:visibility="invisible" />
 	</RelativeLayout>    
 
 </LinearLayout>
