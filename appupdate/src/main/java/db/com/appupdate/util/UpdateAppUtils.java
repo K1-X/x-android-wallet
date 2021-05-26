@@ -92,4 +92,15 @@ public class UpdateAppUtils {
         this.updateInfo = updateInfo;
         return this;
     }
+
+    public UpdateAppUtils serverVersionName(String serverVersionName) {
+        this.serverVersionName = serverVersionName;
+        return this;
+    }
+
+    public UpdateAppUtils isForce(boolean isForce) {
+        this.isForce = isForce;
+        showNotification = !isForce;
+        return this;
+    }
 }
