@@ -60,6 +60,12 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:visibility="invisible" />
+	<View
+            android:id="@+id/action_bar_common_divider_v"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_4" />
 	</RelativeLayout>    
 
 </LinearLayout>
