@@ -9,4 +9,6 @@ import android.widget.TextView;
 import bd.com.appupdate.R;
 import bd.com.appupdate.feature.Callback;
 
+public class ConfirmDialog extends Dialog {
 
+}
