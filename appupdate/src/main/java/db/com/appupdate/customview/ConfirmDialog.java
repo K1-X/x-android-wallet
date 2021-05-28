@@ -45,4 +45,9 @@ public class ConfirmDialog extends Dialog {
         });
         super.setContentView(mView);
     }
+
+    public ConfirmDialog setContent(String s){
+        content.setText(s);
+        return this;
+    }
 }
