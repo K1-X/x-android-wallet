@@ -15,4 +15,10 @@ public class ConfirmDialog extends Dialog {
     private TextView content;
     private TextView sureBtn;
     private TextView cancleBtn;
+
+    public ConfirmDialog(Context context, Callback callback) {
+        super(context, R.style.CustomDialog);
+        this.callback = callback;
+        setCustomDialog();
+    }
 }
