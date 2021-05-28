@@ -21,4 +21,28 @@ public class ConfirmDialog extends Dialog {
         this.callback = callback;
         setCustomDialog();
     }
+
+    private void setCustomDialog() {
+        View mView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_confirm, null);
+        sureBtn = (TextView)mView.findViewById(R.id.dialog_confirm_sure);
+        cancleBtn = (TextView)mView.findViewById(R.id.dialog_confirm_cancle);
+        content = (TextView) mView.findViewById(R.id.dialog_confirm_title);
+
+
+        sureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.callback(1);
+                ConfirmDialog.this.cancel();
+            }
+        });
+        cancleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.callback(0);
+                ConfirmDialog.this.cancel();
+            }
+        });
+        super.setContentView(mView);
+    }
 }
