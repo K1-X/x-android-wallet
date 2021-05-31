@@ -8,5 +8,13 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
+
+	<com.cunoraz.gifview.library.GifView
+       android:id="@+id/av_loading_view"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       custom:gif="@drawable/dialog_gif"
+       android:layout_centerInParent="true"
+       />
   
 </RelativeLayout>
