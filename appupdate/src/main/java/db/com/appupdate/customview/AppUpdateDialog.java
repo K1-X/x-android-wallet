@@ -51,4 +51,37 @@ public class AppUpdateDialog extends Dialog {
     private String mUrl;
     private boolean isForce;
 
+
+    public AppUpdateDialog(@NonNull Context context, int layoutResId) {
+        super(context, R.style.CommonDialog);
+        setContentView(layoutResId);
+        tvTitle = findViewById(R.id.tv_common_dialog_title);
+        tvContent = findViewById(R.id.tv_common_dialog_content);
+        tvUpdateOk = findViewById(R.id.tv_common_dialog_right_btn);
+        tvVersion = findViewById(R.id.tv_common_dialog_version);
+        if (layoutResId != R.layout.dialog_app_must_update) {
+            tvUpdateCancel = findViewById(R.id.tv_common_dialog_left_btn);
+            tvUpdateCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+        } else {
+            controller = findViewById(R.id.tv_common_dialog_controller);
+            tvProgress = findViewById(R.id.tv_common_dialog_tv_pro);
+            progressBar = findViewById(R.id.tv_common_dialog_progress);
+        }
+        this.context = context;
+        tvUpdateOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startDownLoad(mUrl);
+                if (!isForce) {
+                    dismiss();
+                }
+            }
+        });
+        tvTitle.setText("");
+    }
 }
