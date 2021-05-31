@@ -102,4 +102,25 @@ public class AppUpdateDialog extends Dialog {
 
 
     }
+
+    public AppUpdateDialog content(CharSequence content, String version, String url) {
+        this.mVersion = version;
+        this.mUrl = url;
+        if (tvContent != null) {
+            if (TextUtils.isEmpty(content)) {
+                tvContent.setText("");
+            } else {
+                tvContent.setText(content);
+            }
+        }
+        if (tvVersion != null) {
+            if (TextUtils.isEmpty(version)) {
+                tvVersion.setVisibility(View.GONE);
+            } else {
+                tvVersion.setVisibility(View.VISIBLE);
+                tvVersion.setText("v"+version);
+            }
+        }
+        return this;
+    }
 }
