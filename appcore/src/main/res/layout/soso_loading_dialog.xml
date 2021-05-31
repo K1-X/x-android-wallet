@@ -16,5 +16,15 @@
        custom:gif="@drawable/dialog_gif"
        android:layout_centerInParent="true"
        />
-  
+	<TextView
+       android:id="@+id/tips_tv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/black"
+       android:textSize="@dimen/view_14"
+      android:layout_centerHorizontal="true"
+       android:layout_below="@+id/av_loading_view"
+       android:paddingTop="@dimen/gap_large"
+       android:layout_gravity="center"
+       android:text="sssdfsd"/>  
 </RelativeLayout>
