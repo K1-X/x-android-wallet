@@ -84,4 +84,22 @@ public class AppUpdateDialog extends Dialog {
         });
         tvTitle.setText("");
     }
+
+        @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        if (window != null) {
+            window.setGravity(Gravity.CENTER);
+//            window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            WindowManager windowManager = ((Activity) context).getWindowManager();
+            Display display = windowManager.getDefaultDisplay();
+            WindowManager.LayoutParams lp = window.getAttributes();
+            lp.width = display.getWidth() * 4 / 5;
+            getWindow().setAttributes(lp);
+        }
+        setCanceledOnTouchOutside(false);
+
+
+    }
 }
