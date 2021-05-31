@@ -35,5 +35,20 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AppUpdateDialog extends Dialog {
 
+    private static final String TAG = "AppUpdateDialog";
+
+    private Context context;
+
+    private TextView tvTitle;
+    private TextView tvContent;
+    private ImageView tvUpdateCancel;
+    private ImageView tvUpdateOk;
+    private LinearLayout controller;
+    private TextView tvProgress;
+    private ProgressBar progressBar;
+    private TextView tvVersion;
+    private String mVersion;
+    private String mUrl;
+    private boolean isForce;
 
 }
