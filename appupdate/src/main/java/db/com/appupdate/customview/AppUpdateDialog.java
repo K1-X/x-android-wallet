@@ -123,4 +123,9 @@ public class AppUpdateDialog extends Dialog {
         }
         return this;
     }
+
+    public AppUpdateDialog isForce(boolean isForce) {
+        this.isForce = isForce;
+        return this;
+    }
 }
