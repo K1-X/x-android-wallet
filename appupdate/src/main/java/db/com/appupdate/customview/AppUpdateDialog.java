@@ -128,4 +128,22 @@ public class AppUpdateDialog extends Dialog {
         this.isForce = isForce;
         return this;
     }
+
+    private void setControllerVisible(boolean visible) {
+        if (visible) {
+            if (tvUpdateOk != null) {
+                tvUpdateOk.setVisibility(View.GONE);
+            }
+            if (controller != null) {
+                controller.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (tvUpdateOk != null) {
+                tvUpdateOk.setVisibility(View.VISIBLE);
+            }
+            if (controller != null) {
+                controller.setVisibility(View.GONE);
+            }
+        }
+    }
 }
