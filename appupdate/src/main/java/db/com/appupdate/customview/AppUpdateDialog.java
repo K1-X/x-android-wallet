@@ -151,4 +151,52 @@ public class AppUpdateDialog extends Dialog {
 
         DownloadAppUtils.download(getContext(), appUrl, mVersion, isForce ? new MyDownLoadCallBack() : null);
     }
+
+    class MyDownLoadCallBack implements DownLoadCallBack {
+
+        @Override
+        public void pending(BaseDownloadTask task, long soFarBytes, long totalBytes) {
+            Log.i(TAG, "startDownLoad=====>pending");
+        }
+
+        @Override
+        public void progress(BaseDownloadTask task, long p, long totalBytes) {
+            Log.i(TAG, "startDownLoad=====>progress   =" + p);
+            if (tvProgress != null) {
+                tvProgress.setText(" " + p + "%");
+            }
+            if (progressBar != null) {
+                progressBar.setProgress((int) p);
+            }
+            setControllerVisible(true);
+        }
+
+        @Override
+        public void paused(BaseDownloadTask task, long soFarBytes, long totalBytes) {
+            Log.i(TAG, "startDownLoad=====>paused");
+        }
+
+        @Override
+        public void completed(BaseDownloadTask task) {
+            Log.i(TAG, "startDownLoad=====>completed");
+            Flowable.timer(2, TimeUnit.SECONDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+                @Override
+                public void accept(Long aLong) throws Exception {
+                    setControllerVisible(false);
+                }
+            });
+        }
+
+        @Override
+        public void error(BaseDownloadTask task, Throwable e) {
+            Log.i(TAG, "startDownLoad=====>error");
+        }
+
+        @Override
+        public void warn(BaseDownloadTask task) {
+            Log.i(TAG, "startDownLoad=====>warn");
+        }
+    }
 }
