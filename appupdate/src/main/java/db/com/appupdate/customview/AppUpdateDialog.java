@@ -146,4 +146,9 @@ public class AppUpdateDialog extends Dialog {
             }
         }
     }
+
+    private void startDownLoad(String appUrl) {
+
+        DownloadAppUtils.download(getContext(), appUrl, mVersion, isForce ? new MyDownLoadCallBack() : null);
+    }
 }
