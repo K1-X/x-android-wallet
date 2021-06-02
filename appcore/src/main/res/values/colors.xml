@@ -13,4 +13,16 @@
     <color name="color_white_transparent2">#43666666</color>
     <color name="color_black">#333333</color>
     <color name="color_3cc">#3cc</color>    
+
+    <color name="black">#FF000000</color>
+    <color name="status_bg">#17000000</color>//9%
+    <color name="main_cyan">#33cccc</color>
+    <!---->
+    <color name="main_red">#ff6666</color>
+    <!---->
+    <color name="main_yellow">#ffcc33</color>
+    <color name="gift_yellow">#FEEDB9</color>
+    <color name="main_pink">#f9c</color>
+    <!---->
+    <color name="font_black">#666</color>
 </resources>
