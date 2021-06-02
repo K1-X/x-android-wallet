@@ -25,4 +25,30 @@
     <color name="main_pink">#f9c</color>
     <!---->
     <color name="font_black">#666</color>
+
+    <color name="s_text_color_black_1">@color/black_1</color>
+    <color name="s_text_color_black_2">@color/black_2</color>
+    <color name="s_text_color_black_3">@color/black_3</color>
+    <color name="s_text_color_black_4">@color/black_4</color>
+    <color name="s_text_color_black_5">@color/black_5</color>
+    <color name="s_text_color_white_1">#ffffffff</color>
+
+    <color name="font_gray">@color/black_2</color>
+    <color name="font_gray2">#CCCCCC</color>
+    <color name="font_disable_gray">@color/black_3</color>
+    <color name="font_light_gray">#999999</color>
+    <color name="divide_disable_gray">#E8E8E8</color>
+    <color name="main_divide_gray">#D7D7D7</color>
+    <color name="background">#F5F6F7</color>
+    <color name="home_circle_bg">#604B494F</color>
+    <color name="home_vestor_bg">#6033cccc</color>
+    <color name="home_vestor_bg_ori">#33cccc</color>
+    <color name="font_color_6d747d">#6d747d</color>
+    <color name="font_color_ccc">#ccc</color>
+    <color name="font_color_999">#999</color>
+    <color name="calendar_weekBgColor">#EFE7DE</color>
+    <color name="color_red">#FF0000</color>
+    <color name="Calendar_DayBgColor">#F0F0F0</color>
+    <color name="topic_white">#f7f8f9</color>
+    <color name="topic_gray">#e4e4e5</color>
 </resources>
