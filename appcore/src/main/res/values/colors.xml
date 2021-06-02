@@ -51,4 +51,29 @@
     <color name="Calendar_DayBgColor">#F0F0F0</color>
     <color name="topic_white">#f7f8f9</color>
     <color name="topic_gray">#e4e4e5</color>
+
+    <!---->
+    <color name="transparent">#00000000</color>
+    <color name="color_transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <!---->
+    <color name="label_orange">#ff6600</color>
+    <color name="label_yellow">#ffcc33</color>
+    <color name="label_purple">#9999ff</color>
+    <!---->
+    <color name="text_bg_yellow">#EB8D63</color>
+    <color name="pay_line">#E8E8E8</color>
+    <!--new -->
+    <color name="text_title_333">#333</color>
+    <color name="text_title_666">#666</color>
+    <color name="text_title_999">#999</color>
+
+
+    <color name="item_bg">#F7F7F7</color>
+
+
+    <color name="home_tabs_selection_and_circle">@color/main_color_normal</color>
+    <color name="home_tabs_tronker">@color/main_color_normal</color>
+    <color name="home_tabs_project">@color/main_color_normal</color>
+    <color name="home_tabs_resource">#7f88be</color>
 </resources>
