@@ -9,5 +9,12 @@
     <color name="black_7">#43000000</color>
     <color name="black_8">#333333</color>
     <color name="white_1">#ffffffff</color>
-   
+
+    <color name="cyan_normal">#329BFF</color>
+    <color name="cyan_click">#0078E2</color>
+    <color name="cyan_disable">#C1E1FF</color>
+
+    <color name="blue_normal">#66ccff</color>
+    <color name="blue_click">#52b8eb</color>
+    <color name="blue_disable">@color/main_color_disable</color>   
 </resources>
