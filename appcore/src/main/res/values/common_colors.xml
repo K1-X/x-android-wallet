@@ -48,4 +48,13 @@
     <color name="divider_dark">#F0F0F0</color>
     <color name="bg_layout">#F0F0F0</color>
     <color name="jinfu_prod_time_color">#FFA100</color>
+
+    <color name="pb_bg">#F7F7F7</color>
+    <color name="pb_fisrt">#FFAE3D</color>
+    <color name="pb_second">#FF7469</color>
+    <color name="image_upload_pb_bg">#54729DB2</color>
+    <color name="recheck">#ffFF944B</color>
+    <color name="find_toulian">#FF706A</color>
+    <color name="find_chuangye">#63DBFE</color>
+    <color name="find_fuhua">#E080E2</color>
 </resources>
