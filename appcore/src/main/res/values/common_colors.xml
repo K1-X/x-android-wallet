@@ -17,4 +17,13 @@
     <color name="blue_normal">#66ccff</color>
     <color name="blue_click">#52b8eb</color>
     <color name="blue_disable">@color/main_color_disable</color>   
+
+    <color name="purple_normal">#8089c1</color>
+    <color name="purple_click">#6c75ad</color>
+    <color name="purple_disable">#8089c1</color>
+
+    <color name="red_normal">#FB474F</color>
+    <color name="red_H5">#FF3D00</color>
+    <color name="red_click">#E45635</color>
+    <color name="red_disable">#DBD6CD</color>
 </resources>
