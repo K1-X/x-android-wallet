@@ -32,4 +32,20 @@
     <color name="yellow_click">#dfbd4d</color>
     <color name="yellow_jinfu_main">#B19445</color>
     <color name="yellow_disable">#f9e7a9</color>
+
+    <color name="main_color_transparent2">#30329BFF</color>
+    <color name="main_color_transparent">#80329BFF</color>
+    <color name="main_color_normal">#268BFF</color>
+    <color name="main_color_click">#2185F7</color>
+    <color name="main_color_disable">#A9D5FF</color>
+    <color name="progress_color">#3FBEFF</color>
+    <color name="prod_status_color">#399EFF</color>
+    <color name="transparent_click">#19000000</color>
+    <color name="divider">#F0F0F0</color>
+    <color name="login_color">#666666</color>
+    <color name="shape_gray_rect">#D7D7D7</color>
+    <color name="price_color">#EB8D63</color>
+    <color name="divider_dark">#F0F0F0</color>
+    <color name="bg_layout">#F0F0F0</color>
+    <color name="jinfu_prod_time_color">#FFA100</color>
 </resources>
