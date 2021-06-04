@@ -26,4 +26,10 @@
     <color name="red_H5">#FF3D00</color>
     <color name="red_click">#E45635</color>
     <color name="red_disable">#DBD6CD</color>
+
+    <color name="yellow_normal">#FF944A</color>
+    <color name="yellow_70_normal">#FBFF944A</color>
+    <color name="yellow_click">#dfbd4d</color>
+    <color name="yellow_jinfu_main">#B19445</color>
+    <color name="yellow_disable">#f9e7a9</color>
 </resources>
