@@ -11,4 +11,17 @@
     <dimen name="header_offset_dis">201dp</dimen>
     <dimen name="picture_pull_to_refresh_last_update_time_top_margin">5dp</dimen>
     <dimen name="picture_pull_to_refresh_last_update_time_text_size">12sp</dimen>
+
+    <dimen name="tronker_item_bottom_margin_left">5dp</dimen>
+    <dimen name="tronker_item_bottom_margin_right">5dp</dimen>
+    <dimen name="tronker_item_bottom_paddingLeft">3dp</dimen>
+
+    <dimen name="text_drawable_gap">8dp</dimen>
+
+    <dimen name="split_one_pixels">1px</dimen>
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
 </resources>
