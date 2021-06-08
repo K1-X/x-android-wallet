@@ -10,6 +10,14 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
- 
+    <declare-styleable name="CommonActionBar">
+        <attr name="showBack" format="boolean" />
+        <attr name="showMenu1" format="boolean" />
+        <attr name="showMenu2" format="boolean" />
+        <attr name="backSrc" format="reference" />
+        <attr name="menu1Src" format="reference" />
+        <attr name="menu2Src" format="reference" />
+        <attr name="titleText" format="string" />
+    </declare-styleable> 
 
 </resources>
