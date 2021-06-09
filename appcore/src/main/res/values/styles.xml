@@ -27,4 +27,23 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowMinWidthMinor">100%</item>
     </style>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+    <style name="Text_white_36">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Text_white_32">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black_1</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <dimen name="medium_head_width">80dp</dimen>
+    <dimen name="medium_head_height">80dp</dimen>
 </resources>
