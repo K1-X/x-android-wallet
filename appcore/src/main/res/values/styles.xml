@@ -19,5 +19,12 @@
         <attr name="menu2Src" format="reference" />
         <attr name="titleText" format="string" />
     </declare-styleable> 
-
+    <style name="DialogTranslucentNoTitle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
 </resources>
