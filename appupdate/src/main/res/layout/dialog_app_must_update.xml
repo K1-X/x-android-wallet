@@ -54,4 +54,12 @@
             android:textSize="14sp"
             tools:text="1.；\n2.；\n3.UI" />
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/tv_common_dialog_right_btn"
+        android:layout_width="214dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/btn_update_big"
+        android:scaleType="center" />
 </LinearLayout>
