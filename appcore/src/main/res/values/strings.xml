@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">appCore</string>
+    <string name="min_10">10</string>
+    <string name="min_30">30</string>
+    <string name="one_hour">1</string>
+    <string name="six_hour">6</string>
+    <string name="one_day">1</string>
+    <string name="three_day">3</string>
+    <string name="seven_day">7</string>
+    <string name="day_30">30</string>
+    <string name="select_gesture_time"></string>
+    <string name="select_gesture_time_des">，</string>
+    <string name="select_online_time"></string>
+    <string name="select_online_time_des">，</string>
+</resources>
