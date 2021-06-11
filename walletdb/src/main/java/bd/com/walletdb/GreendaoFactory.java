@@ -61,5 +61,22 @@ public class GreendaoFactory {
         Log.i(TAG, "setupDatabase, end = " + System.currentTimeMillis());
     }
 
+    public static void clearUser() {
+        sMaster = null;
+        sDaoSession = null;
+    }
+
+    public static DaoSession getDaoSession() {
+        return sDaoSession;
+    }
+
+    public static DaoSession getsTxDaoSession() {
+        return sTxDaoSession;
+    }
+
+    public static DaoSession getsContactDaoSession() {
+        return sContactDaoSession;
+    }
+
 }
 
