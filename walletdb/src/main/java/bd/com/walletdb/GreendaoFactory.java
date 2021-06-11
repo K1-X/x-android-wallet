@@ -15,7 +15,17 @@ import static bd.com.walletdb.config.Config.BD_WALLET;
 
 
 public class GreendaoFactory {
-    
+
+    private static final String TAG = "GreendaoFactory";
+
+    private static DaoMaster sMaster;
+    private static DaoSession sDaoSession;
+
+    private static DaoMaster sTxMaster;
+    private static DaoSession sTxDaoSession;
+
+    private static DaoMaster sContactMaster;
+    private static DaoSession sContactDaoSession;    
 
 }
 
