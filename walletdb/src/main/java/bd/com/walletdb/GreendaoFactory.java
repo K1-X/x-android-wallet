@@ -40,5 +40,26 @@ public class GreendaoFactory {
         sDaoSession = sMaster.newSession();
         Log.i(TAG, "setupDatabase, end = " + System.currentTimeMillis());
     }
+
+    public static void makeTx(Context context) {
+        //
+        DbHelper helper = new DbHelper(context, Config.BD_TRANSACTION);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        // ： DaoMaster， Session 。
+        sTxMaster = new DaoMaster(db);
+        sTxDaoSession = sTxMaster.newSession();
+        Log.i(TAG, "setupDatabase, end = " + System.currentTimeMillis());
+    }
+
+    public static void makeContact(Context context) {
+        //
+        DbHelper helper = new DbHelper(context, Config.BD_CONTACT);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        // ： DaoMaster， Session 。
+        sContactMaster = new DaoMaster(db);
+        sContactDaoSession = sContactMaster.newSession();
+        Log.i(TAG, "setupDatabase, end = " + System.currentTimeMillis());
+    }
+
 }
 
