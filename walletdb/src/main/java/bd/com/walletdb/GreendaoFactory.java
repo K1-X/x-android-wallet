@@ -27,5 +27,18 @@ public class GreendaoFactory {
     private static DaoMaster sContactMaster;
     private static DaoSession sContactDaoSession;    
 
+    public static void make(Context context) {
+        Log.i(TAG, "setupDatabase, begin = " + System.currentTimeMillis());
+        //
+
+        DbHelper helper = new DbHelper(context, BD_WALLET);
+        Database db = helper.getEncryptedWritableDb("bdwallet123");
+        // ： DaoMaster， Session 。
+//        daoSession = new DaoMaster(a.getEncryptedWritableDb(MY_PWD)).newSession();
+//        daoSession.getUserDao().insert(man1);
+        sMaster = new DaoMaster(db);
+        sDaoSession = sMaster.newSession();
+        Log.i(TAG, "setupDatabase, end = " + System.currentTimeMillis());
+    }
 }
 
