@@ -20,4 +20,20 @@
         android:textSize="23sp"
         tools:text="" />
     
+
+    <TextView
+        android:id="@+id/tv_common_dialog_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17.5dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/dialog_version_bg"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="V1.1.4"
+        android:textColor="@color/color_white"
+        android:textSize="13sp"
+        tools:text="" />
 </LinearLayout>
