@@ -36,4 +36,12 @@
         android:textColor="@color/color_white"
         android:textSize="13sp"
         tools:text="" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+    </ScrollView>
 </LinearLayout>
