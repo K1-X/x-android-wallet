@@ -16,5 +16,19 @@ public interface DaoAction<T> {
     public long insert(T t);
 
     public void update(T t);
-   
+
+
+    /**
+     *  Function: insertOrReplace()
+     *  NOTE: ，，；
+     *      
+     *
+     **/
+    public long insertOrReplace(T t);
+
+    /**
+     *  func: 
+     *
+     **/
+    public long count();   
 }
