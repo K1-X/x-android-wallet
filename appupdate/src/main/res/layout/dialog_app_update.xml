@@ -43,5 +43,17 @@
         android:layout_marginBottom="32dp"
         android:fillViewport="true"
         android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/tv_common_dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingLeft="32dp"
+            android:scrollbars="vertical"
+            android:paddingRight="@dimen/view_32"
+            android:textColor="@color/color_black"
+            android:textSize="14sp"
+            tools:text="1.；\n2.；\n3.UI" />
     </ScrollView>
 </LinearLayout>
