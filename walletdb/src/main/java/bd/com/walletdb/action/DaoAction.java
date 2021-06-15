@@ -31,4 +31,12 @@ public interface DaoAction<T> {
      *
      **/
     public long count();   
+
+    /**
+     *  func: 
+     *
+     **/
+    public List<T> loadAll();
+
+    public void deleteAll();
 }
