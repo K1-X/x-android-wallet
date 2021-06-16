@@ -80,4 +80,43 @@ public interface DaoAction<T> {
     public DaoAction<T> lt(Property property, Object value);
     public DaoAction<T> ge(Property property, Object value);
     public DaoAction<T> le(Property property, Object value);
+
+    /**
+     *  Function: limit()
+     *      。
+     *  Params:
+     *      int limit，
+     **/
+    public DaoAction<T> limit(int limit);
+
+    /**
+     *  Function: offset()
+     *      。
+     *  Params:
+     *      int offset，，0。offset
+     **/
+    public DaoAction<T> offset(int offset);
+
+    /**
+     *  Function: dump()
+     *      ，，，，。
+     *
+     **/
+    public DaoAction<T> dump();
+
+    /**
+     *  Function: queryAnd()
+     *      DaoAction，
+     *      。，。
+     *
+     **/
+    public List<T> queryAnd();
+
+    /**
+     *  Function: queryOr()
+     *      DaoAction，
+     *      。，。
+     *
+     **/
+    public List<T> queryOr();
 }
