@@ -119,4 +119,54 @@ public interface DaoAction<T> {
      *
      **/
     public List<T> queryOr();
+
+    /**
+     *  Function: queryAndWithAsc()
+     *      ，。
+     *
+     *  Params:
+     *      Property... properties, /，ReportEntityDao.Properties.Id
+     *
+     **/
+    public List<T> queryAndWithAsc(Property... properties);
+
+    /**
+     *  Function: queryAndWithAsc()
+     *      ，。
+     *
+     *  Params:
+     *      Property... properties, /，ReportEntityDao.Properties.Id
+     *
+     **/
+    public List<T> queryAndWithDesc(Property... properties);
+
+    public List<T> queryOrWithAsc(Property... properties);
+    public List<T> queryOrWithDesc(Property... properties);
+
+    public long getQueryAndCount();
+    public long getQueryOrCount();
+
+    /*  */
+    public void deleteAllAsync();
+
+    public void updateAllAsync(List<T> list);
+
+    public void insertAsync(T t);
+
+    boolean insertOrReplaceInTx(Iterable<T> list);
+
+    public void insertOrReplaceAsync(T t);
+
+    public void deleteByKeyAsync(Object key);
+
+//    public void queryAndWithAscAsync();
+//    public void queryOrWithDescAsync();
+
+//    public void queryAndAsync(Map<String, String> map, AsyncDaoCallback<T> callback);
+//
+//    public void queryOrAsync(final Map<String, String> map, final AsyncDaoCallback<T> callback);
+
+    public interface AsyncDaoCallback<T>{
+        public void onResult(List<T> list);
+    }
 }
