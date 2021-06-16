@@ -39,4 +39,22 @@ public interface DaoAction<T> {
     public List<T> loadAll();
 
     public void deleteAll();
+
+    /**
+     *  Function: deleteByKey()
+     *      
+     *  Params:
+     *      Object key, 
+     *
+     **/
+    public void deleteByKey(Object key);
+
+    /**
+     *  Function: loadAllAsc()
+     *      ，
+     *  Params:
+     *      Property... properties, /，ReportEntityDao.Properties.Id
+     *
+     **/
+    public List<T> loadAllAsc(Property... properties);  // 
 }
