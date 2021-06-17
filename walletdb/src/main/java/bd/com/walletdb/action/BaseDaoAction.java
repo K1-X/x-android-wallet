@@ -64,5 +64,41 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
         }
 
         return entityDao.insertOrReplace(t);
+
     }    
+   
+    @Override
+    public final long count(){
+        G entityDao = getEntityDao();
+        if(entityDao == null){
+            return 0;
+        }
+
+        return entityDao.count();
+    }
+
+    @Override
+    public final List<T> loadAll(){
+        G entityDao = getEntityDao();
+        if(entityDao == null){
+            return null;
+        }
+
+        return entityDao.loadAll();
+    }
+
+    @Override
+    public final void deleteAll(){
+        G entityDao = getEntityDao();
+        if(entityDao != null){
+            entityDao.deleteAll();
+        }
+    }
+
+    public final void deleteInTx(List<T> tList){
+        G entityDao = getEntityDao();
+        if(entityDao != null){
+            entityDao.deleteInTx(tList);
+        }
+    }
 }
