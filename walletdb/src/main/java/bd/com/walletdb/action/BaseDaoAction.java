@@ -24,5 +24,45 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
     protected abstract G getEntityDao();
 
     protected abstract DaoSession getDaoSession();
-    
+
+
+    /**
+     *  Function: insert()
+     *  NOTE: ，，
+     *      android.database.sqlite.SQLiteConstraintException
+     *
+     **/
+    @Override
+    public final long insert(T t){
+        G entityDao = getEntityDao();
+        if(entityDao == null){
+            return 0;
+        }
+
+        return entityDao.insert(t);
+    }
+
+    @Override
+    public void update(T t){
+        G entityDao = getEntityDao();
+        if(entityDao != null){
+            entityDao.update(t);
+        }
+    }
+
+    /**
+     *  Function: insertOrReplace()
+     *  NOTE: ，，；
+     *      
+     *
+     **/
+    @Override
+    public long insertOrReplace(T t){
+        G entityDao = getEntityDao();
+        if(entityDao == null){
+            return 0;
+        }
+
+        return entityDao.insertOrReplace(t);
+    }    
 }
