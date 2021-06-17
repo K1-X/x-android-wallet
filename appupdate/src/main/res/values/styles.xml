@@ -9,4 +9,15 @@
         <item name="android:windowBackground">@drawable/bg_dialog_confirm</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+    <style name="CommonDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item> <!-- -->
+        <item name="android:windowFrame">@null</item> <!---->
+        <item name="android:windowIsFloating">true</item> <!--activity-->
+        <item name="android:windowIsTranslucent">true</item>  <!---->
+        <item name="android:windowEnterAnimation">@anim/dialog_app_update_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_app_update_scale_out</item>
+    </style>
 </resources>
