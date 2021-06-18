@@ -101,4 +101,39 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
             entityDao.deleteInTx(tList);
         }
     }
+
+    /**
+     *  Function: deleteByKey()
+     *      
+     *  Params:
+     *      Object key, 
+     *
+     **/
+    @Override
+    public final void deleteByKey(Object key){
+        G entityDao = getEntityDao();
+        if(entityDao != null){
+            entityDao.deleteByKey(key);
+        }
+    }
+
+    @Override
+    public final void deleteByKeyAsync(final Object key){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                deleteByKey(key);
+            }
+        }).start();
+    }
+
+    @Override
+    public final void deleteAllAsync(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                deleteAll();
+            }
+        }).start();
+    }
 }
