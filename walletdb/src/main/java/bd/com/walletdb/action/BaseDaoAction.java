@@ -194,4 +194,29 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
             }
         }).start();
     }
+
+    @Override
+    public List<T> loadAllAsc(Property... properties){
+        QueryBuilder<T> queryBuilder = getQueryBuilder();
+        loadOrderAsc(queryBuilder);
+        return getResult(queryBuilder);
+    }
+
+    @Override
+    public List<T> loadAllDesc(Property... properties){
+        QueryBuilder<T> queryBuilder = getQueryBuilder();
+        loadOrderDesc(queryBuilder);
+        return getResult(queryBuilder);
+    }
+
+    /*  */
+    @Override
+    public DaoAction<T> eq(Property property, Object value){
+        if(property != null){
+            WhereCondition condition = property.eq(value);
+            addCondition(condition);
+        }
+
+        return this;
+    }
 }
