@@ -166,4 +166,32 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
         entityDao.insertOrReplaceInTx(list);
         return true;
     }
+
+    private Property getProperty(String column){
+        if(column == null || column.isEmpty()){
+            return null;
+        }
+
+        G entityDao = getEntityDao();
+        Property[] allProperties = entityDao.getProperties();
+        for(Property pro : allProperties){
+            if(column.toUpperCase().equals(pro.columnName) || column.toLowerCase().equals(pro.columnName)){
+                return pro;
+            }
+        }
+        return null;
+    }
+
+    public void updateAllAsync(final List<T> list){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                deleteAll();
+
+                for(T t : list){
+                    insert(t);
+                }
+            }
+        }).start();
+    }
 }
