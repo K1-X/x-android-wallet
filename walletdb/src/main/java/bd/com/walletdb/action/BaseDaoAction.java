@@ -136,4 +136,34 @@ public abstract class BaseDaoAction<T, G extends AbstractDao> implements DaoActi
             }
         }).start();
     }
+
+    @Override
+    public final void insertAsync(final T t){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                insert(t);
+            }
+        }).start();
+    }
+
+    @Override
+    public final void insertOrReplaceAsync(final T t){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                insertOrReplace(t);
+            }
+        }).start();
+    }
+
+    @Override
+    public boolean insertOrReplaceInTx(Iterable<T> list) {
+        G entityDao = getEntityDao();
+        if(entityDao == null){
+            return false;
+        }
+        entityDao.insertOrReplaceInTx(list);
+        return true;
+    }
 }
