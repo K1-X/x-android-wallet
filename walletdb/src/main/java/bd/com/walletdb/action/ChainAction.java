@@ -13,4 +13,13 @@ public class ChainAction extends BaseDaoAction<ChainEntity, ChainEntityDao> {
         return getEntityDao().queryBuilder();
     }
 
+    @Override
+    protected ChainEntityDao getEntityDao() {
+        DaoSession daoSession = getDaoSession();
+        if (daoSession != null) {
+            return daoSession.getChainEntityDao();
+        } else {
+            return null;
+        }
+    }
 }
