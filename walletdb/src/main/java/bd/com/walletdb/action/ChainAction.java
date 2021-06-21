@@ -22,4 +22,9 @@ public class ChainAction extends BaseDaoAction<ChainEntity, ChainEntityDao> {
             return null;
         }
     }
+
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getDaoSession();
+    }
 }
