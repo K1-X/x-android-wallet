@@ -7,3 +7,10 @@ import bd.com.walletdb.entity.ChainEntity;
 import bd.com.walletdb.greendao.ChainEntityDao;
 import bd.com.walletdb.greendao.DaoSession;
 
+public class ChainAction extends BaseDaoAction<ChainEntity, ChainEntityDao> {
+    @Override
+    protected QueryBuilder<ChainEntity> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }
+
+}
