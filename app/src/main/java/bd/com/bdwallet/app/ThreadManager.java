@@ -40,4 +40,19 @@ public class ThreadManager
         }
         return mInstance;
     }
+
+    public Handler getMainHandler()
+    {
+        if (mMainHandler == null)
+        {
+            synchronized (this)
+            {
+                if (mMainHandler == null)
+                {
+                    mMainHandler = new Handler(Looper.getMainLooper());
+                }
+            }
+        }
+        return mMainHandler;
+    }
 }
