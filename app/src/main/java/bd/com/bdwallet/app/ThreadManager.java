@@ -19,4 +19,10 @@ public class ThreadManager
     private HandlerThread mLogicHandlerThread = null; //logic
     private ExecutorService mWorkThreadPool = null; //，
     private ExecutorService mBgThreadPool = null; //，io    
+
+     private ThreadManager()
+    {
+        getMainHandler();
+        getLogicHandler();
+    }
 }
