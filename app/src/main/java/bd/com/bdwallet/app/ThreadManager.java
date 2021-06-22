@@ -25,4 +25,19 @@ public class ThreadManager
         getMainHandler();
         getLogicHandler();
     }
+
+    public static ThreadManager getInstance()
+    {
+        if (mInstance == null)
+        {
+            synchronized (ThreadManager.class)
+            {
+                if (mInstance == null)
+                {
+                    mInstance = new ThreadManager();
+                }
+            }
+        }
+        return mInstance;
+    }
 }
