@@ -11,5 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadManager
 {
-    
+
+    private static final int MAX_SIZE_BACKGROUND_THREAD_POOL = 2;
+    private static ThreadManager mInstance = null;
+    private Handler mMainHandler = null; //handler
+    private Handler mLogicHandler = null; //logichandler，
+    private HandlerThread mLogicHandlerThread = null; //logic
+    private ExecutorService mWorkThreadPool = null; //，
+    private ExecutorService mBgThreadPool = null; //，io    
 }
