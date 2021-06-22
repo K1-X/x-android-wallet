@@ -55,4 +55,17 @@ public class ThreadManager
         }
         return mMainHandler;
     }
+
+    public void postUITask(Runnable runnable)
+    {
+        postDelayedUITask(runnable, 0);
+    }
+
+    public void postDelayedUITask(Runnable runnable, long delayTime)
+    {
+        if (mMainHandler != null)
+        {
+            mMainHandler.postDelayed(runnable, delayTime);
+        }
+    }
 }
