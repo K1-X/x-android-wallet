@@ -68,4 +68,12 @@ public class ThreadManager
             mMainHandler.postDelayed(runnable, delayTime);
         }
     }
+
+    public void postFrontUITask(Runnable runnable)
+    {
+        if (mMainHandler != null)
+        {
+            mMainHandler.postAtFrontOfQueue(runnable);
+        }
+    }
 }
