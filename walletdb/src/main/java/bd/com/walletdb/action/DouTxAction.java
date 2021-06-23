@@ -13,4 +13,14 @@ public class DouTxAction extends BaseDaoAction<DoubleTxEntity, DoubleTxEntityDao
     protected QueryBuilder<DoubleTxEntity> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }
+
+    @Override
+    protected DoubleTxEntityDao getEntityDao() {
+        DaoSession daoSession = getDaoSession();
+        if (daoSession != null) {
+            return daoSession.getDoubleTxEntityDao();
+        } else {
+            return null;
+        }
+    }
 }
