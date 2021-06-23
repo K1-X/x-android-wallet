@@ -9,4 +9,8 @@ import bd.com.walletdb.greendao.DoubleTxEntityDao;
 
 public class DouTxAction extends BaseDaoAction<DoubleTxEntity, DoubleTxEntityDao> {
 
+    @Override
+    protected QueryBuilder<DoubleTxEntity> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }
 }
