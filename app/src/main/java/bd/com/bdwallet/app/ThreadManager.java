@@ -114,4 +114,26 @@ public class ThreadManager
             mLogicHandler.postDelayed(runnable, delayTime);
         }
     }
+
+    public void postFrontLogicTask(Runnable runnable)
+    {
+        if (mLogicHandler != null)
+        {
+            mLogicHandler.postAtFrontOfQueue(runnable);
+        }
+    }
+
+    public void removeLogicTask(Runnable runnable)
+    {
+        if (mLogicHandler != null)
+        {
+            mLogicHandler.removeCallbacks(runnable);
+        }
+    }
+
+
+
+    public boolean isMainThread() {
+        return Looper.getMainLooper() == Looper.myLooper();
+    }
 }
