@@ -23,4 +23,10 @@ public class DouTxAction extends BaseDaoAction<DoubleTxEntity, DoubleTxEntityDao
             return null;
         }
     }
+    
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getDaoSession();
+    }
+
 }
