@@ -76,4 +76,12 @@ public class ThreadManager
             mMainHandler.postAtFrontOfQueue(runnable);
         }
     }
+
+    public void removeUITask(Runnable runnable)
+    {
+        if (mMainHandler != null)
+        {
+            mMainHandler.removeCallbacks(runnable);
+        }
+    }
 }
