@@ -84,4 +84,34 @@ public class ThreadManager
             mMainHandler.removeCallbacks(runnable);
         }
     }
+
+    public Handler getLogicHandler()
+    {
+        if (mLogicHandler == null)
+        {
+            synchronized (this)
+            {
+                if (mLogicHandler == null)
+                {
+                    mLogicHandlerThread = new HandlerThread("HD_LOGIC_THREAD");
+                    mLogicHandlerThread.start();
+                    mLogicHandler = new Handler(mLogicHandlerThread.getLooper());
+                }
+            }
+        }
+        return mLogicHandler;
+    }
+
+    public void postLogicTask(Runnable runnable)
+    {
+        postDelayedLogicTask(runnable, 0);
+    }
+
+    public void postDelayedLogicTask(Runnable runnable, long delayTime)
+    {
+        if (mLogicHandler != null)
+        {
+            mLogicHandler.postDelayed(runnable, delayTime);
+        }
+    }
 }
