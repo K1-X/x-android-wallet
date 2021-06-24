@@ -63,5 +63,16 @@ public class BdApplication extends CoreApp {
         QbSdk.initX5Environment(this,null);
         Log.e("location", LocationUtils.sHA1(this));
     }
-    
+
+
+    private void initUmeng() {
+        /**
+         * : AndroidManifest.xmlappkeychannel，App
+         * （AndroidManifest.xmlappkeychannel，
+         * UMConfigure.initappkeychannelnull）。
+         */
+//        UMConfigure.init(this,   UMConfigure.DEVICE_TYPE_PHONE, null);
+//        // AUTO
+//        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+    }    
 }
