@@ -13,4 +13,14 @@ public class ContactAction extends BaseDaoAction<ContactEntity,ContactEntityDao>
     protected QueryBuilder<ContactEntity> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }    
+
+    @Override
+    protected ContactEntityDao getEntityDao() {
+        DaoSession daoSession = getDaoSession();
+        if (daoSession != null) {
+            return daoSession.getContactEntityDao();
+        } else {
+            return null;
+        }
+    }
 }
