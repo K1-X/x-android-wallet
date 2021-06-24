@@ -8,5 +8,9 @@ import bd.com.walletdb.greendao.ContactEntityDao;
 import bd.com.walletdb.greendao.DaoSession;
 
 public class ContactAction extends BaseDaoAction<ContactEntity,ContactEntityDao> {
-    
+
+    @Override
+    protected QueryBuilder<ContactEntity> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }    
 }
