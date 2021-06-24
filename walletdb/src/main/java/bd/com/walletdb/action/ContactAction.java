@@ -23,4 +23,10 @@ public class ContactAction extends BaseDaoAction<ContactEntity,ContactEntityDao>
             return null;
         }
     }
+   
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getsContactDaoSession();
+    }
+
 }
