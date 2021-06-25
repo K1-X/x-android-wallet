@@ -112,4 +112,11 @@ public class BdApplication extends CoreApp {
             AppSettings.getAppSettings().setDBHasReseted(true);
         }
     }
+
+    private void initChanin() {
+        String configedChainIp = AppSettings.getAppSettings().getCurrentChainIp();
+        if (!TextUtils.isEmpty(configedChainIp)) {
+            ApiConfig.BASE_URL = configedChainIp;
+        }
+    }
 }
