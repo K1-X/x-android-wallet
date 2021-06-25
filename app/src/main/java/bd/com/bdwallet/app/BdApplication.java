@@ -102,4 +102,14 @@ public class BdApplication extends CoreApp {
         super.attachBaseContext(base);
     }
 
+    private void resetDB() {
+        boolean hasReset = AppSettings.getAppSettings().getDBHasReseted();
+        if (!hasReset) {
+            /**
+             * 
+             */
+            AppCacheUitl.resetDB();
+            AppSettings.getAppSettings().setDBHasReseted(true);
+        }
+    }
 }
