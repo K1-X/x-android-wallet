@@ -75,4 +75,24 @@ public class BdApplication extends CoreApp {
 //        // AUTO
 //        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
     }    
+
+    /**
+     * bugly
+     */
+    private void initBugly() {
+        Context context = getApplicationContext();
+        // 
+        String packageName = context.getPackageName();
+        // 
+        String processName = ProcessUtil.getProcessName(android.os.Process.myPid());
+        // 
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
+        strategy.setUploadProcess(processName == null || processName.equals(packageName));
+        // Bugly
+        boolean enableBugly = AppSettings.getAppSettings().getEnableBugly();
+        CrashReport.initCrashReport(context, Config.BUGLY_APP_ID, true, strategy);
+        // “AndroidManifest.xml”APP，
+        // CrashReport.initCrashReport(context, strategy
+
+    }
 }
