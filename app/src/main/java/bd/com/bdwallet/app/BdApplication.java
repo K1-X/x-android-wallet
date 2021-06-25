@@ -95,4 +95,11 @@ public class BdApplication extends CoreApp {
         // CrashReport.initCrashReport(context, strategy
 
     }
+  
+    @Override
+    public void attachBaseContext(Context base) {
+        MultiDex.install(base);
+        super.attachBaseContext(base);
+    }
+
 }
