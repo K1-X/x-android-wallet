@@ -8,5 +8,9 @@ import bd.com.walletdb.greendao.DaoSession;
 import bd.com.walletdb.greendao.PriceDao;
 
 public class PriceAction extends BaseDaoAction<Price, PriceDao> {
-    
+
+    @Override
+    protected QueryBuilder<Price> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }    
 }
