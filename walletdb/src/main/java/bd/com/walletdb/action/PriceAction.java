@@ -13,4 +13,15 @@ public class PriceAction extends BaseDaoAction<Price, PriceDao> {
     protected QueryBuilder<Price> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }    
+  
+    @Override
+    protected PriceDao getEntityDao() {
+        DaoSession daoSession = getDaoSession();
+        if (daoSession != null) {
+            return daoSession.getPriceDao();
+        } else {
+            return null;
+        }
+    }
+
 }
