@@ -42,4 +42,10 @@ import de.greenrobot.event.EventBus;
  */
 public final class BusProvider {
 
+
+    private static final String TAG = "BusProvider";
+
+	private static EventBus getInstance() {
+		return BusProviderHolder.BUS;
+	}
 }
