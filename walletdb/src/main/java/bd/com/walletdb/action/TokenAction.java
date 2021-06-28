@@ -24,4 +24,9 @@ public class TokenAction extends BaseDaoAction<TokenEntity, TokenEntityDao> {
             return null;
         }
     }
+
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getDaoSession();
+    }
 }
