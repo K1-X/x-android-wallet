@@ -48,4 +48,11 @@ public final class BusProvider {
 	private static EventBus getInstance() {
 		return BusProviderHolder.BUS;
 	}
+
+    private static class BusProviderHolder {
+		private static final EventBus BUS = EventBus.getDefault();
+	}
+
+	private BusProvider() {
+	}
 }
