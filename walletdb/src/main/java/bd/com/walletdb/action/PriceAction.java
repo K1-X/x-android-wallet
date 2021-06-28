@@ -24,4 +24,8 @@ public class PriceAction extends BaseDaoAction<Price, PriceDao> {
         }
     }
 
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getDaoSession();
+    }
 }
