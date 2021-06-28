@@ -14,4 +14,14 @@ public class TokenAction extends BaseDaoAction<TokenEntity, TokenEntityDao> {
     protected QueryBuilder<TokenEntity> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }    
+
+    @Override
+    protected TokenEntityDao getEntityDao() {
+        DaoSession daoSession = getDaoSession();
+        if (daoSession != null) {
+            return daoSession.getTokenEntityDao();
+        } else {
+            return null;
+        }
+    }
 }
