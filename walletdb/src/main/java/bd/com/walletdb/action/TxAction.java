@@ -9,5 +9,9 @@ import bd.com.walletdb.greendao.TransactionEntityDao;
 
 
 public class TxAction extends BaseDaoAction<TransactionEntity,TransactionEntityDao> {
-    
+
+    @Override
+    protected QueryBuilder<TransactionEntity> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }    
 }
