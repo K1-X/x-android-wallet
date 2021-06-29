@@ -55,4 +55,13 @@ public final class BusProvider {
 
 	private BusProvider() {
 	}
+
+    public static void unRegister(Object obj) {
+		try {
+			getInstance().unregister(obj);
+		} catch (Exception e) {
+			Log.d(TAG, e.getMessage());
+		}
+
+	}
 }
