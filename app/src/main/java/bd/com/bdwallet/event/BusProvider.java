@@ -64,4 +64,13 @@ public final class BusProvider {
 		}
 
 	}
+
+    public static void register(Object obj) {
+		try {
+			getInstance().register(obj);
+		} catch (Exception e) {
+			Log.d(TAG, e.getMessage());
+		}
+
+	}
 }
