@@ -81,6 +81,13 @@ public final class BusProvider {
 			Log.d(TAG, e.getMessage());
 		}
 	}
-
+  
+    public static void postSticky(Object event) {
+		try {
+			getInstance().postSticky(event);
+		} catch (Exception e) {
+			Log.d(TAG, e.getMessage());
+		}
+	}
 
 }
