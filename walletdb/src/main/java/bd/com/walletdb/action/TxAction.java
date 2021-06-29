@@ -14,4 +14,10 @@ public class TxAction extends BaseDaoAction<TransactionEntity,TransactionEntityD
     protected QueryBuilder<TransactionEntity> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }    
+
+    @Override
+    protected TransactionEntityDao getEntityDao() {
+        return getDaoSession().getTransactionEntityDao();
+    }
+
 }
