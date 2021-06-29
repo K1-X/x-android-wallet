@@ -1,0 +1,13 @@
+package bd.com.walletdb.action;
+
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import bd.com.walletdb.GreendaoFactory;
+import bd.com.walletdb.entity.TransactionEntity;
+import bd.com.walletdb.greendao.DaoSession;
+import bd.com.walletdb.greendao.TransactionEntityDao;
+
+
+public class TxAction extends BaseDaoAction<TransactionEntity,TransactionEntityDao> {
+    
+}
