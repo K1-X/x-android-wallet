@@ -73,4 +73,14 @@ public final class BusProvider {
 		}
 
 	}
+ 
+    public static void post(Object event) {
+		try {
+			getInstance().post(event);
+		} catch (Exception e) {
+			Log.d(TAG, e.getMessage());
+		}
+	}
+
+
 }
