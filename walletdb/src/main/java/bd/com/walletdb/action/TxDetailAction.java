@@ -21,4 +21,9 @@ public class TxDetailAction extends BaseDaoAction<TransactionDetail,TransactionD
     protected TransactionDetailDao getEntityDao() {
         return getDaoSession().getTransactionDetailDao();
     }
+
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getsTxDaoSession();
+    }
 }
