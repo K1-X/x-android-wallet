@@ -22,4 +22,13 @@ public class Event {
             this.transaction = transaction;
         }
     }    
+
+    public static class DeleteTransactionEvent {
+
+        public Transaction transaction;
+
+        public DeleteTransactionEvent(Transaction transaction) {
+            this.transaction = transaction;
+        }
+    }
 }
