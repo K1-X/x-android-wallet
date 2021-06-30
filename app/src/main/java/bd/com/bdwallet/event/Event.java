@@ -31,4 +31,13 @@ public class Event {
             this.transaction = transaction;
         }
     }
+
+    public static class UpdateSelectedWalletEvent {
+
+        public Wallet walletEntity;
+
+        public UpdateSelectedWalletEvent(Wallet walletEntity) {
+            this.walletEntity = walletEntity;
+        }
+    }
 }
