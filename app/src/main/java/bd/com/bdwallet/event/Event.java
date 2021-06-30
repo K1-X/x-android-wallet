@@ -7,5 +7,19 @@ import org.web3j.protocol.core.methods.request.Transaction;
 
 public class Event {
 
-    
+
+    private Event() {
+
+    }
+
+
+
+    public static class UpdateTransactionEvent {
+
+        public Transaction transaction;
+
+        public UpdateTransactionEvent(Transaction transaction) {
+            this.transaction = transaction;
+        }
+    }    
 }
