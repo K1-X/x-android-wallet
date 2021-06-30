@@ -11,5 +11,9 @@ import bd.com.walletdb.greendao.TxHistoryDao;
 
 
 public class TxDetailAction extends BaseDaoAction<TransactionDetail,TransactionDetailDao> {
-    
+
+    @Override
+    protected QueryBuilder<TransactionDetail> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }    
 }
