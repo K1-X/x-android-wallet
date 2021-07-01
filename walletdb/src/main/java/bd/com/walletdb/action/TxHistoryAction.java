@@ -11,5 +11,9 @@ import bd.com.walletdb.greendao.TxHistoryDao;
 
 
 public class TxHistoryAction extends BaseDaoAction<TxHistory,TxHistoryDao> {
-    
+
+    @Override
+    protected QueryBuilder<TxHistory> getQueryBuilder() {
+        return getEntityDao().queryBuilder();
+    }    
 }
