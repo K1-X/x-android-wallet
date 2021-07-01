@@ -51,5 +51,19 @@ public class Event {
             this.hasUnreadMessage = hasUnreadMessage;
         }
     }
+ 
+    public static class UpdateTransactionUnreadMessageEvent {
+
+        public String uuid;
+        /**
+         * 
+         */
+        public boolean hasUnread;
+
+        public UpdateTransactionUnreadMessageEvent(String uuid, boolean hasUnread) {
+            this.uuid = uuid;
+            this.hasUnread = hasUnread;
+        }
+    }
 
 }
