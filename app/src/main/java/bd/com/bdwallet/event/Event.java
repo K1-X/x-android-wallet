@@ -66,4 +66,26 @@ public class Event {
         }
     }
 
+    public static class UpdateWalletListEvent {
+
+        public UpdateWalletListEvent() {
+        }
+    }
+
+    public static class UpdateAssetsTabEvent {
+        public int tabIndex;
+
+        public UpdateAssetsTabEvent(int tabIndex) {
+            this.tabIndex = tabIndex;
+        }
+    }
+
+    public static class NodeChangedEvent {
+
+        public Node nodeEntity;
+
+        public NodeChangedEvent(Node nodeEntity) {
+            this.nodeEntity = nodeEntity;
+        }
+    }
 }
