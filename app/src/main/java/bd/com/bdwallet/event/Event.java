@@ -88,4 +88,64 @@ public class Event {
             this.nodeEntity = nodeEntity;
         }
     }
+
+    public static class UpdateDelegateDetailEvent {
+
+        public UpdateDelegateDetailEvent() {
+        }
+    }
+
+    public static class UpdateValidatorsDetailEvent {
+        public UpdateValidatorsDetailEvent() {
+        }
+    }
+
+    public static class UpdateDelegateTabEvent {
+        public UpdateDelegateTabEvent() {
+        }
+    }
+
+    public static class UpdateValidatorsTabEvent {
+        public UpdateValidatorsTabEvent() {
+        }
+    }
+
+    public static class UpdateTabChangeEvent {
+        public UpdateTabChangeEvent() {
+
+        }
+    }
+
+    public static class UpdateRefreshPageEvent {
+        public UpdateRefreshPageEvent() {
+
+        }
+    }
+
+    /**
+     * 
+     */
+    public static class WalletListOrderChangedEvent {
+
+        public WalletListOrderChangedEvent() {
+
+        }
+    }
+
+    public static class SumAccountBalanceChanged {
+
+        public SumAccountBalanceChanged() {
+        }
+    }
+    public static class  MyDelegateGuide{
+        public MyDelegateGuide(){
+
+        }
+    }
+
+    public static  class  ValidatorsGuide{
+        public ValidatorsGuide(){
+
+        }
+    }
 }
