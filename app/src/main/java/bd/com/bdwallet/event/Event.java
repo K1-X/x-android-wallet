@@ -40,4 +40,16 @@ public class Event {
             this.walletEntity = walletEntity;
         }
     }
+
+    public static class UpdateSharedWalletUnreadMessageEvent {
+
+        public String contractAddress;
+        public boolean hasUnreadMessage;
+
+        public UpdateSharedWalletUnreadMessageEvent(String contractAddress, boolean hasUnreadMessage) {
+            this.contractAddress = contractAddress;
+            this.hasUnreadMessage = hasUnreadMessage;
+        }
+    }
+
 }
