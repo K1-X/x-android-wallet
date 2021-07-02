@@ -16,4 +16,9 @@ public class TxHistoryAction extends BaseDaoAction<TxHistory,TxHistoryDao> {
     protected QueryBuilder<TxHistory> getQueryBuilder() {
         return getEntityDao().queryBuilder();
     }    
+
+    @Override
+    protected TxHistoryDao getEntityDao() {
+        return getDaoSession().getTxHistoryDao();
+    }
 }
