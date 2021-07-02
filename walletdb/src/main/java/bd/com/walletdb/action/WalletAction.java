@@ -24,4 +24,9 @@ public class WalletAction extends BaseDaoAction<WalletEntity,WalletEntityDao> {
             return null;
         }
     }
+
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getDaoSession();
+    }
 }
