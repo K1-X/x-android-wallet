@@ -21,4 +21,9 @@ public class TxHistoryAction extends BaseDaoAction<TxHistory,TxHistoryDao> {
     protected TxHistoryDao getEntityDao() {
         return getDaoSession().getTxHistoryDao();
     }
+
+    @Override
+    protected DaoSession getDaoSession() {
+        return GreendaoFactory.getsTxDaoSession();
+    }
 }
