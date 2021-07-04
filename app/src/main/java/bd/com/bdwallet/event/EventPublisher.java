@@ -19,5 +19,17 @@ private static final String TAG = "Portal.EventPublisher";
 
     private EventPublisher() {
     }
+
+    public static EventPublisher getInstance() {
+        return instance;
+    }
+
+    public void init(Context context) {
+        this.context = context;
+    }
+
+    public static String getTag() {
+        return TAG;
+    }
   
 }
