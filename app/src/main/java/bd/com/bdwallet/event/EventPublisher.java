@@ -31,5 +31,18 @@ private static final String TAG = "Portal.EventPublisher";
     public static String getTag() {
         return TAG;
     }
-  
+
+    public void register(Object obj) {
+        BusProvider.register(obj);
+    }
+
+    public void unRegister(Object obj) {
+        BusProvider.unRegister(obj);
+    }
+
+
+
+    public void sendUpdateTransactionEvent(Transaction transaction) {
+        BusProvider.post(new Event.UpdateTransactionEvent(transaction));
+    }  
 }
