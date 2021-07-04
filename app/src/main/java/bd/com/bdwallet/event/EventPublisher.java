@@ -9,5 +9,15 @@ import org.web3j.protocol.core.methods.request.Transaction;
 
 public class EventPublisher {
 
+private static final String TAG = "Portal.EventPublisher";
+
+    public static final String ACTION_LOGIN = "com.juzix.wallet.ACTION_LOGIN";
+
+    private Context context;
+
+    private static EventPublisher instance = new EventPublisher();
+
+    private EventPublisher() {
+    }
   
 }
