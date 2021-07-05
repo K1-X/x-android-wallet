@@ -45,4 +45,16 @@ private static final String TAG = "Portal.EventPublisher";
     public void sendUpdateTransactionEvent(Transaction transaction) {
         BusProvider.post(new Event.UpdateTransactionEvent(transaction));
     }  
+
+    public void sendDeleteTransactionEvent(Transaction transaction){
+        BusProvider.post(new Event.DeleteTransactionEvent(transaction));
+    }
+
+    public void sendUpdateSelectedWalletEvent(Wallet entity) {
+        BusProvider.post(new Event.UpdateSelectedWalletEvent(entity));
+    }
+
+    public void sendUpdateWalletListEvent() {
+        BusProvider.post(new Event.UpdateWalletListEvent());
+    }
 }
