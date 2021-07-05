@@ -15,4 +15,11 @@ public class ChainEntity implements Parcelable {
     private String chainId;
     private String explorUrl;
     private boolean selected;    
+
+    protected ChainEntity(Parcel in) {
+        name = in.readString();
+        chainId = in.readString();
+        explorUrl = in.readString();
+        selected = in.readByte() != 0;
+    }
 }
