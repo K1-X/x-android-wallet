@@ -9,5 +9,10 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class ChainEntity implements Parcelable {
-    
+
+     private String name;
+    @Id
+    private String chainId;
+    private String explorUrl;
+    private boolean selected;    
 }
