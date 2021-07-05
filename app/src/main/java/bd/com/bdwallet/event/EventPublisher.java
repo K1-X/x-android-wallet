@@ -81,4 +81,24 @@ private static final String TAG = "Portal.EventPublisher";
     public void sendUpdateDelegateTabEvent() {
         BusProvider.post(new Event.UpdateDelegateTabEvent());
     }
+
+    public void sendUpdateValidatorsTabEvent() {
+        BusProvider.post(new Event.UpdateValidatorsTabEvent());
+    }
+
+    public void sendTabChangeUpdateValidatorsEvent() {
+        BusProvider.post(new Event.UpdateTabChangeEvent());
+    }
+
+    public void sendRefreshPageEvent() {
+        BusProvider.post(new Event.UpdateRefreshPageEvent());
+    }
+
+    public void sendShowMyDelegateGuide(){
+        BusProvider.post(new Event.MyDelegateGuide());
+    }
+
+    public void sendShowValidatorsGuide(){
+        BusProvider.post(new Event.ValidatorsGuide());
+    }
 }
