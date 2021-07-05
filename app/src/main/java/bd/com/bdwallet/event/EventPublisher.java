@@ -57,4 +57,16 @@ private static final String TAG = "Portal.EventPublisher";
     public void sendUpdateWalletListEvent() {
         BusProvider.post(new Event.UpdateWalletListEvent());
     }
+
+    public void sendUpdateAssetsTabEvent(int tabIndex) {
+        BusProvider.post(new Event.UpdateAssetsTabEvent(tabIndex));
+    }
+
+    public void sendNodeChangedEvent(Node nodeEntity) {
+        BusProvider.post(new Event.NodeChangedEvent(nodeEntity));
+    }
+
+    public void sendWalletListOrderChangedEvent() {
+        BusProvider.post(new Event.WalletListOrderChangedEvent());
+    }
 }
