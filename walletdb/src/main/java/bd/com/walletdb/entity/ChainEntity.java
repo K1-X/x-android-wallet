@@ -59,4 +59,24 @@ public class ChainEntity implements Parcelable {
     public String getChainId() {
         return chainId;
     }
+
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
+    }
+
+    public String getExplorUrl() {
+        return explorUrl;
+    }
+
+    public void setExplorUrl(String explorUrl) {
+        this.explorUrl = explorUrl;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 }
