@@ -79,4 +79,21 @@ public class ChainEntity implements Parcelable {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(chainId);
+        dest.writeString(explorUrl);
+        dest.writeByte((byte) (selected ? 1 : 0));
+    }
+
+    public boolean getSelected() {
+        return this.selected;
+    }
 }
