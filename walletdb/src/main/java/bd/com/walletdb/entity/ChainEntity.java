@@ -47,4 +47,16 @@ public class ChainEntity implements Parcelable {
             return new ChainEntity[size];
         }
     };
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getChainId() {
+        return chainId;
+    }
 }
