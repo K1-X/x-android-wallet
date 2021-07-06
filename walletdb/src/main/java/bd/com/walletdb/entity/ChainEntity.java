@@ -22,4 +22,29 @@ public class ChainEntity implements Parcelable {
         explorUrl = in.readString();
         selected = in.readByte() != 0;
     }
+
+    @Generated(hash = 268069400)
+    public ChainEntity(String name, String chainId, String explorUrl,
+            boolean selected) {
+        this.name = name;
+        this.chainId = chainId;
+        this.explorUrl = explorUrl;
+        this.selected = selected;
+    }
+
+    @Generated(hash = 97016054)
+    public ChainEntity() {
+    }
+
+    public static final Creator<ChainEntity> CREATOR = new Creator<ChainEntity>() {
+        @Override
+        public ChainEntity createFromParcel(Parcel in) {
+            return new ChainEntity(in);
+        }
+
+        @Override
+        public ChainEntity[] newArray(int size) {
+            return new ChainEntity[size];
+        }
+    };
 }
