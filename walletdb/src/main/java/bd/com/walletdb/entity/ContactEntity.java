@@ -21,4 +21,11 @@ public class ContactEntity implements Parcelable {
         name = in.readString();
         remark = in.readString();
     }    
+
+    @Generated(hash = 792408862)
+    public ContactEntity(String address, String name, String remark) {
+        this.address = address;
+        this.name = name;
+        this.remark = remark;
+    }
 }
