@@ -9,5 +9,16 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class ContactEntity implements Parcelable {
-    
+
+    @Id
+    private String address;
+    private String name;
+    private String remark;
+
+
+    protected ContactEntity(Parcel in) {
+        address = in.readString();
+        name = in.readString();
+        remark = in.readString();
+    }    
 }
