@@ -28,4 +28,15 @@ public class ContactEntity implements Parcelable {
         this.name = name;
         this.remark = remark;
     }
+
+    @Generated(hash = 393979869)
+    public ContactEntity() {
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(address);
+        dest.writeString(name);
+        dest.writeString(remark);
+    }
 }
