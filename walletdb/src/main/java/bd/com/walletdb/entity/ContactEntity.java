@@ -39,4 +39,21 @@ public class ContactEntity implements Parcelable {
         dest.writeString(name);
         dest.writeString(remark);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ContactEntity> CREATOR = new Creator<ContactEntity>() {
+        @Override
+        public ContactEntity createFromParcel(Parcel in) {
+            return new ContactEntity(in);
+        }
+
+        @Override
+        public ContactEntity[] newArray(int size) {
+            return new ContactEntity[size];
+        }
+    };
 }
