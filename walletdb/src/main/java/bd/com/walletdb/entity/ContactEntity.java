@@ -68,4 +68,30 @@ public class ContactEntity implements Parcelable {
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof ContactEntity){
+            ContactEntity entity=(ContactEntity)obj;
+            return this.getAddress().equals(entity.getAddress());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getAddress().hashCode();
+    }
 }
