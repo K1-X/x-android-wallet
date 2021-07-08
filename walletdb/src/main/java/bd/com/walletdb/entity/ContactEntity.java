@@ -56,4 +56,16 @@ public class ContactEntity implements Parcelable {
             return new ContactEntity[size];
         }
     };
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
