@@ -34,4 +34,16 @@ public class Price implements Parcelable {
         address = in.readString();
         chainId = in.readString();
     }    
+
+    @Generated(hash = 2027481334)
+    public Price(Long id, String marketName, String asks, String bids, String unit,
+            String address, String chainId) {
+        this.id = id;
+        this.marketName = marketName;
+        this.asks = asks;
+        this.bids = bids;
+        this.unit = unit;
+        this.address = address;
+        this.chainId = chainId;
+    }
 }
