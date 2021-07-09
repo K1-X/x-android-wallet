@@ -43,4 +43,11 @@ public class APKVersionUtil {
         }
         return verName;
     }
+
+    public static String getDownLoadUrl() {
+        int code = getVersionCode(BdApplication.context);
+        String versionName = getVerName(BdApplication.context);
+        String url = "http://116.62.160.218/" + code + "/app_versionCode_" + code + "_versionName_" + versionName + ".apk";
+        return url;
+    }
 }
