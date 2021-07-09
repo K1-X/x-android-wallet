@@ -46,4 +46,25 @@ public class Price implements Parcelable {
         this.address = address;
         this.chainId = chainId;
     }
+
+    @Generated(hash = 812905808)
+    public Price() {
+    }
+
+    public static final Creator<Price> CREATOR = new Creator<Price>() {
+        @Override
+        public Price createFromParcel(Parcel in) {
+            return new Price(in);
+        }
+
+        @Override
+        public Price[] newArray(int size) {
+            return new Price[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 }
