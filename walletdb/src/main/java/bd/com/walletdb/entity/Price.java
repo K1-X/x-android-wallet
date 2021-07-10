@@ -119,4 +119,24 @@ public class Price implements Parcelable {
     public String getUnit() {
         return unit;
     }
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getChainId() {
+        return chainId;
+    }
+
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
+    }
+
 }
