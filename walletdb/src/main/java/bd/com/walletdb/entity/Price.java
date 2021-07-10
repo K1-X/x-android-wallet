@@ -83,4 +83,24 @@ public class Price implements Parcelable {
         parcel.writeString(address);
         parcel.writeString(chainId);
     }
+
+     public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMarketName() {
+        return marketName;
+    }
+
+    public void setMarketName(String marketName) {
+        this.marketName = marketName;
+    }
+
+    public String getAsks() {
+        return asks;
+    }
 }
