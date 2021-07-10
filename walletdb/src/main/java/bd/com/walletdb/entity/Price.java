@@ -67,4 +67,20 @@ public class Price implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(id);
+        }
+        parcel.writeString(marketName);
+        parcel.writeString(asks);
+        parcel.writeString(bids);
+        parcel.writeString(unit);
+        parcel.writeString(address);
+        parcel.writeString(chainId);
+    }
 }
