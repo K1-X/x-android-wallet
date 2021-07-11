@@ -13,5 +13,11 @@ import bd.com.walletdb.manager.TxHistoryDBManager;
 public class AppCacheUitl {
 
 
+    public static void resetDB() {
+        TokenManager.getManager().reset();
+        TxHistoryDBManager.getManager().reset();
+        AppSettings.getAppSettings().setCurrentChainIp("");
+        AppSettings.getAppSettings().setCurrentChinId(null);
+    }
     
 }
