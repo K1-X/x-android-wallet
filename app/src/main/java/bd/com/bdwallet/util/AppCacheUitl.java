@@ -19,5 +19,15 @@ public class AppCacheUitl {
         AppSettings.getAppSettings().setCurrentChainIp("");
         AppSettings.getAppSettings().setCurrentChinId(null);
     }
-    
+
+    public static String getTotalCacheSize(Context context) throws Exception {
+
+        //Context.getExternalCacheDir() --> SDCard/Android/data//cache/，
+        long cacheSize = getFolderSize(context.getCacheDir());
+        //Context.getExternalFilesDir() --> SDCard/Android/data//files/ ，
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            cacheSize += getFolderSize(context.getExternalCacheDir());
+        }
+        return getFormatSize(cacheSize);
+    }    
 }
