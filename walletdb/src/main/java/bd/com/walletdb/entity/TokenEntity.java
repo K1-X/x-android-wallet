@@ -28,4 +28,26 @@ public class TokenEntity implements Parcelable {
     private String value;// =balance*price
     private String price;//
     private String walletAddress;//    
+
+    protected TokenEntity(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        address = in.readString();
+        icon = in.readString();
+        name = in.readString();
+        symbol = in.readString();
+        supplyTotal = in.readString();
+        decimals = in.readInt();
+        version = in.readString();
+        checked = in.readByte() != 0;
+        publisher = in.readString();
+        chainId = in.readString();
+        balance = in.readString();
+        value = in.readString();
+        price = in.readString();
+        walletAddress = in.readString();
+    }
 }
