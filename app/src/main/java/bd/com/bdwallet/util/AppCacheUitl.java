@@ -30,4 +30,14 @@ public class AppCacheUitl {
         }
         return getFormatSize(cacheSize);
     }    
+
+    public static void clearAllCache(Context context) {
+        deleteDir(context.getCacheDir());
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            deleteDir(context.getExternalCacheDir());
+            //webview.false,5.1，/data/data/packagedatabase/// ，
+            context.deleteDatabase("webview.db");
+            context.deleteDatabase("webviewCache.db");
+        }
+    }
 }
