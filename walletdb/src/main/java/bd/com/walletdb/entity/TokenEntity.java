@@ -72,4 +72,20 @@ public class TokenEntity implements Parcelable {
         this.price = price;
         this.walletAddress = walletAddress;
     }
+
+    @Generated(hash = 697107377)
+    public TokenEntity() {
+    }
+
+    public static final Creator<TokenEntity> CREATOR = new Creator<TokenEntity>() {
+        @Override
+        public TokenEntity createFromParcel(Parcel in) {
+            return new TokenEntity(in);
+        }
+
+        @Override
+        public TokenEntity[] newArray(int size) {
+            return new TokenEntity[size];
+        }
+    };
 }
