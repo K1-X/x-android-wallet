@@ -50,4 +50,26 @@ public class TokenEntity implements Parcelable {
         price = in.readString();
         walletAddress = in.readString();
     }
+
+    @Generated(hash = 743266418)
+    public TokenEntity(Long id, String address, String icon, String name,
+                       String symbol, String supplyTotal, int decimals, String version,
+                       boolean checked, String publisher, String chainId, String balance,
+                       String value, String price, String walletAddress) {
+        this.id = id;
+        this.address = address;
+        this.icon = icon;
+        this.name = name;
+        this.symbol = symbol;
+        this.supplyTotal = supplyTotal;
+        this.decimals = decimals;
+        this.version = version;
+        this.checked = checked;
+        this.publisher = publisher;
+        this.chainId = chainId;
+        this.balance = balance;
+        this.value = value;
+        this.price = price;
+        this.walletAddress = walletAddress;
+    }
 }
