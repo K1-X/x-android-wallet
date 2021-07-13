@@ -107,4 +107,28 @@ public class TokenEntity implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (id == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(id);
+        }
+        parcel.writeString(address);
+        parcel.writeString(icon);
+        parcel.writeString(name);
+        parcel.writeString(symbol);
+        parcel.writeString(supplyTotal);
+        parcel.writeInt(decimals);
+        parcel.writeString(version);
+        parcel.writeByte((byte) (checked ? 1 : 0));
+        parcel.writeString(publisher);
+        parcel.writeString(chainId);
+        parcel.writeString(balance);
+        parcel.writeString(value);
+        parcel.writeString(price);
+        parcel.writeString(walletAddress);
+    }
 }
