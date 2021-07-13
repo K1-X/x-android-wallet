@@ -131,4 +131,72 @@ public class TokenEntity implements Parcelable {
         parcel.writeString(price);
         parcel.writeString(walletAddress);
     }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIcon() {
+        return this.icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSymbol() {
+        return this.symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSupplyTotal() {
+        return this.supplyTotal;
+    }
+
+    public void setSupplyTotal(String supplyTotal) {
+        this.supplyTotal = supplyTotal;
+    }
+
+    public int getDecimals() {
+        return this.decimals;
+    }
+
+    public void setDecimals(int decimals) {
+        this.decimals = decimals;
+    }
+
+    public String getVersion() {
+        return this.version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public boolean getChecked() {
+        return this.checked;
+    }
 }
