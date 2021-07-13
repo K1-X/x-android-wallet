@@ -88,4 +88,23 @@ public class TokenEntity implements Parcelable {
             return new TokenEntity[size];
         }
     };
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof TokenEntity) {
+            return ((TokenEntity) obj).address.equals(this.address);
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.address.hashCode();
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 }
