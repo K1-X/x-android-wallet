@@ -199,4 +199,56 @@ public class TokenEntity implements Parcelable {
     public boolean getChecked() {
         return this.checked;
     }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public String getPublisher() {
+        return this.publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getChainId() {
+        return this.chainId;
+    }
+
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
+    }
+
+    public String getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public String getValue() {
+        return this.value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getWalletAddress() {
+        return this.walletAddress;
+    }
+
+    public void setWalletAddress(String walletAddress) {
+        this.walletAddress = walletAddress;
+    }
 }
