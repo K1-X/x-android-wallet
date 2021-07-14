@@ -57,4 +57,16 @@ public class TransactionDetail {
         this.tokenTransfer = tokenTransfer;
         this.type = type;
     }
+
+     @Generated(hash = 487738323)
+    public TransactionDetail() {
+    }
+
+    public String getPkHash() {
+        return pkHash;
+    }
+
+    public void setPkHash(String pkHash) {
+        this.pkHash = pkHash;
+    }
 }
