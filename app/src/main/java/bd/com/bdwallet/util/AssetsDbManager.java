@@ -55,4 +55,23 @@ public class AssetsDbManager {
         }
 
     }
+
+    public static String getJsonFromAssets(String fileName) {
+        //json
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            //assets
+            AssetManager assetManager = BdApplication.getAppInstance().getAssets();
+            //
+            BufferedReader bf = new BufferedReader(new InputStreamReader(
+                    assetManager.open(fileName)));
+            String line;
+            while ((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "getJsonFromAssets error=" + e.getMessage());
+        }
+        return stringBuilder.toString();
+    }
 }
