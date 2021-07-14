@@ -81,4 +81,16 @@ public class TransactionDetail {
     public long getBlockNumber() {
         return blockNumber;
     }
+
+    public void setBlockNumber(long blockNumber) {
+        this.blockNumber = blockNumber;
+    }
+
+    public String getBlockTimestamp() {
+        return blockTimestamp;
+    }
+
+    public void setBlockTimestamp(String blockTimestamp) {
+        this.blockTimestamp = blockTimestamp;
+    }
 }
