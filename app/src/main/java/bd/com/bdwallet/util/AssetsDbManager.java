@@ -40,4 +40,19 @@ public class AssetsDbManager {
         }
 
     }
+
+    public static List<News> getBannerList() {
+        try {
+            //JSONobject
+            JSONObject jsonObject = new JSONObject(getJsonFromAssets(BANNER_LIST));
+            String jsonArray = jsonObject.getString(JSON_LIST_KEY);
+            TypeToken<ArrayList<News>> typeToken = new TypeToken<ArrayList<News>>() {
+            };
+            return GsonUtil.jsonToListObject(jsonArray, typeToken);
+        } catch (Exception e) {
+            Log.e(TAG, "getGuidInfos json prase error msg::" + e.getMessage());
+            return null;
+        }
+
+    }
 }
