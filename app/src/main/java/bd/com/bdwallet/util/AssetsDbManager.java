@@ -26,4 +26,18 @@ public class AssetsDbManager {
 
     private static String TAG = AssetsDbManager.class.getSimpleName(); // for LogCat    
 
+    public static List<News> getNewsList() {
+        try {
+            //JSONobject
+            JSONObject jsonObject = new JSONObject(getJsonFromAssets(NEWS_LIST));
+            String jsonArray = jsonObject.getString(JSON_LIST_KEY);
+            TypeToken<ArrayList<News>> typeToken = new TypeToken<ArrayList<News>>() {
+            };
+            return GsonUtil.jsonToListObject(jsonArray, typeToken);
+        } catch (Exception e) {
+            Log.e(TAG, "json parse error msg::" + e.getMessage());
+            return null;
+        }
+
+    }
 }
