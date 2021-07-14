@@ -69,4 +69,16 @@ public class TransactionDetail {
     public void setPkHash(String pkHash) {
         this.pkHash = pkHash;
     }
+
+    public String getBlockHash() {
+        return blockHash;
+    }
+
+    public void setBlockHash(String blockHash) {
+        this.blockHash = blockHash;
+    }
+
+    public long getBlockNumber() {
+        return blockNumber;
+    }
 }
