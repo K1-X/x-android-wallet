@@ -19,6 +19,11 @@ import bd.com.bdwallet.module.news.domain.News;
 
 
 public class AssetsDbManager {
-    
+ 
+    private static final String BANNER_LIST = "banner.json";
+    private static final String NEWS_LIST = "news.json";
+    public static final String JSON_LIST_KEY = "list";
+
+    private static String TAG = AssetsDbManager.class.getSimpleName(); // for LogCat    
 
 }
