@@ -28,4 +28,33 @@ public class TransactionDetail {
     private String tokenTransferTo;
     private String tokenTransfer;
     private int type;    
+
+    @Generated(hash = 658078881)
+    public TransactionDetail(String pkHash, String blockHash, long blockNumber,
+            String blockTimestamp, String blockGasLimit, String transactionIndex,
+            String transactionFrom, String transactionTo, long gas, long gasUsed,
+            long gasPrice, long cumulativeGas, String randomId, String inputText,
+            long lastBlockNumber, String txCost, String value,
+            String tokenTransferTo, String tokenTransfer, int type) {
+        this.pkHash = pkHash;
+        this.blockHash = blockHash;
+        this.blockNumber = blockNumber;
+        this.blockTimestamp = blockTimestamp;
+        this.blockGasLimit = blockGasLimit;
+        this.transactionIndex = transactionIndex;
+        this.transactionFrom = transactionFrom;
+        this.transactionTo = transactionTo;
+        this.gas = gas;
+        this.gasUsed = gasUsed;
+        this.gasPrice = gasPrice;
+        this.cumulativeGas = cumulativeGas;
+        this.randomId = randomId;
+        this.inputText = inputText;
+        this.lastBlockNumber = lastBlockNumber;
+        this.txCost = txCost;
+        this.value = value;
+        this.tokenTransferTo = tokenTransferTo;
+        this.tokenTransfer = tokenTransfer;
+        this.type = type;
+    }
 }
