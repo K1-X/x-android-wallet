@@ -93,4 +93,16 @@ public class TransactionDetail {
     public void setBlockTimestamp(String blockTimestamp) {
         this.blockTimestamp = blockTimestamp;
     }
+
+    public String getBlockGasLimit() {
+        return blockGasLimit;
+    }
+
+    public void setBlockGasLimit(String blockGasLimit) {
+        this.blockGasLimit = blockGasLimit;
+    }
+
+    public String getTransactionIndex() {
+        return transactionIndex;
+    }
 }
