@@ -105,4 +105,16 @@ public class TransactionDetail {
     public String getTransactionIndex() {
         return transactionIndex;
     }
+
+    public void setTransactionIndex(String transactionIndex) {
+        this.transactionIndex = transactionIndex;
+    }
+
+    public String getTransactionFrom() {
+        return transactionFrom;
+    }
+
+    public void setTransactionFrom(String transactionFrom) {
+        this.transactionFrom = transactionFrom;
+    }
 }
