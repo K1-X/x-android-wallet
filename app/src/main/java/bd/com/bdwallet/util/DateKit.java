@@ -30,5 +30,27 @@ public class DateKit {
             return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         }
     };
-    
+
+    /**
+     * 
+     */
+    private final static ThreadLocal<SimpleDateFormat> timeMinFormat = new ThreadLocal<SimpleDateFormat>() {
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        }
+    };
+
+    /**
+     * :Date
+     */
+    public static Date getDate() {
+        return new Date();
+    }
+
+    /**
+     * :Calendar
+     */
+    public static Calendar getCal() {
+        return Calendar.getInstance();
+    }    
 }
