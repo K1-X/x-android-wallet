@@ -117,4 +117,24 @@ public class TransactionDetail {
     public void setTransactionFrom(String transactionFrom) {
         this.transactionFrom = transactionFrom;
     }
+
+    public String getTransactionTo() {
+        return transactionTo;
+    }
+
+    public void setTransactionTo(String transactionTo) {
+        this.transactionTo = transactionTo;
+    }
+
+    public long getGas() {
+        return gas;
+    }
+
+    public void setGas(long gas) {
+        this.gas = gas;
+    }
+
+    public long getGasUsed() {
+        return gasUsed;
+    }
 }
