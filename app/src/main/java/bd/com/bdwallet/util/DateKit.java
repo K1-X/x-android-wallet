@@ -53,4 +53,51 @@ public class DateKit {
     public static Calendar getCal() {
         return Calendar.getInstance();
     }    
+
+    /**
+     * :yyyy-MM-dd
+     */
+    public static String dateToStr(Date date) {
+        if (date != null)
+            return dateFormat.get().format(date);
+        return null;
+    }
+
+
+    /**
+     * :yyyy-MM-dd
+     */
+    public static String dateToStr(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            if (date != null) {
+                Date dd = sdf.parse(date);
+                return dateFormat.get().format(dd);
+            }
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+
+        }
+        return "";
+    }
+
+    /**
+     * :yyyyMMdd
+     */
+    public static String dateToStr2(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            if (date != null) {
+                Date dd = sdf.parse(date);
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMd");
+                return sdf2.format(dd);
+            }
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+
+        }
+        return null;
+    }
 }
