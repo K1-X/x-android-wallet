@@ -100,4 +100,45 @@ public class DateKit {
         }
         return null;
     }
+
+    public static String dateToStr3(String date) {
+        if (TextUtils.isEmpty(date)) {
+            return "";
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            if (date != null) {
+                Date dd = sdf.parse(date);
+
+                return sdf.format(dd);
+            }
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+
+    /**
+     * :yyyy-MM-dd HH:mm:ss
+     */
+    public static String timeToStr(Date date) {
+        if (date != null)
+            return timeFormat.get().format(date);
+        return null;
+    }
+
+    /**
+     * :yyyy-MM-dd
+     */
+    public static Date strToDate(String str) {
+        Date date = null;
+        try {
+            date = dateFormat.get().parse(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
 }
