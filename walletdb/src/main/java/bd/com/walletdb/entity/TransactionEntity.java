@@ -23,4 +23,11 @@ public class TransactionEntity {
         this.value = value;
         this.time = time;
     }    
+
+    @Generated(hash = 1319631883)
+    public TransactionEntity() {
+    }
+    public Long getId() {
+        return this.id;
+    }
 }
