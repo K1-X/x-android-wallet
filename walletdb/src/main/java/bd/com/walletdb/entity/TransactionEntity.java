@@ -51,4 +51,14 @@ public class TransactionEntity {
     public double getValue() {
         return this.value;
     }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+    public long getTime() {
+        return this.time;
+    }
+    public void setTime(long time) {
+        this.time = time;
+    }
 }
