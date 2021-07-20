@@ -9,6 +9,8 @@ import android.view.WindowManager;
 
 public class DensityUtil {
 
-    
+    private DensityUtil() {
+        throw new UnsupportedOperationException("cannot be instantiated");
+    }    
 
 }
