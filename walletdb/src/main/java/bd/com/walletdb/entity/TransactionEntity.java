@@ -37,4 +37,11 @@ public class TransactionEntity {
     public String getFrom() {
         return this.from;
     }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+    public String getTo() {
+        return this.to;
+    }
 }
