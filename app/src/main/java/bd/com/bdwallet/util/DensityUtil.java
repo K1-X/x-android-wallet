@@ -13,4 +13,12 @@ public class DensityUtil {
         throw new UnsupportedOperationException("cannot be instantiated");
     }    
 
+
+    /**
+     *  dp   px()
+     */
+    public static int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }
