@@ -44,4 +44,11 @@ public class TransactionEntity {
     public String getTo() {
         return this.to;
     }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+    public double getValue() {
+        return this.value;
+    }
 }
