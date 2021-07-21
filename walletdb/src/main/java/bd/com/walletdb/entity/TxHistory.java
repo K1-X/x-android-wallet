@@ -102,4 +102,23 @@ public class TxHistory implements Parcelable {
         }
     };    
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof TxHistory) {
+            return ((TxHistory) obj).pkHash.equals(this.pkHash);
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.pkHash.hashCode();
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
 }
