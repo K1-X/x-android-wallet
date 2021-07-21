@@ -121,4 +121,28 @@ public class TxHistory implements Parcelable {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(pkHash);
+        parcel.writeString(blockHash);
+        parcel.writeInt(blockNumber);
+        parcel.writeString(blockTimesStr);
+        parcel.writeString(blockGasLimit);
+        parcel.writeString(transactionIndex);
+        parcel.writeString(transactionFrom);
+        parcel.writeString(transactionTo);
+        parcel.writeString(value);
+        parcel.writeString(gas);
+        parcel.writeString(gasPrice);
+        parcel.writeString(cumulativeGas);
+        parcel.writeInt(type);
+        parcel.writeString(tokenTransferTo);
+        parcel.writeString(tokenTransfer);
+        parcel.writeString(address);
+        parcel.writeString(walletAddr);
+        parcel.writeInt(lastBlockNumber);
+        parcel.writeString(chainId);
+        parcel.writeInt(state);
+    }
+
 }
