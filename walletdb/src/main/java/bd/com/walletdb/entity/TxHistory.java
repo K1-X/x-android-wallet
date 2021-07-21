@@ -85,5 +85,21 @@ public class TxHistory implements Parcelable {
         this.chainId = chainId;
         this.state = state;
     }
-    
+  
+    @Generated(hash = 1772483653)
+    public TxHistory() {
+    }
+
+    public static final Creator<TxHistory> CREATOR = new Creator<TxHistory>() {
+        @Override
+        public TxHistory createFromParcel(Parcel in) {
+            return new TxHistory(in);
+        }
+
+        @Override
+        public TxHistory[] newArray(int size) {
+            return new TxHistory[size];
+        }
+    };    
+
 }
