@@ -56,5 +56,34 @@ public class TxHistory implements Parcelable {
         chainId = in.readString();
         state = in.readInt();
     }
+
+    @Generated(hash = 1200338274)
+    public TxHistory(String pkHash, String blockHash, int blockNumber,
+            String blockTimesStr, String blockGasLimit, String transactionIndex,
+            String transactionFrom, String transactionTo, String value, String gas,
+            String gasPrice, String cumulativeGas, int type, String tokenTransferTo,
+            String tokenTransfer, String address, String walletAddr,
+            int lastBlockNumber, String chainId, int state) {
+        this.pkHash = pkHash;
+        this.blockHash = blockHash;
+        this.blockNumber = blockNumber;
+        this.blockTimesStr = blockTimesStr;
+        this.blockGasLimit = blockGasLimit;
+        this.transactionIndex = transactionIndex;
+        this.transactionFrom = transactionFrom;
+        this.transactionTo = transactionTo;
+        this.value = value;
+        this.gas = gas;
+        this.gasPrice = gasPrice;
+        this.cumulativeGas = cumulativeGas;
+        this.type = type;
+        this.tokenTransferTo = tokenTransferTo;
+        this.tokenTransfer = tokenTransfer;
+        this.address = address;
+        this.walletAddr = walletAddr;
+        this.lastBlockNumber = lastBlockNumber;
+        this.chainId = chainId;
+        this.state = state;
+    }
     
 }
