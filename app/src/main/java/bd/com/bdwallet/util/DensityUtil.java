@@ -41,4 +41,17 @@ public class DensityUtil {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spVal, context
                 .getResources().getDisplayMetrics());
     }
+
+    /**
+     * pxsp
+     *
+     * @param context
+     * @param pxValue
+     * @return
+     */
+    public static int px2sp(Context context, float pxValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
 }
