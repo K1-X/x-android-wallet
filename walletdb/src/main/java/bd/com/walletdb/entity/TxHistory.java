@@ -145,4 +145,28 @@ public class TxHistory implements Parcelable {
         parcel.writeInt(state);
     }
 
+
+    public String getPkHash() {
+        return pkHash;
+    }
+
+    public void setPkHash(String pkHash) {
+        this.pkHash = pkHash;
+    }
+
+    public String getBlockHash() {
+        return blockHash;
+    }
+
+    public void setBlockHash(String blockHash) {
+        this.blockHash = blockHash;
+    }
+
+    public int getBlockNumber() {
+        return blockNumber;
+    }
+
+    public void setBlockNumber(int blockNumber) {
+        this.blockNumber = blockNumber;
+    }
 }
