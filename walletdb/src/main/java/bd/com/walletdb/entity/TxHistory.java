@@ -169,4 +169,28 @@ public class TxHistory implements Parcelable {
     public void setBlockNumber(int blockNumber) {
         this.blockNumber = blockNumber;
     }
+
+    public String getBlockTimesStr() {
+        return blockTimesStr;
+    }
+
+    public void setBlockTimesStr(String blockTimesStr) {
+        this.blockTimesStr = blockTimesStr;
+    }
+
+    public String getBlockGasLimit() {
+        return blockGasLimit;
+    }
+
+    public void setBlockGasLimit(String blockGasLimit) {
+        this.blockGasLimit = blockGasLimit;
+    }
+
+    public String getTransactionIndex() {
+        return transactionIndex;
+    }
+
+    public void setTransactionIndex(String transactionIndex) {
+        this.transactionIndex = transactionIndex;
+    }
 }
