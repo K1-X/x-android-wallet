@@ -217,4 +217,92 @@ public class TxHistory implements Parcelable {
     public void setValue(String value) {
         this.value = value;
     }
+
+    public String getGas() {
+        return gas;
+    }
+
+    public void setGas(String gas) {
+        this.gas = gas;
+    }
+
+    public String getGasPrice() {
+        return gasPrice;
+    }
+
+    public void setGasPrice(String gasPrice) {
+        this.gasPrice = gasPrice;
+    }
+
+    public String getCumulativeGas() {
+        return cumulativeGas;
+    }
+
+    public void setCumulativeGas(String cumulativeGas) {
+        this.cumulativeGas = cumulativeGas;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getTokenTransferTo() {
+        return tokenTransferTo;
+    }
+
+    public void setTokenTransferTo(String tokenTransferTo) {
+        this.tokenTransferTo = tokenTransferTo;
+    }
+
+    public String getTokenTransfer() {
+        return tokenTransfer;
+    }
+
+    public void setTokenTransfer(String tokenTransfer) {
+        this.tokenTransfer = tokenTransfer;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getWalletAddr() {
+        return walletAddr;
+    }
+
+    public void setWalletAddr(String walletAddr) {
+        this.walletAddr = walletAddr;
+    }
+
+    public int getLastBlockNumber() {
+        return lastBlockNumber;
+    }
+
+    public void setLastBlockNumber(int lastBlockNumber) {
+        this.lastBlockNumber = lastBlockNumber;
+    }
+
+    public String getChainId() {
+        return chainId;
+    }
+
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }
