@@ -193,4 +193,28 @@ public class TxHistory implements Parcelable {
     public void setTransactionIndex(String transactionIndex) {
         this.transactionIndex = transactionIndex;
     }
+
+    public String getTransactionFrom() {
+        return transactionFrom;
+    }
+
+    public void setTransactionFrom(String transactionFrom) {
+        this.transactionFrom = transactionFrom;
+    }
+
+    public String getTransactionTo() {
+        return transactionTo;
+    }
+
+    public void setTransactionTo(String transactionTo) {
+        this.transactionTo = transactionTo;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }
