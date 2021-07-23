@@ -48,4 +48,8 @@ public class FakeDataHelper {
     public static String getEthTokenAddr() {
         return ETH_TOKEN_ADDR_PRE;
     } 
+
+    public static String getSctTokenAddr() {
+        return SCT_TOKEN_ADDR_PRE;
+    }
 }
