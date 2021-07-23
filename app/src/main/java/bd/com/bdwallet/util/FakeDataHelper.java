@@ -44,5 +44,8 @@ public class FakeDataHelper {
 
         return coinBeans;
     }
- 
+
+    public static String getEthTokenAddr() {
+        return ETH_TOKEN_ADDR_PRE;
+    } 
 }
