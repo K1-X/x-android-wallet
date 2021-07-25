@@ -21,4 +21,14 @@ public class WalletEntity implements Parcelable {
     private String name;
     private String iconStr;
     private String balance;    
+
+    protected WalletEntity(Parcel in) {
+        address = in.readString();
+        privateKey = in.readString();
+        publicKey = in.readString();
+        password = in.readString();
+        keystore = in.readString();
+        name = in.readString();
+        iconStr = in.readString();
+    }
 }
