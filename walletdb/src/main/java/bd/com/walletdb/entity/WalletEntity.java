@@ -31,4 +31,20 @@ public class WalletEntity implements Parcelable {
         name = in.readString();
         iconStr = in.readString();
     }
+
+     @Generated(hash = 861183172)
+    public WalletEntity(String address, String privateKey, String publicKey, String password,
+                        String keystore, String name, String iconStr, String balance) {
+        this.address = address;
+        this.privateKey = privateKey;
+        this.publicKey = publicKey;
+        this.password = password;
+        this.keystore = keystore;
+        this.name = name;
+        this.iconStr = iconStr;
+        this.balance = balance;
+    }
+    @Generated(hash = 1363662176)
+    public WalletEntity() {
+    }
 }
