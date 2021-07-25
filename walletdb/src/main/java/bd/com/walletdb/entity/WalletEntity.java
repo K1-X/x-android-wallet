@@ -11,5 +11,14 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class WalletEntity implements Parcelable {
-    
+
+    @Id
+    private String address;
+    private String privateKey;
+    private String publicKey;
+    private String password;
+    private String keystore;
+    private String name;
+    private String iconStr;
+    private String balance;    
 }
