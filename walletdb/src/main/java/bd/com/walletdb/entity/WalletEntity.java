@@ -47,4 +47,16 @@ public class WalletEntity implements Parcelable {
     @Generated(hash = 1363662176)
     public WalletEntity() {
     }
+
+    public static final Creator<WalletEntity> CREATOR = new Creator<WalletEntity>() {
+        @Override
+        public WalletEntity createFromParcel(Parcel in) {
+            return new WalletEntity(in);
+        }
+
+        @Override
+        public WalletEntity[] newArray(int size) {
+            return new WalletEntity[size];
+        }
+    };
 }
