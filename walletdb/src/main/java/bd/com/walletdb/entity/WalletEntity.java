@@ -98,4 +98,35 @@ public class WalletEntity implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getIconStr() {
+        return this.iconStr;
+    }
+    public void setIconStr(String iconStr) {
+        this.iconStr = iconStr;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(address);
+        dest.writeString(privateKey);
+        dest.writeString(publicKey);
+        dest.writeString(password);
+        dest.writeString(keystore);
+        dest.writeString(name);
+        dest.writeString(iconStr);
+    }
 }
