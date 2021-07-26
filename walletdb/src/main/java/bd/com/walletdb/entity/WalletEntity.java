@@ -86,4 +86,16 @@ public class WalletEntity implements Parcelable {
         this.password = password;
     }
 
+    public String getKeystore() {
+        return this.keystore;
+    }
+    public void setKeystore(String keystore) {
+        this.keystore = keystore;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 }
