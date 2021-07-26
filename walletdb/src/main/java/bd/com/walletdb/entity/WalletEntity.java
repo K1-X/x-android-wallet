@@ -59,4 +59,17 @@ public class WalletEntity implements Parcelable {
             return new WalletEntity[size];
         }
     };
+
+    public String getPrivateKey() {
+        return this.privateKey;
+    }
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
+    public String getPublicKey() {
+        return this.publicKey;
+    }
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
+    }
 }
