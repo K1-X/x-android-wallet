@@ -17,5 +17,14 @@ import bd.com.walletdb.greendao.DaoMaster;
 
 
 public class DbUpgradeHelper {
-    
+
+    private static final String CONVERSION_CLASS_NOT_FOUND_EXCEPTION = "MIGRATION HELPER - CLASS DOESN'T MATCH WITH THE CURRENT PARAMETERS";
+    private static DbUpgradeHelper instance;
+
+    public static DbUpgradeHelper getInstance() {
+        if(instance == null) {
+            instance = new DbUpgradeHelper();
+        }
+        return instance;
+    }    
 }
