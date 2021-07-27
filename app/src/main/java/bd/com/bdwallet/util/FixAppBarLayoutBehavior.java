@@ -9,6 +9,8 @@ import android.view.View;
 
 public class FixAppBarLayoutBehavior extends AppBarLayout.Behavior {
 
-    
+    public FixAppBarLayoutBehavior() {
+        super();
+    }    
 
 }
