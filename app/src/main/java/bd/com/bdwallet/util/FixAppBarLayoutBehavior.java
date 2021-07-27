@@ -13,4 +13,15 @@ public class FixAppBarLayoutBehavior extends AppBarLayout.Behavior {
         super();
     }    
 
+    public FixAppBarLayoutBehavior(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target,
+                               int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed,
+                dxUnconsumed, dyUnconsumed, type);
+        stopNestedScrollIfNeeded(dyUnconsumed, child, target, type);
+    }
 }
