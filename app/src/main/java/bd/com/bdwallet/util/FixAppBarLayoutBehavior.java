@@ -31,4 +31,14 @@ public class FixAppBarLayoutBehavior extends AppBarLayout.Behavior {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
         stopNestedScrollIfNeeded(dy, child, target, type);
     }
+
+    private void stopNestedScrollIfNeeded(int dy, AppBarLayout child, View target, int type) {
+        if (type == ViewCompat.TYPE_NON_TOUCH) {
+            final int currOffset = getTopAndBottomOffset();
+            if ((dy < 0 && currOffset == 0)
+                    || (dy > 0 && currOffset == -child.getTotalScrollRange())) {
+                ViewCompat.stopNestedScroll(target, ViewCompat.TYPE_NON_TOUCH);
+            }
+        }
+    }
 }
