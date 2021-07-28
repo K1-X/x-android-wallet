@@ -27,4 +27,15 @@ public class DbUpgradeHelper {
         }
         return instance;
     }    
+
+    public void migrate(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        //
+        generateTempTables(db, daoClasses);
+        //
+        DaoMaster.dropAllTables(db, true);
+        //
+        DaoMaster.createAllTables(db, false);
+        //
+        restoreData(db, daoClasses);
+    }
 }
