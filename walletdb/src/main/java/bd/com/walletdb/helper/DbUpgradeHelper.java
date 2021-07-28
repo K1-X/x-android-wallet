@@ -123,4 +123,38 @@ public class DbUpgradeHelper {
             db.execSQL(dropTableStringBuilder.toString());
         }
     }
+
+    private String getTypeByClass(Class<?> type) throws Exception {
+        if(type.equals(String.class)) {
+            return "TEXT";
+        }
+        if(type.equals(Long.class) || type.equals(Integer.class) || type.equals(long.class)) {
+            return "INTEGER";
+        }
+        if(type.equals(Boolean.class)) {
+            return "BOOLEAN";
+        }
+
+        Exception exception = new Exception(CONVERSION_CLASS_NOT_FOUND_EXCEPTION.concat(" - Class: ").concat(type.toString()));
+        //Crashlytics.logException(exception);
+        throw exception;
+    }
+
+    private static List<String> getColumns(Database db, String tableName) {
+        List<String> columns = new ArrayList<>();
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM " + tableName + " limit 1", null);
+            if (cursor != null) {
+                columns = new ArrayList<>(Arrays.asList(cursor.getColumnNames()));
+            }
+        } catch (Exception e) {
+            Log.v(tableName, e.getMessage(), e);
+            e.printStackTrace();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return columns;
+    }
 }
