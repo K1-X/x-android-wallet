@@ -90,4 +90,37 @@ public class DbUpgradeHelper {
             db.execSQL(insertTableStringBuilder.toString());
         }
     }
+
+    private void restoreData(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        for(int i = 0; i < daoClasses.length; i++) {
+            DaoConfig daoConfig = new DaoConfig(db, daoClasses[i]);
+
+            String tableName = daoConfig.tablename;
+            String tempTableName = daoConfig.tablename.concat("_TEMP");
+            ArrayList<String> properties = new ArrayList();
+
+            for (int j = 0; j < daoConfig.properties.length; j++) {
+                String columnName = daoConfig.properties[j].columnName;
+
+                if(getColumns(db, tempTableName).contains(columnName)) {
+                    properties.add(columnName);
+                }
+            }
+
+            StringBuilder insertTableStringBuilder = new StringBuilder();
+
+            insertTableStringBuilder.append("INSERT INTO ").append(tableName).append(" (");
+            insertTableStringBuilder.append(TextUtils.join(",", properties));
+            insertTableStringBuilder.append(") SELECT ");
+            insertTableStringBuilder.append(TextUtils.join(",", properties));
+            insertTableStringBuilder.append(" FROM ").append(tempTableName).append(";");
+
+            StringBuilder dropTableStringBuilder = new StringBuilder();
+
+            dropTableStringBuilder.append("DROP TABLE ").append(tempTableName);
+
+            db.execSQL(insertTableStringBuilder.toString());
+            db.execSQL(dropTableStringBuilder.toString());
+        }
+    }
 }
