@@ -17,4 +17,18 @@ public class HttpUtils {
         configureLogging(builder);
         return builder.build();
     }    
+
+    private static void configureLogging(OkHttpClient.Builder builder) {
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(
+                new HttpLoggingInterceptor.Logger() {
+                    @Override
+                    public void log(String msg) {
+                        Log.i("HttpUtils", "msg=" + msg);
+                    }
+                });
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.addInterceptor(logging);
+
+    }
 }
