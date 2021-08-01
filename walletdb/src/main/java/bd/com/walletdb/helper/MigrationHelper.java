@@ -81,4 +81,37 @@ public final class MigrationHelper {
         printLog("【Restore data】complete");
     }    
 
+    private static void generateTempTables(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        for (int i = 0; i < daoClasses.length; i++) {
+            String tempTableName = null;
+
+            //DaoConfig tablename
+            DaoConfig daoConfig = new DaoConfig(db, daoClasses[i]);
+            String tableName = daoConfig.tablename;
+            if (!isTableExists(db, false, tableName)) {
+                printLog("【New Table】" + tableName);
+                continue;
+            }
+            try {
+                //，
+                tempTableName = daoConfig.tablename.concat("_TEMP");
+                StringBuilder dropTableStringBuilder = new StringBuilder();
+                dropTableStringBuilder.append("DROP TABLE IF EXISTS ").append(tempTableName).append(";");
+                db.execSQL(dropTableStringBuilder.toString());
+
+                //： CREATE TEMPORARY TABLE
+                //，，drop。
+                // ，
+                StringBuilder insertTableStringBuilder = new StringBuilder();
+                insertTableStringBuilder.append("CREATE TEMPORARY TABLE ").append(tempTableName);
+                //AS SELECT * FROM  tableNametempTableName，
+                insertTableStringBuilder.append(" AS SELECT * FROM ").append(tableName).append(";");
+                db.execSQL(insertTableStringBuilder.toString());
+                printLog("【Table】" + tableName + "\n ---Columns-->" + getColumnsStr(daoConfig));
+                printLog("【Generate temp table】" + tempTableName);
+            } catch (SQLException e) {
+                Log.e(TAG, "【Failed to generate temp table】" + tempTableName, e);
+            }
+        }
+    }
 }
