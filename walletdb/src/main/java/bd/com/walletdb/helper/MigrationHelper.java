@@ -37,6 +37,48 @@ public final class MigrationHelper {
 
         void onDropAllTables(Database db, boolean ifExists);
     }
-    
+ 
+    public static void migrate(SQLiteDatabase db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        printLog("【The Old Database Version】" + db.getVersion());
+        Database database = new StandardDatabase(db);
+        migrate(database, daoClasses);
+    }
+
+    public static void migrate(SQLiteDatabase db, ReCreateAllTableListener listener, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        weakListener = new WeakReference<>(listener);
+        migrate(db, daoClasses);
+    }
+
+    public static void migrate(Database database, ReCreateAllTableListener listener, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        weakListener = new WeakReference<>(listener);
+        migrate(database, daoClasses);
+    }
+
+    public static void migrate(Database database, Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        printLog("【Generate temp table】start");
+        generateTempTables(database, daoClasses);
+        printLog("【Generate temp table】complete");
+
+        ReCreateAllTableListener listener = null;
+        if (weakListener != null) {
+            listener = weakListener.get();
+        }
+
+        if (listener != null) {
+            listener.onDropAllTables(database, true);
+            printLog("【Drop all table by listener】");
+            listener.onCreateAllTables(database, false);
+            printLog("【Create all table by listener】");
+        } else {
+            //daoClasses
+            dropAllTables(database, true, daoClasses);
+            //daoClasses
+            createAllTables(database, false, daoClasses);
+        }
+        printLog("【Restore data】start");
+        //
+        restoreData(database, daoClasses);
+        printLog("【Restore data】complete");
+    }    
 
 }
