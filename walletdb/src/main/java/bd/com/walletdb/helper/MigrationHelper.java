@@ -25,6 +25,18 @@ import java.util.List;
  */
 public final class MigrationHelper {
 
+    public static boolean DEBUG = false;
+    private static String TAG = "MigrationHelper";
+    private static final String SQLITE_MASTER = "sqlite_master";
+    private static final String SQLITE_TEMP_MASTER = "sqlite_temp_master";
+
+    private static WeakReference<ReCreateAllTableListener> weakListener;
+
+    public interface ReCreateAllTableListener {
+        void onCreateAllTables(Database db, boolean ifNotExists);
+
+        void onDropAllTables(Database db, boolean ifExists);
+    }
     
 
 }
