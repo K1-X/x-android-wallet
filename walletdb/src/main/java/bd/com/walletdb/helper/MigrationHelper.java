@@ -151,4 +151,16 @@ public final class MigrationHelper {
         }
         return builder.toString();
     }
+
+    private static void dropAllTables(Database db, boolean ifExists, @NonNull Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        //daodropTable，dbisExists
+        reflectMethod(db, "dropTable", ifExists, daoClasses);
+        printLog("【Drop all table by reflect】");
+    }
+
+    private static void createAllTables(Database db, boolean ifNotExists, @NonNull Class<? extends AbstractDao<?, ?>>... daoClasses) {
+        //daocreateTable，dbisExists
+        reflectMethod(db, "createTable", ifNotExists, daoClasses);
+        printLog("【Create all table by reflect】");
+    }
 }
