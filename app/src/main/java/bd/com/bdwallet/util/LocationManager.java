@@ -12,5 +12,13 @@ import com.amap.api.location.AMapLocationListener;
 import bd.com.bdwallet.app.BdApplication;
 
 public class LocationManager implements ILocation{
-    
+
+    private LocationManager(){}
+    private static class SigleTon{
+        private static LocationManager location=new LocationManager();
+    }
+
+    public static LocationManager getLocation(){
+        return SigleTon.location;
+    }    
 }
