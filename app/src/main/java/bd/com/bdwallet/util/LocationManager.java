@@ -21,4 +21,24 @@ public class LocationManager implements ILocation{
     public static LocationManager getLocation(){
         return SigleTon.location;
     }    
+
+    //
+    private AMapLocationClient locationClient = null;
+    private String currentCity="";
+    private AMapLocationClientOption locationOption = new AMapLocationClientOption();
+    @Override
+    public void init() {
+        //
+        initLocation();
+    }
+
+    @Override
+    public void start() {
+        startLocation();
+    }
+
+    @Override
+    public void stop() {
+        stopLocation();
+    }
 }
