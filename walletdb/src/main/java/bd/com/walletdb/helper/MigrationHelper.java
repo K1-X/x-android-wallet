@@ -136,4 +136,19 @@ public final class MigrationHelper {
         }
         return count > 0;
     }
+
+    private static String getColumnsStr(DaoConfig daoConfig) {
+        if (daoConfig == null) {
+            return "no columns";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < daoConfig.allColumns.length; i++) {
+            builder.append(daoConfig.allColumns[i]);
+            builder.append(",");
+        }
+        if (builder.length() > 0) {
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        return builder.toString();
+    }
 }
