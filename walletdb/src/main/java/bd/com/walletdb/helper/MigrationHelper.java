@@ -114,4 +114,26 @@ public final class MigrationHelper {
             }
         }
     }
+
+    private static boolean isTableExists(Database db, boolean isTemp, String tableName) {
+        if (db == null || TextUtils.isEmpty(tableName)) {
+            return false;
+        }
+        String dbName = isTemp ? SQLITE_TEMP_MASTER : SQLITE_MASTER;
+        String sql = "SELECT COUNT(*) FROM " + dbName + " WHERE type = ? AND name = ?";
+        Cursor cursor = null;
+        int count = 0;
+        try {
+            cursor = db.rawQuery(sql, new String[]{"table", tableName});
+            if (cursor == null || !cursor.moveToFirst()) {
+                return false;
+            }
+            count = cursor.getInt(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+        }
+        return count > 0;
+    }
 }
