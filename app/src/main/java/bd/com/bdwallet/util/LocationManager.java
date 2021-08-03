@@ -60,4 +60,32 @@ public class LocationManager implements ILocation{
         }
         return lastProvice+lastCity;
     }
+
+    private void initLocation() {
+        //client
+        locationClient = new AMapLocationClient(BdApplication.getAppInstance().getApplicationContext());
+        //
+        locationClient.setLocationOption(getDefaultOption());
+        // 
+        locationClient.setLocationListener(locationListener);
+    }
+
+    /**
+     * 
+     */
+    AMapLocationListener locationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation loc) {
+            if (null != loc) {
+                //
+                String result = LocationUtils.getLocationStr(loc);
+                String city=loc.getCity();
+                String provi=loc.getProvince();
+                setCurrentCity(provi+city);
+                Log.e("location",":"+result);
+            } else {
+                Log.e("location","");
+            }
+        }
+    };
 }
