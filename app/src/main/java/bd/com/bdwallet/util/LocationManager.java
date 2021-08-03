@@ -117,4 +117,28 @@ public class LocationManager implements ILocation{
         mOption.setLocationCacheEnable(true); //，，true
         return mOption;
     }
+
+    private void startLocation(){
+        // 
+        locationClient.setLocationOption(locationOption);
+        // 
+        locationClient.startLocation();
+    }
+
+    private void stopLocation(){
+        // 
+        locationClient.stopLocation();
+    }
+
+    private void destroyLocation(){
+        if (null != locationClient) {
+            /**
+             * AMapLocationClientActivity，
+             * ActivityonDestroyAMapLocationClientonDestroy
+             */
+            locationClient.onDestroy();
+            locationClient = null;
+            locationOption = null;
+        }
+    }
 }
