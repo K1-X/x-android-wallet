@@ -88,4 +88,33 @@ public class LocationManager implements ILocation{
             }
         }
     };
+
+    public String getValibleCity(){
+        if(TextUtils.isEmpty(currentCity)){
+            return getLastCity();
+        }
+        return currentCity;
+    }
+
+    /**
+     * 
+     * @since 2.8.0
+     * @author hongming.wang
+     *
+     */
+    private AMapLocationClientOption getDefaultOption(){
+        AMapLocationClientOption mOption = new AMapLocationClientOption();
+        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//，，、、。
+        mOption.setGpsFirst(false);//，gps，。
+        mOption.setHttpTimeOut(30000);//，。30。
+        mOption.setInterval(2000);//，。2
+        mOption.setNeedAddress(true);//，。true
+        mOption.setOnceLocation(false);//，。false
+        mOption.setOnceLocationLatest(false);//，wifi，false.true,，
+        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//， 。HTTPHTTPS。HTTP
+        mOption.setSensorEnable(false);//，。false
+        mOption.setWifiScan(true); //，wifi。true，false，，
+        mOption.setLocationCacheEnable(true); //，，true
+        return mOption;
+    }
 }
