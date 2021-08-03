@@ -41,4 +41,23 @@ public class LocationManager implements ILocation{
     public void stop() {
         stopLocation();
     }
+
+    @Override
+    public void destory() {
+        destroyLocation();
+    }
+
+    @Override
+    public String getLastCity() {
+        AMapLocation location = locationClient.getLastKnownLocation();
+        if(location==null){
+            return "";
+        }
+        String lastCity=location.getCity();
+        String lastProvice=location.getProvince();
+        if(TextUtils.isEmpty(lastCity)){
+            lastCity="";
+        }
+        return lastProvice+lastCity;
+    }
 }
