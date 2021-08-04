@@ -49,4 +49,20 @@ public class DbHelper extends DaoMaster.OpenHelper {
         }
         return daoMaster;
     }
+
+    /**
+     * DaoSession
+     *
+     * @param context
+     * @return
+     */
+    public static DaoSession getDaoSession(Context context) {
+        if (daoSession == null) {
+            if (daoMaster == null) {
+                daoMaster = getDaoMaster(context);
+            }
+            daoSession = daoMaster.newSession();
+        }
+        return daoSession;
+    }
 }
