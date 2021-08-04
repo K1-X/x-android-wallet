@@ -34,4 +34,19 @@ public class DbHelper extends DaoMaster.OpenHelper {
 //             DbUpgradeHelper.getInstance().migrate(db, UserDao.class,XXDao.class);
         }
     }
+
+    /**
+     * DaoMaster
+     *
+     * @param context
+     * @return
+     */
+    public static DaoMaster getDaoMaster(Context context) {
+        if (daoMaster == null) {
+            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context,
+                    Config.BD_WALLET, null);
+            daoMaster = new DaoMaster(helper.getWritableDatabase());
+        }
+        return daoMaster;
+    }
 }
