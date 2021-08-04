@@ -13,5 +13,13 @@ import bd.com.walletdb.greendao.WalletEntityDao;
 
 
 public class DbHelper extends DaoMaster.OpenHelper {
-    
+
+    private static DaoMaster daoMaster;
+    private static DaoSession daoSession;
+
+
+
+    public DbHelper(Context context, String DBNAME){
+        super(context,DBNAME,null);
+    }    
 }
