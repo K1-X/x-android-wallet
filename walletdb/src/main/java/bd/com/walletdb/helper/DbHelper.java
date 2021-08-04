@@ -22,4 +22,16 @@ public class DbHelper extends DaoMaster.OpenHelper {
     public DbHelper(Context context, String DBNAME){
         super(context,DBNAME,null);
     }    
+
+    @Override
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+        super.onUpgrade(db, oldVersion, newVersion);
+        Log.i("version", oldVersion + "------" + newVersion);
+        if (oldVersion < newVersion) {
+            Log.i("version", oldVersion + "------" + newVersion);
+            DbUpgradeHelper.getInstance().migrate(db, WalletEntityDao.class);
+            //()   UserDao   XXDao.class 
+//             DbUpgradeHelper.getInstance().migrate(db, UserDao.class,XXDao.class);
+        }
+    }
 }
