@@ -76,4 +76,20 @@ public class LocationUtils {
 		sb.append(": " + formatUTC(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + "\n");
 		return sb.toString();
 	}
+
+    private static SimpleDateFormat sdf = null;
+	public synchronized static String formatUTC(long l, String strPattern) {
+		if (TextUtils.isEmpty(strPattern)) {
+			strPattern = "yyyy-MM-dd HH:mm:ss";
+		}
+		if (sdf == null) {
+			try {
+				sdf = new SimpleDateFormat(strPattern, Locale.CHINA);
+			} catch (Throwable e) {
+			}
+		} else {
+			sdf.applyPattern(strPattern);
+		}
+		return sdf == null ? "NULL" : sdf.format(l);
+	}
 }
