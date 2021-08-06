@@ -30,4 +30,9 @@ public class ChainManager {
         }
         return null;
     }
+
+    public List<ChainEntity> getChainList() {
+        ChainAction action = new ChainAction();
+        return action.loadAll();
+    }
 }
