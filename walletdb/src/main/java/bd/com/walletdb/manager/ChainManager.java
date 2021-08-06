@@ -12,4 +12,8 @@ public class ChainManager {
 
     private ChainManager() {
     }    
+
+    public static ChainManager getManager() {
+        return manager;
+    }
 }
