@@ -16,4 +16,9 @@ public class ChainManager {
     public static ChainManager getManager() {
         return manager;
     }
+
+    public void inputChainList(List<ChainEntity> chainEntityList) {
+        ChainAction action = new ChainAction();
+        action.insertOrReplaceInTx(chainEntityList);
+    }
 }
