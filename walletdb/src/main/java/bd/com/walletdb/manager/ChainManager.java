@@ -21,4 +21,13 @@ public class ChainManager {
         ChainAction action = new ChainAction();
         action.insertOrReplaceInTx(chainEntityList);
     }
+
+    public ChainEntity findChainById(String chainId) {
+        ChainAction action = new ChainAction();
+        List<ChainEntity> chainEntities = action.eq(ChainEntityDao.Properties.ChainId, chainId).queryAnd();
+        if (chainEntities != null && chainEntities.size() > 0) {
+            return chainEntities.get(0);
+        }
+        return null;
+    }
 }
