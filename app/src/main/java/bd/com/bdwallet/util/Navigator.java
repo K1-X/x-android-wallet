@@ -21,4 +21,7 @@ public class Navigator {
         activity.startActivity(LockPatternCloseActivity.getStartIntent(activity));
     }
 
+    public static void toLockPatternReset(Activity activity) {
+        activity.startActivity(LockPatternResetActivity.getStartIntent(activity));
+    }
 }
