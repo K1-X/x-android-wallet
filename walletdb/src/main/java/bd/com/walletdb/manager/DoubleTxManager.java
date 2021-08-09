@@ -9,5 +9,10 @@ import bd.com.walletdb.entity.DoubleTxEntity;
 import bd.com.walletdb.greendao.DoubleTxEntityDao;
 
 public class DoubleTxManager {
-    
+
+    private DoubleTxManager() {
+        if (Singleton.manager != null) {
+            throw new IllegalStateException();
+        }
+    }    
 }
