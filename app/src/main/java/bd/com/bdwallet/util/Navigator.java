@@ -9,6 +9,8 @@ import bd.com.bdwallet.module.user.lockpattern.LockPatternUnlockActivity;
 
 public class Navigator {
 
-
+    public static void toLockPatternSetUp(Activity activity) {
+        activity.startActivity(LockPatternSetUpActivity.getStartIntent(activity));
+    }
 
 }
