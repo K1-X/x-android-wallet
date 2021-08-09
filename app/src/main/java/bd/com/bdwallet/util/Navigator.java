@@ -13,4 +13,8 @@ public class Navigator {
         activity.startActivity(LockPatternSetUpActivity.getStartIntent(activity));
     }
 
+    public static void toLockPatternUnlock(Activity activity) {
+        activity.startActivity(LockPatternUnlockActivity.getStartIntent(activity));
+    }
+
 }
