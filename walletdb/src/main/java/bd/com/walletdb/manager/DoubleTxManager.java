@@ -28,4 +28,17 @@ public class DoubleTxManager {
         DouTxAction action = new DouTxAction();
         action.insertOrReplace(e);
     }
+ 
+     public DoubleTxEntity getDouTxByTo(String to) {
+        if (TextUtils.isEmpty(to)) {
+            return null;
+        }
+        DouTxAction action = new DouTxAction();
+        List<DoubleTxEntity> doubleTxEntityList = action.eq(DoubleTxEntityDao.Properties.To, to).queryAnd();
+        if (doubleTxEntityList != null && doubleTxEntityList.size() > 0) {
+            return doubleTxEntityList.get(0);
+        }
+        return null;
+    }
+
 }
