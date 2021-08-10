@@ -19,4 +19,8 @@ public class DoubleTxManager {
     private static class Singleton {
         private static DoubleTxManager manager = new DoubleTxManager();
     }
+
+    public static DoubleTxManager getManager() {
+        return Singleton.manager;
+    }
 }
