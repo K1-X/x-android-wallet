@@ -23,4 +23,9 @@ public class DoubleTxManager {
     public static DoubleTxManager getManager() {
         return Singleton.manager;
     }
+
+    public void inputDouTx(DoubleTxEntity e) {
+        DouTxAction action = new DouTxAction();
+        action.insertOrReplace(e);
+    }
 }
