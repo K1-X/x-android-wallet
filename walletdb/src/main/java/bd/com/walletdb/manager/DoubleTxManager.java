@@ -15,4 +15,8 @@ public class DoubleTxManager {
             throw new IllegalStateException();
         }
     }    
+
+    private static class Singleton {
+        private static DoubleTxManager manager = new DoubleTxManager();
+    }
 }
