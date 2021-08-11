@@ -25,4 +25,16 @@ public class PriceManager {
     public static PriceManager getManager() {
         return manager;
     }    
+
+    public Price getPriceByMarketName(String marketName) {
+        if (TextUtils.isEmpty(marketName)) {
+            return null;
+        }
+        PriceAction action = new PriceAction();
+        List<Price> priceList = action.eq(PriceDao.Properties.MarketName, marketName).queryAnd();
+        if (priceList != null && priceList.size() > 0) {
+            return priceList.get(0);
+        }
+        return null;
+    }
 }
