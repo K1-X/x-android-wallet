@@ -17,5 +17,12 @@ import bd.com.walletdb.greendao.TokenEntityDao;
 
 public class PriceManager {
 
-    
+    private static PriceManager manager = new PriceManager();
+
+    private PriceManager() {
+    }
+
+    public static PriceManager getManager() {
+        return manager;
+    }    
 }
