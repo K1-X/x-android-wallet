@@ -70,4 +70,18 @@ public class PriceManager {
         PriceAction action = new PriceAction();
         return action.loadAll();
     }
+
+    public Price getFirstPrice() {
+        PriceAction action = new PriceAction();
+        List<Price> priceList = action.loadAll();
+        if (priceList != null && priceList.size() > 0) {
+            return priceList.get(0);
+        }
+        return null;
+    }
+
+    public void reset() {
+        PriceAction action = new PriceAction();
+        action.deleteAll();
+    }
 }
