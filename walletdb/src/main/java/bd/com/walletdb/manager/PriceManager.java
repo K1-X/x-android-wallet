@@ -49,4 +49,12 @@ public class PriceManager {
         }
         return null;
     }
+
+    public void insertPrice(Price price) {
+        if (price == null) {
+            return;
+        }
+        PriceAction action = new PriceAction();
+        action.insertOrReplace(price);
+    }
 }
