@@ -57,4 +57,17 @@ public class PriceManager {
         PriceAction action = new PriceAction();
         action.insertOrReplace(price);
     }
+
+    public void insertPriceList(List<Price> priceList) {
+        if (priceList == null || priceList.size() == 0) {
+            return;
+        }
+        PriceAction action = new PriceAction();
+        action.insertOrReplaceInTx(priceList);
+    }
+
+    public List<Price> loadAll() {
+        PriceAction action = new PriceAction();
+        return action.loadAll();
+    }
 }
