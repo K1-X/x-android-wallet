@@ -37,4 +37,16 @@ public class PriceManager {
         }
         return null;
     }
+
+     public Price getPrice(String tokenAddr, String chainId) {
+        if (TextUtils.isEmpty(tokenAddr)||TextUtils.isEmpty(chainId)) {
+            return null;
+        }
+        PriceAction action = new PriceAction();
+        List<Price> priceList = action.eq(PriceDao.Properties.Address,tokenAddr).eq(PriceDao.Properties.ChainId,chainId).queryAnd();
+        if (priceList != null && priceList.size() > 0) {
+            return priceList.get(0);
+        }
+        return null;
+    }
 }
