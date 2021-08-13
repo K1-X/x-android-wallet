@@ -36,4 +36,14 @@ public class ToastUtil {
         toast(message, Toast.LENGTH_LONG, TYPE_SUCCESS);
     }
 
+    private static void toast(String message, int time, int type) {
+        toastCustom(message, time, type);
+    }
+
+    private static void toast(int message, int time, int type) {
+        toastCustom(BdApplication.getAppInstance().getString(message), time, type);
+    }
+
+    private static void toastCustom(String message, int time, int type) {
+    }
 }
