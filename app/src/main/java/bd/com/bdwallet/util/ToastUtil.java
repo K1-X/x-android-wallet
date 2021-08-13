@@ -19,4 +19,12 @@ public class ToastUtil {
     public static void toastNormal(int message) {
         toast(message, Toast.LENGTH_SHORT, TYPE_NORMAL);
     }
+
+    public static void toastError(String message) {
+        toast(message, Toast.LENGTH_SHORT, TYPE_ERROR);
+    }
+
+    public static void toastError(int message) {
+        toast(message, Toast.LENGTH_SHORT, TYPE_ERROR);
+    }
 }
