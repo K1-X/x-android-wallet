@@ -15,4 +15,8 @@ public class ToastUtil {
     public static void toastNormal(String message) {
         toast(message, Toast.LENGTH_SHORT, TYPE_NORMAL);
     }    
+
+    public static void toastNormal(int message) {
+        toast(message, Toast.LENGTH_SHORT, TYPE_NORMAL);
+    }
 }
