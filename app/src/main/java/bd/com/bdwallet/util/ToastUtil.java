@@ -27,4 +27,13 @@ public class ToastUtil {
     public static void toastError(int message) {
         toast(message, Toast.LENGTH_SHORT, TYPE_ERROR);
     }
+
+    public static void toastSuccess(String message) {
+        toast(message, Toast.LENGTH_LONG, TYPE_SUCCESS);
+    }
+
+    public static void toastSuccess(int message) {
+        toast(message, Toast.LENGTH_LONG, TYPE_SUCCESS);
+    }
+
 }
