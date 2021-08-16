@@ -20,4 +20,22 @@ public class TokenManager {
     public static TokenManager getManager() {
         return manager;
     }    
+
+    /**
+     * token
+     *
+     * @param address 
+     * @return token
+     */
+    public TokenEntity getTokenByAddress(String address) {
+        if (TextUtils.isEmpty(address)) {
+            return null;
+        }
+        TokenAction action = new TokenAction();
+        List<TokenEntity> tokenEntities = action.eq(TokenEntityDao.Properties.Address, address).queryAnd();
+        if (tokenEntities != null && tokenEntities.size() > 0) {
+            return tokenEntities.get(0);
+        }
+        return null;
+    }
 }
