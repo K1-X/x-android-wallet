@@ -90,3 +90,23 @@ public class TokenManager {
 
 
 }
+
+public List<TokenEntity> getTokenListByWalletAddr(String walletAddr) {
+        TokenAction action = new TokenAction();
+        List<TokenEntity> tokenEntityList = action.eq(TokenEntityDao.Properties.WalletAddress, walletAddr).queryAnd();
+        return tokenEntityList;
+    }
+
+    public List<TokenEntity> getCheckedTokens(String walletAddr, String chainId) {
+        TokenAction action = new TokenAction();
+        List<TokenEntity> tokenEntityList = action.eq(TokenEntityDao.Properties.WalletAddress, walletAddr).eq(TokenEntityDao.Properties.ChainId, chainId).queryAnd();
+        List<TokenEntity> checkedList = new ArrayList<>();
+        if (tokenEntityList != null) {
+            for (TokenEntity entity : tokenEntityList) {
+                if (entity.getChecked()) {
+                    checkedList.add(entity);
+                }
+            }
+        }
+        return checkedList;
+    }
