@@ -38,4 +38,22 @@ public class TokenManager {
         }
         return null;
     }
+
+    /**
+     * token
+     *
+     * @param walletaddress 
+     * @return token
+     */
+    public TokenEntity getTokenByWalletAddress(String walletaddress) {
+        if (TextUtils.isEmpty(walletaddress)) {
+            return null;
+        }
+        TokenAction action = new TokenAction();
+        List<TokenEntity> tokenEntities = action.eq(TokenEntityDao.Properties.WalletAddress, walletaddress).queryAnd();
+        if (tokenEntities != null && tokenEntities.size() > 0) {
+            return tokenEntities.get(0);
+        }
+        return null;
+    }
 }
