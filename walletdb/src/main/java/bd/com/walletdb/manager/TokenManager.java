@@ -11,7 +11,6 @@ import bd.com.walletdb.greendao.TokenEntityDao;
 
 
 public class TokenManager {
-
     private static TokenManager manager = new TokenManager();
 
     private TokenManager() {
@@ -19,7 +18,7 @@ public class TokenManager {
 
     public static TokenManager getManager() {
         return manager;
-    }    
+    }
 
     /**
      * token
@@ -57,9 +56,7 @@ public class TokenManager {
         return null;
     }
 
-
-
-/**
+    /**
      * token
      *
      * @param tokenEntity
@@ -85,13 +82,38 @@ public class TokenManager {
         action.insertOrReplaceInTx(entityList);
     }
 
+    /**
+     * address token
+     *
+     * @param address
+     */
+    public void deleteByAddress(String address) {
+        if (TextUtils.isEmpty(address)) {
+            return;
+        }
+        TokenAction action = new TokenAction();
+        action.deleteByKey(address);
+    }
 
+    /**
+     * token
+     *
+     * @param entity
+     */
+    public void updateToken(TokenEntity entity) {
+        if (entity == null) {
+            return;
+        }
+        TokenAction action = new TokenAction();
+        action.update(entity);
+    }
 
+    public List<TokenEntity> getAll() {
+        TokenAction action = new TokenAction();
+        return action.loadAll();
+    }
 
-
-}
-
-public List<TokenEntity> getTokenListByWalletAddr(String walletAddr) {
+    public List<TokenEntity> getTokenListByWalletAddr(String walletAddr) {
         TokenAction action = new TokenAction();
         List<TokenEntity> tokenEntityList = action.eq(TokenEntityDao.Properties.WalletAddress, walletAddr).queryAnd();
         return tokenEntityList;
@@ -110,3 +132,40 @@ public List<TokenEntity> getTokenListByWalletAddr(String walletAddr) {
         }
         return checkedList;
     }
+
+    public List<TokenEntity> getCurrentTokenList(String walletAddr, String chainId) {
+        TokenAction action = new TokenAction();
+        List<TokenEntity> tokenEntityList = action.eq(TokenEntityDao.Properties.WalletAddress, walletAddr).eq(TokenEntityDao.Properties.ChainId, chainId).queryAnd();
+
+        return tokenEntityList;
+    }
+
+//    public String getContractAddressBySymbol(String symbol) {
+//        if (TextUtils.isEmpty(symbol)) {
+//            return "";
+//        }
+//        TokenAction action = new TokenAction();
+//        List<TokenEntity> entityList = action.eq(TokenEntityDao.Properties.Symbol, symbol).queryAnd();
+//        if (entityList != null && entityList.size() > 0) {
+//            return entityList.get(0).getAddress();
+//        }
+//        return "";
+//    }
+
+    public String getContractAddressByAddress(String address) {
+        if (TextUtils.isEmpty(address)) {
+            return "";
+        }
+        TokenAction action = new TokenAction();
+        List<TokenEntity> entityList = action.eq(TokenEntityDao.Properties.Address, address).queryAnd();
+        if (entityList != null && entityList.size() > 0) {
+            return entityList.get(0).getAddress();
+        }
+        return "";
+    }
+
+    public void reset() {
+        TokenAction action = new TokenAction();
+        action.deleteAll();
+    }
+}
