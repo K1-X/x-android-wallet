@@ -56,4 +56,37 @@ public class TokenManager {
         }
         return null;
     }
+
+
+
+/**
+     * token
+     *
+     * @param tokenEntity
+     */
+    public void insertToken(TokenEntity tokenEntity) {
+        if (tokenEntity == null) {
+            return;
+        }
+        TokenAction action = new TokenAction();
+        action.insertOrReplace(tokenEntity);
+    }
+
+    /**
+     * token
+     *
+     * @param entityList
+     */
+    public void insertTokenList(List<TokenEntity> entityList) {
+        if (entityList == null || entityList.size() == 0) {
+            return;
+        }
+        TokenAction action = new TokenAction();
+        action.insertOrReplaceInTx(entityList);
+    }
+
+
+
+
+
 }
