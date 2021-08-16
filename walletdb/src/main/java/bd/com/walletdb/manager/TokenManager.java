@@ -11,5 +11,13 @@ import bd.com.walletdb.greendao.TokenEntityDao;
 
 
 public class TokenManager {
-    
+
+    private static TokenManager manager = new TokenManager();
+
+    private TokenManager() {
+    }
+
+    public static TokenManager getManager() {
+        return manager;
+    }    
 }
