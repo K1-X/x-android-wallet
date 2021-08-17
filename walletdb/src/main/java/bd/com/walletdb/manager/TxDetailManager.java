@@ -25,4 +25,9 @@ public class TxDetailManager {
         }
         return null;
     }
+
+    public void inputTxDetail(TransactionDetail detail) {
+        TxDetailAction action = new TxDetailAction();
+        action.insertOrReplace(detail);
+    }
 }
