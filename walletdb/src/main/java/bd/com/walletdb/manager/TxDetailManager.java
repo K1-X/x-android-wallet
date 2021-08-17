@@ -9,5 +9,11 @@ import bd.com.walletdb.greendao.TransactionDetailDao;
 public class TxDetailManager {
     private static TxDetailManager instance = new TxDetailManager();
 
-    
+
+    private TxDetailManager() {
+    }
+
+    public static TxDetailManager getInstance() {
+        return instance;
+    }    
 }
