@@ -16,4 +16,13 @@ public class TxDetailManager {
     public static TxDetailManager getInstance() {
         return instance;
     }    
+
+    public TransactionDetail findTxDetailByHash(String pkHash) {
+        TxDetailAction action = new TxDetailAction();
+        List<TransactionDetail> detailList = action.eq(TransactionDetailDao.Properties.PkHash, pkHash).queryAnd();
+        if (detailList != null && detailList.size() > 0) {
+            return detailList.get(0);
+        }
+        return null;
+    }
 }
