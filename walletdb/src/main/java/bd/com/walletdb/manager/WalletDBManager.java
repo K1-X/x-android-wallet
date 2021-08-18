@@ -34,4 +34,13 @@ public class WalletDBManager {
         WalletAction action = new WalletAction();
         action.update(entity);
     }
+
+    public WalletEntity getWalletByAddres(String addr){
+        WalletAction action = new WalletAction();
+        List<WalletEntity> walletEntities = action.eq(WalletEntityDao.Properties.Address, addr).queryAnd();
+        if (walletEntities != null && walletEntities.size() > 0) {
+            return walletEntities.get(0);
+        }
+        return null;
+    }
 }
