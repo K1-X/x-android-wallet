@@ -23,4 +23,15 @@ public class WalletDBManager {
             return null;
         }
     }    
+
+    public List<WalletEntity> getAllWalletList() {
+        WalletAction action = new WalletAction();
+        List<WalletEntity> walletEntities = action.loadAll();
+        return walletEntities;
+    }
+
+    public void updateWallet(WalletEntity entity){
+        WalletAction action = new WalletAction();
+        action.update(entity);
+    }
 }
