@@ -12,5 +12,18 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class UuidUtil {
-    
+
+    public static String getRandomUuid() {
+        ECKeyPair ecKeyPair = null;
+        WalletFile walletFile = null;
+        try {
+            ecKeyPair = Keys.createEcKeyPair();
+            String priKey = Numeric.toHexStringWithPrefix(ecKeyPair.getPrivateKey());
+            String hexKey = sha1(priKey);
+            return hexKey;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }    
 }
