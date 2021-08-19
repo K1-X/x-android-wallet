@@ -17,4 +17,13 @@ public class TxHistoryDBManager {
 
     private TxHistoryDBManager() {
     }    
+
+    public static TxHistoryDBManager getManager() {
+        return manager;
+    }
+
+    public void updateTxHistory(TxHistory history) {
+        TxHistoryAction action = new TxHistoryAction();
+        action.insertOrReplace(history);
+    }
 }
