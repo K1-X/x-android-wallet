@@ -20,5 +20,46 @@ import com.bumptech.glide.request.transition.Transition;
 import bd.com.bdwallet.app.BdApplication;
 
 public class XlImageLoadUtil {
-    
+
+    private static boolean checkNull(Context context) {
+        if (context == null) {
+            return true;
+        } else if (context instanceof Activity) {
+            Activity activity = (Activity) context;
+            if (Build.VERSION.SDK_INT >= 17 && activity.isDestroyed()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    /**
+     * 
+     */
+    public interface OnBlurImageListener {
+        void onBlurReady();
+    }
+
+    /**
+     * 
+     *
+     * @param url
+     */
+    public static void blurImageUrl(String url, final ImageView imageView) {
+        //bitmap，
+        Glide.with(BdApplication.context)
+                .asBitmap()
+                .load(url)
+                .into(new SimpleTarget<Bitmap>(1000, 1000) {
+
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        blur(resource, imageView);
+                    }
+                });
+
+    }    
 }
