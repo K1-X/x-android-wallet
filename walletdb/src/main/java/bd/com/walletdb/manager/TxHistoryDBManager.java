@@ -12,5 +12,9 @@ import bd.com.walletdb.greendao.TxHistoryDao;
 
 
 public class TxHistoryDBManager {
-    
+
+    private static TxHistoryDBManager manager = new TxHistoryDBManager();
+
+    private TxHistoryDBManager() {
+    }    
 }
