@@ -62,4 +62,44 @@ public class XlImageLoadUtil {
                 });
 
     }    
+
+    public static void blurImageUrl(String url, int placeHolder, final ImageView imageView) {
+        //bitmap，
+        Glide.with(BdApplication.context)
+                .asBitmap()
+                .load(url)
+                .into(new SimpleTarget<Bitmap>(1000, 1000) {
+
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        blur(resource, imageView);
+                    }
+                });
+
+    }
+
+    /**
+     * 
+     *
+     * @param url
+     * @param imageView
+     * @param onBlurImageListener
+     */
+    public static void blurImageUrl(String url, final ImageView imageView, final OnBlurImageListener onBlurImageListener) {
+        //bitmap，
+        Glide.with(BdApplication.context)
+                .asBitmap()
+                .load(url)
+                .into(new SimpleTarget<Bitmap>(1000, 1000) {
+
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        blur(resource, imageView);
+                        if (onBlurImageListener != null) {
+                            onBlurImageListener.onBlurReady();
+                        }
+                    }
+                });
+
+    }
 }
