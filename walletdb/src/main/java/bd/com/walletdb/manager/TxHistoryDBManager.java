@@ -26,4 +26,14 @@ public class TxHistoryDBManager {
         TxHistoryAction action = new TxHistoryAction();
         action.insertOrReplace(history);
     }
+
+    public void insertTxHistory(TxHistory txHistory) {
+        TxHistoryAction action = new TxHistoryAction();
+        action.insertOrReplace(txHistory);
+    }
+
+    public void deleteTxHistoryByHash(String hash) {
+        TxHistoryAction action = new TxHistoryAction();
+        action.deleteByKey(hash);
+    }
 }
