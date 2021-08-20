@@ -36,4 +36,23 @@ public class TxHistoryDBManager {
         TxHistoryAction action = new TxHistoryAction();
         action.deleteByKey(hash);
     }
+
+    public void insertTxHistoryList(List<TxHistory> histories) {
+        TxHistoryAction action = new TxHistoryAction();
+        action.insertOrReplaceInTx(histories);
+    }
+
+    public void insertTxHistoryListAsync(final List<TxHistory> histories) {
+        if (histories == null) {
+            return;
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                TxHistoryAction action = new TxHistoryAction();
+                action.insertOrReplaceInTx(histories);
+            }
+        }).start();
+
+    }
 }
