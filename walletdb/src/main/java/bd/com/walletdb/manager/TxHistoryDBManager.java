@@ -55,4 +55,25 @@ public class TxHistoryDBManager {
         }).start();
 
     }
+
+    public List<TxHistory> findTxHistoryList(String address) {
+        if (TextUtils.isEmpty(address)) {
+            return null;
+        }
+        TxHistoryAction action = new TxHistoryAction();
+        return action.eq(TxHistoryDao.Properties.Address, address).queryAnd();
+    }
+
+
+    public TxHistory findTxHistoryByHash(String hash) {
+        if (TextUtils.isEmpty(hash)) {
+            return null;
+        }
+        TxHistoryAction action = new TxHistoryAction();
+        List<TxHistory> txHistories = action.eq(TxHistoryDao.Properties.PkHash, hash).queryAnd();
+        if (txHistories != null && txHistories.size() > 0) {
+            return txHistories.get(0);
+        }
+        return null;
+    }
 }
