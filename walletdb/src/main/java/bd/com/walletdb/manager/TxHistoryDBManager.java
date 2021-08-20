@@ -76,4 +76,37 @@ public class TxHistoryDBManager {
         }
         return null;
     }
+
+    public List<TxHistory> findTxHistory(String tokenAddress, String walletAddr, String chainId) {
+        TxHistoryAction action = new TxHistoryAction();
+        return action.eq(TxHistoryDao.Properties.Address, tokenAddress).eq(TxHistoryDao.Properties.WalletAddr, walletAddr).eq(TxHistoryDao.Properties.ChainId, chainId).queryAnd();
+    }
+
+    /**
+     * ，
+     *
+     * @param tokenAddress ，
+     * @param walletAddr   
+     * @param chainId      
+     * @return
+     */
+    public List<TxHistory> findPendingTxHistory(String tokenAddress, String walletAddr, String chainId) {
+        TxHistoryAction action = new TxHistoryAction();
+        List<TxHistory> txHistoryList = action.loadAll();
+        List<TxHistory> needList = new ArrayList<>();
+        if (txHistoryList != null) {
+            for (TxHistory txHistory : txHistoryList) {
+                if (tokenAddress.equals(txHistory.getAddress()) && walletAddr.equals(txHistory.getWalletAddr()) && chainId.equals(txHistory.getChainId()) && txHistory.getState() != 0) {
+                    needList.add(txHistory);
+                }
+            }
+        }
+
+        return needList;
+    }
+
+    public void reset() {
+        TxHistoryAction action = new TxHistoryAction();
+        action.deleteAll();
+    }
 }
