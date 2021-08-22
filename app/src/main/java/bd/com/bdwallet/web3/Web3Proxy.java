@@ -41,4 +41,14 @@ public class Web3Proxy {
 
     private Web3Proxy() {
     }   
+
+    public Web3j getWeb3j() {
+        HttpService httpService = new HttpService(ApiConfig.getWeb3jUrlProxy(), HttpUtils.createOkHttpClient(), false);
+        Web3j web3j = Web3jFactory.build(httpService);
+        return web3j;
+    }
+
+    public static Web3Proxy getWeb3Proxy() {
+        return web3Proxy;
+    }
 }
