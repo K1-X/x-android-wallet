@@ -65,4 +65,26 @@ public class Web3Proxy {
         //setContractaddress(conaddress);
         return conaddress;
     }
+
+    public org.web3j.tx.TransactionManager getPoolTransactionManager() {
+        // Web3j web3j, Credentials credentials, byte chainId, int attempts, long sleepDuration
+        org.web3j.tx.TransactionManager transactionManager = new RawTransactionManager(getWeb3j(), getCredentials(), ChainId.NONE, 200,300);
+        return transactionManager;
+    }
+//    public CoinBean getNulsCoinInfo(Credentials credentials) throws Exception {
+//        BigInteger gasPrice = requestCurrentGasPrice();
+//        NulsStandardToken token = NulsStandardToken.load(getContractaddress(), web3j, credentials, GAS_PRICE, GAS_LIMIT);
+//        BigInteger balance = token.balanceOf(credentials.getAddress()).send();
+//        BigDecimal balacnebd = new BigDecimal(balance);
+//        BigDecimal interestRate = new BigDecimal("100"); //
+//        BigDecimal interest = balacnebd.divide(interestRate); //
+//        String newBiginteger = interest.setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+//        String version = token.version().send();
+//        CoinBean bean = new CoinBean();
+//        bean.setName("");
+//        bean.setIcon("ic_category_31");
+//        bean.setBalance(newBiginteger);
+//        bean.setVersion(version);
+//        return bean;
+//    }
 }
