@@ -51,4 +51,18 @@ public class Web3Proxy {
     public static Web3Proxy getWeb3Proxy() {
         return web3Proxy;
     }
+
+    public SuperConductToken deploy(Credentials credentials) throws Exception {
+        SuperConductToken token = SuperConductToken.deploy(getWeb3j(), credentials, GAS_PRICE, GAS_LIMIT).send();
+        String conaddress = token.getContractAddress();
+        // setContractaddress(conaddress);
+        return token;
+    }
+
+    public String deploy(Credentials credentials, String initAumount, String name, String symbol) throws Exception {
+        NulsStandardToken token = NulsStandardToken.deploy(getWeb3j(), credentials, GAS_PRICE, DEPLOY_GAS_LIMIT, new BigInteger(initAumount), name, new BigInteger("18"), symbol).send();
+        String conaddress = token.getContractAddress();
+        //setContractaddress(conaddress);
+        return conaddress;
+    }
 }
