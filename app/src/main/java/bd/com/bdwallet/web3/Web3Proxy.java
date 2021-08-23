@@ -112,4 +112,25 @@ public class Web3Proxy {
 
         return ethGasPrice.getGasPrice();
     }
+
+    public String getContractaddress() {
+        System.out.print(";" + contractaddress);
+        return contractaddress;
+    }
+
+    public void setContractaddress(String contractaddress) {
+        System.out.print(";" + contractaddress);
+        this.contractaddress = contractaddress;
+    }
+
+    public int getEth_BlockNumber() throws IOException {
+        return web3Proxy.getWeb3j().ethBlockNumber().send().getBlockNumber().intValue();
+    }
+
+    public static Credentials getCredentials() {
+        final String cuurentAddress = AppSettings.getAppSettings().getCurrentAddress();
+        WalletEntity entity = WalletDBManager.getManager().getWalletEntity(cuurentAddress);
+        final Credentials credentials = org.web3j.crypto.Credentials.create(entity.getPrivateKey());
+        return credentials;
+    }
 }
