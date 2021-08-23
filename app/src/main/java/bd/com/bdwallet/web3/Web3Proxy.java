@@ -87,4 +87,29 @@ public class Web3Proxy {
 //        bean.setVersion(version);
 //        return bean;
 //    }
+
+    /**
+     * BigDecimal balanceBD = new BigDecimal(bigInteger); //。eth
+     * BigDecimal interestRate = new BigDecimal("1000000000000000000"); //
+     * BigDecimal interest = balanceBD.divide(interestRate); //
+     * String newBiginteger = interest.setScale(8, BigDecimal.ROUND_HALF_UP).toString();
+     */
+
+    public String getERC20Balance(Credentials credentials, TokenEntity tokenEntity) throws Exception {
+        NulsStandardToken token = NulsStandardToken.load(tokenEntity.getAddress(), getWeb3j(), credentials, GAS_PRICE, GAS_LIMIT);
+        BigInteger balance = token.balanceOf(credentials.getAddress()).send();
+        if (balance.intValue() != 0) {
+            BigDecimal valueBD = Convert.fromWei(balance.toString(), Convert.Unit.ETHER);
+
+            return valueBD.toString();
+        } else {
+            return "0";
+        }
+    }
+
+    public BigInteger requestCurrentGasPrice() throws IOException {
+        EthGasPrice ethGasPrice = getWeb3j().ethGasPrice().send();
+
+        return ethGasPrice.getGasPrice();
+    }
 }
