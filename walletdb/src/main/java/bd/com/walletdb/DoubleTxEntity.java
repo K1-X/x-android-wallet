@@ -17,4 +17,12 @@ public class DoubleTxEntity {
         this.from = from;
         this.time = time;
     }    
+
+    @Generated(hash = 405918742)
+    public DoubleTxEntity() {
+    }
+
+    public String getTo() {
+        return to;
+    }
 }
