@@ -33,4 +33,16 @@ public class DoubleTxEntity {
     public String getFrom() {
         return from;
     }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
 }
