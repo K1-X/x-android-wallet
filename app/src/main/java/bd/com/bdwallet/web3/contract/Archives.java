@@ -131,4 +131,27 @@ public class Archives extends Contract {
             }
         });
     }
+
+    public RemoteCall<String> name() {
+        final Function function = new Function("name", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> setAuthorizedList(List<String> _list) {
+        final Function function = new Function(
+                "setAuthorizedList", 
+                Arrays.<Type>asList(new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<Boolean> basicFlag() {
+        final Function function = new Function("basicFlag", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
 }
