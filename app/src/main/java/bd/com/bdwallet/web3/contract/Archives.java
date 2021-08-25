@@ -307,4 +307,22 @@ public class Archives extends Contract {
     public static Archives load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return new Archives(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
