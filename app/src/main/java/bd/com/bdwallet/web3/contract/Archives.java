@@ -154,4 +154,157 @@ public class Archives extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
+
+    public RemoteCall<String> buss() {
+        final Function function = new Function("buss", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> setFlag(Boolean _basicFlag) {
+        final Function function = new Function(
+                "setFlag", 
+                Arrays.<Type>asList(new Bool(_basicFlag)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> getArchives() {
+        final Function function = new Function("getArchives", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> platform() {
+        final Function function = new Function("platform", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> authorizedAddresses() {
+        final Function function = new Function("authorizedAddresses", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> updateArchives(String _basicInfo, Boolean _basicFlag) {
+        final Function function = new Function(
+                "updateArchives", 
+                Arrays.<Type>asList(new Utf8String(_basicInfo),
+                new Bool(_basicFlag)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> acceptOwnership() {
+        final Function function = new Function(
+                "acceptOwnership", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> owner() {
+        final Function function = new Function("owner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<Boolean> processFlag() {
+        final Function function = new Function("processFlag", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<String> packagedoc() {
+        final Function function = new Function("packagedoc", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> process() {
+        final Function function = new Function("process", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<Boolean> packageFlag() {
+        final Function function = new Function("packageFlag", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<String> newOwner() {
+        final Function function = new Function("newOwner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> lastUpdateAddr() {
+        final Function function = new Function("lastUpdateAddr", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<Boolean> bussFlag() {
+        final Function function = new Function("bussFlag", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<Boolean> platformFlag() {
+        final Function function = new Function("platformFlag", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<String> basicInfo() {
+        final Function function = new Function("basicInfo", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public static RemoteCall<Archives> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, String _name, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_name),
+                new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Archives.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<Archives> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _name, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_name),
+                new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Archives.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static Archives load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Archives(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static Archives load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Archives(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
 }
