@@ -2,7 +2,20 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 apply from: "${rootDir.path}/app/config.gradle"
 android {
-    
+
+	compileSdkVersion rootProject.ext.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }    
 }
 
 dependencies {
