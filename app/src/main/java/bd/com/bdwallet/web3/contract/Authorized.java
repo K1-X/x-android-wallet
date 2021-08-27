@@ -142,4 +142,101 @@ public class Authorized extends Contract {
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
+    public RemoteCall<TransactionReceipt> grantUser(String _addr, BigInteger _period, String _content, String _docAddress) {
+        final Function function = new Function(
+                "grantUser", 
+                Arrays.<Type>asList(new Address(_addr),
+                new Uint256(_period),
+                new Utf8String(_content),
+                new Address(_docAddress)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> alias() {
+        final Function function = new Function("alias", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> removeGrantUserForPack(String _addr, BigInteger _packType) {
+        final Function function = new Function(
+                "removeGrantUserForPack", 
+                Arrays.<Type>asList(new Address(_addr),
+                new Uint256(_packType)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> grantUserForPack(String _addr, BigInteger _packType) {
+        final Function function = new Function(
+                "grantUserForPack", 
+                Arrays.<Type>asList(new Address(_addr),
+                new Uint256(_packType)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> authorizedUsersForPack() {
+        final Function function = new Function("authorizedUsersForPack", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> newOwner() {
+        final Function function = new Function("newOwner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public static RemoteCall<Authorized> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, String _alias, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_alias),
+                new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Authorized.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<Authorized> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _alias, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_alias),
+                new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Authorized.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static Authorized load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Authorized(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static Authorized load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Authorized(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
