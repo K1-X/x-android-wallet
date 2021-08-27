@@ -89,4 +89,57 @@ public class Authorized extends Contract {
         }
         return responses;
     }
+
+    public RemoteCall<String> authorizedUsers() {
+        final Function function = new Function("authorizedUsers", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> authorizedAddresses() {
+        final Function function = new Function("authorizedAddresses", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> warrantInfo() {
+        final Function function = new Function("warrantInfo", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> acceptOwnership() {
+        final Function function = new Function(
+                "acceptOwnership", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<Boolean> isAuthorizedForPack(String _addr, BigInteger _packType) {
+        final Function function = new Function("isAuthorizedForPack", 
+                Arrays.<Type>asList(new Address(_addr),
+                new Uint256(_packType)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<TransactionReceipt> grantUserAll(String _addr) {
+        final Function function = new Function(
+                "grantUserAll", 
+                Arrays.<Type>asList(new Address(_addr)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> owner() {
+        final Function function = new Function("owner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
 }
