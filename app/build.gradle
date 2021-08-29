@@ -1,6 +1,26 @@
 apply plugin: 'com.android.application'
 apply from: "${rootDir.path}/app/config.gradle"
 android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "bd.com.bdwallet"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 218
+        versionName "2.1.8"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            moduleName "Neptune"
+            abiFilters 'armeabi'//, 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "4de984b3d152360932a596bd", //JPushappkey.
+                JPUSH_CHANNEL: "developer-default", //.
+        ]
+    }
     
 }
 
