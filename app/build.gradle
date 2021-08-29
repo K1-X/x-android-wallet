@@ -21,7 +21,14 @@ android {
                 JPUSH_CHANNEL: "developer-default", //.
         ]
     }
-    
+    signingConfigs {
+        release_config {
+            keyAlias 'bdwallet'
+            keyPassword 'xime123'
+            storeFile file('./file/Untitled')
+            storePassword 'xime123'
+        }
+    }    
 }
 
 dependencies {
