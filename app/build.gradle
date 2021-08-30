@@ -69,5 +69,55 @@ android {
 }
 
 dependencies {
-   
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
+    //implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.android.support:design:${rootProject.ext.supportVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:multidex:1.0.1'
+    //noinspection NotInterpolated
+    implementation "com.android.support:support-v4:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportVersion}"
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation 'com.bigkoo:convenientbanner:1.0.7'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-22'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-22'
+    implementation project(path: ':appcore')
+    compile project(path: ':walletdb')
+    //compile project(path: ':hdlogger')
+    implementation 'com.github.hotchemi:permissionsdispatcher:3.0.1'
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.0.1"
+    implementation project(path: ':appupdate')
+    implementation 'cn.jiguang.sdk:jpush:3.1.3'
+    // JPush 3.1.5 。
+    implementation 'cn.jiguang.sdk:jcore:1.2.1'
+    // JCore 1.2.3 。
+//    compile 'com.umeng.umsdk:analytics:8.0.0'
+//    compile 'com.umeng.umsdk:common:2.0.0'
+    implementation 'com.github.Cutta:GifView:1.4'
+    implementation CRASHREPORT
+    implementation NATIVECRASHREPORT
+    implementation files('libs/tbs_sdk.jar')
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportVersion}"
+    implementation 'com.trello:rxlifecycle-components:0.8.0'
+    implementation 'org.web3j:core:3.3.1-android'
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    implementation 'com.wang.avi:library:1.0.0'
+    implementation 'com.yanzhenjie.nohttp:nohttp:1.1.11'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
+    implementation 'com.zhouyou:rxeasyhttp:2.0.9'
+
+    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.7'
+    implementation 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+    implementation 'com.amap.api:location:latest.integration'   
 }
