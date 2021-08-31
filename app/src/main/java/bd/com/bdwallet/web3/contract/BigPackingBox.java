@@ -74,4 +74,20 @@ public class BigPackingBox extends Contract {
             }
         });
     }
+
+    public List<OwnerUpdateEventResponse> getOwnerUpdateEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("OwnerUpdate", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<OwnerUpdateEventResponse> responses = new ArrayList<OwnerUpdateEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            OwnerUpdateEventResponse typedResponse = new OwnerUpdateEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse._prevOwner = (String) eventValues.getNonIndexedValues().get(0).getValue();
+            typedResponse._newOwner = (String) eventValues.getNonIndexedValues().get(1).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
 }
