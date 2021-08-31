@@ -37,4 +37,41 @@ public class BigPackingBox extends Contract {
     protected BigPackingBox(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }    
+
+    public List<ResponseEventResponse> getResponseEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("Response", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Utf8String>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<ResponseEventResponse> responses = new ArrayList<ResponseEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            ResponseEventResponse typedResponse = new ResponseEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
+            typedResponse.errmsg = (byte[]) eventValues.getIndexedValues().get(1).getValue();
+            typedResponse.errno = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
+
+    public Observable<ResponseEventResponse> responseEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Response", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Utf8String>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, ResponseEventResponse>() {
+            @Override
+            public ResponseEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                ResponseEventResponse typedResponse = new ResponseEventResponse();
+                typedResponse.log = log;
+                typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
+                typedResponse.errmsg = (byte[]) eventValues.getIndexedValues().get(1).getValue();
+                typedResponse.errno = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+                return typedResponse;
+            }
+        });
+    }
 }
