@@ -29,5 +29,12 @@ import rx.Observable;
 import rx.functions.Func1;
 
 public class BigPackingBox extends Contract {
-    
+
+    protected BigPackingBox(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    protected BigPackingBox(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }    
 }
