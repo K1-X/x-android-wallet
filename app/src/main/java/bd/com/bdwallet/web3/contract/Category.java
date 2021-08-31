@@ -39,4 +39,21 @@ public class Category extends Contract {
     protected Category(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }        
+
+    public List<ResponseEventResponse> getResponseEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("Response", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Utf8String>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<ResponseEventResponse> responses = new ArrayList<ResponseEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            ResponseEventResponse typedResponse = new ResponseEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
+            typedResponse.errmsg = (byte[]) eventValues.getIndexedValues().get(1).getValue();
+            typedResponse.errno = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
 }
