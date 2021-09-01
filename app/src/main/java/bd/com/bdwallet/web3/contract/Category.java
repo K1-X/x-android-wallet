@@ -195,4 +195,44 @@ public class Category extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+    public static RemoteCall<Category> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, String _name, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_name),
+                new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Category.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<Category> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _name, List<String> _list) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Utf8String(_name),
+                new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))));
+        return deployRemoteCall(Category.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static Category load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Category(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static Category load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Category(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
