@@ -111,4 +111,20 @@ public class Category extends Contract {
             }
         });
     }
+
+    public RemoteCall<String> name() {
+        final Function function = new Function("name", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> setAuthorizedList(List<String> _list) {
+        final Function function = new Function(
+                "setAuthorizedList", 
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
