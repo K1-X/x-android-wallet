@@ -127,4 +127,72 @@ public class Category extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+    public RemoteCall<String> getTechnology() {
+        final Function function = new Function("getTechnology", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> authorizedAddresses() {
+        final Function function = new Function("authorizedAddresses", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> getMaterial() {
+        final Function function = new Function("getMaterial", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> getCategoryInfo() {
+        final Function function = new Function("getCategoryInfo", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> acceptOwnership() {
+        final Function function = new Function(
+                "acceptOwnership", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> owner() {
+        final Function function = new Function("owner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> newOwner() {
+        final Function function = new Function("newOwner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> updateBaseInfo(String _technology, String _material, String _operatorName) {
+        final Function function = new Function(
+                "updateBaseInfo", 
+                Arrays.<Type>asList(new Utf8String(_technology),
+                new Utf8String(_material),
+                new Utf8String(_operatorName)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
