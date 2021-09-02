@@ -30,4 +30,18 @@ public class ActivityDialog extends Dialog {
 
     }    
 
+    private void setListener() {
+        okTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+        mCancelIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 }
