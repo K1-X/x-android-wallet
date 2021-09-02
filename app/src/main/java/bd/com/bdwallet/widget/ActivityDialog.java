@@ -12,6 +12,22 @@ import bd.com.bdwallet.R;
 
 
 public class ActivityDialog extends Dialog {
-    
+
+    private Context mContext;
+    private TextView okTv;
+    private String privateKey;
+    private TextView privateKeyTv;
+    private ImageView mCancelIv;
+    public ActivityDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.dialog_activity);
+        okTv = (TextView) findViewById(R.id.ok_tv);
+        privateKeyTv=findViewById(R.id.private_name_tv);
+        mCancelIv=findViewById(R.id.cancel_iv);
+        setCanceledOnTouchOutside(false);
+        setListener();
+
+    }    
 
 }
