@@ -114,4 +114,27 @@ public class ERC20StandardToken extends Contract {
             }
         });
     }
+
+    public RemoteCall<String> name() {
+        final Function function = new Function("name", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> approve(String _spender, BigInteger _value) {
+        final Function function = new Function(
+                "approve", 
+                Arrays.<Type>asList(new Address(_spender),
+                new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> totalSupply() {
+        final Function function = new Function("totalSupply", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
 }
