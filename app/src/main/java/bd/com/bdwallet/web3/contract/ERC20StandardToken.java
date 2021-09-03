@@ -161,4 +161,89 @@ public class ERC20StandardToken extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
+
+    public RemoteCall<BigInteger> balanceOf(String _owner) {
+        final Function function = new Function("balanceOf", 
+                Arrays.<Type>asList(new Address(_owner)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public RemoteCall<String> symbol() {
+        final Function function = new Function("symbol", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transfer(String _to, BigInteger _value) {
+        final Function function = new Function(
+                "transfer", 
+                Arrays.<Type>asList(new Address(_to),
+                new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> approveAndCall(String _spender, BigInteger _value, byte[] _extraData) {
+        final Function function = new Function(
+                "approveAndCall", 
+                Arrays.<Type>asList(new Address(_spender),
+                new Uint256(_value),
+                new org.web3j.abi.datatypes.DynamicBytes(_extraData)), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> allowance(String _owner, String _spender) {
+        final Function function = new Function("allowance", 
+                Arrays.<Type>asList(new Address(_owner),
+                new Address(_spender)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public static RemoteCall<ERC20StandardToken> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Uint256(_initialAmount),
+                new Utf8String(_tokenName),
+                new Uint8(_decimalUnits),
+                new Utf8String(_tokenSymbol)));
+        return deployRemoteCall(ERC20StandardToken.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<ERC20StandardToken> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Uint256(_initialAmount),
+                new Utf8String(_tokenName),
+                new Uint8(_decimalUnits),
+                new Utf8String(_tokenSymbol)));
+        return deployRemoteCall(ERC20StandardToken.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static ERC20StandardToken load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new ERC20StandardToken(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static ERC20StandardToken load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new ERC20StandardToken(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class TransferEventResponse {
+        public Log log;
+
+        public String _from;
+
+        public String _to;
+
+        public BigInteger _value;
+    }
+
+    public static class ApprovalEventResponse {
+        public Log log;
+
+        public String _owner;
+
+        public String _spender;
+
+        public BigInteger _value;
+    }
 }
