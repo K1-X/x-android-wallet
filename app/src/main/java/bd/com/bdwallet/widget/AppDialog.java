@@ -30,6 +30,30 @@ public class AppDialog extends Dialog {
     private AppDialog(Context context, @LayoutRes int layoutRes, int width, int height) {
         this(context, layoutRes, width, height, Gravity.CENTER, context.getResources().getDimensionPixelSize(R.dimen.app_dialog_margin));
     }
-    
+
+    private AppDialog(Context context, @LayoutRes int layoutRes, int width, int height, int gravity, int y) {
+        super(context, R.style.AppDialog2);
+        // set content
+        setContentView(layoutRes);
+
+        Window window = getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams params = window.getAttributes();
+            if (width > 0) {
+                params.width = width;
+            } else {
+                params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            }
+            if (height > 0) {
+                params.height = height;
+            } else {
+                params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            }
+            params.gravity = gravity;
+            params.y = y;
+
+            window.setAttributes(params);
+        }
+    }    
 
 }
