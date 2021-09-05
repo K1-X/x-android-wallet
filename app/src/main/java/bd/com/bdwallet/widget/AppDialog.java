@@ -56,4 +56,9 @@ public class AppDialog extends Dialog {
         }
     }    
 
+    public void showLoadingDialog() {
+        setContentView(R.layout.dialog_loading2);
+        startLoadingAnim();
+        show();
+    }
 }
