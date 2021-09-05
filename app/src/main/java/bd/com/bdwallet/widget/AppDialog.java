@@ -27,6 +27,9 @@ import io.reactivex.functions.Action;
 
 public class AppDialog extends Dialog {
 
+    private AppDialog(Context context, @LayoutRes int layoutRes, int width, int height) {
+        this(context, layoutRes, width, height, Gravity.CENTER, context.getResources().getDimensionPixelSize(R.dimen.app_dialog_margin));
+    }
     
 
 }
