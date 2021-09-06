@@ -70,4 +70,21 @@ public class AppDialog extends Dialog {
         }
         super.dismiss();
     }
+
+    public void setAppDialogBackground(int resourceId) {
+        View view = findViewById(R.id.app_dialog_bg);
+        if (view != null) {
+            view.setBackgroundResource(resourceId);
+        }
+    }
+
+    public void showLoadingDialog(String text) {
+        setContentView(R.layout.dialog_loading2);
+        TextView view = (TextView) findViewById(R.id.tv_loading);
+        view.setText(text);
+        view.setVisibility(View.VISIBLE);
+        startLoadingAnim();
+        show();
+    }
+
 }
