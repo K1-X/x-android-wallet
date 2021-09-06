@@ -16,6 +16,25 @@ import bd.com.bdwallet.R;
 
 public class ChooseOpDialog extends Dialog {
     
+    private TextView titleTv;
+    private TextView desTv;
+    private Context mContext;
+    private TextView cancelTv;
+    private TextView okTv;
+    private View.OnClickListener listener;
+    private View.OnClickListener cancelListener;
 
+    public ChooseOpDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.choose_op_layout);
+        cancelTv = (TextView) findViewById(R.id.cancel_tv);
+        okTv = (TextView) findViewById(R.id.ok_tv);
+        setCanceledOnTouchOutside(false);
+        titleTv = (TextView) findViewById(R.id.title_tv);
+        desTv = (TextView) findViewById(R.id.title_des_tv);
+        setListener();
+
+    }
 
 }
