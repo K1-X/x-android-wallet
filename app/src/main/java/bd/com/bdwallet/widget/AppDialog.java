@@ -87,4 +87,19 @@ public class AppDialog extends Dialog {
         show();
     }
 
+    public void showLoadingDialogDismiss(String text,long time) {
+        setContentView(R.layout.dialog_loading2);
+        TextView view = (TextView) findViewById(R.id.tv_loading);
+        view.setText(text);
+        view.setVisibility(View.VISIBLE);
+        startLoadingAnim();
+        show();
+        Observable.timer(time, TimeUnit.SECONDS)
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        dismiss();
+                    }
+                }).subscribe();
+    }
 }
