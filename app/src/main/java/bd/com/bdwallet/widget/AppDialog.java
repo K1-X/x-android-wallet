@@ -102,4 +102,32 @@ public class AppDialog extends Dialog {
                     }
                 }).subscribe();
     }
+
+    public static AppDialog loadingCreate(Context context, String text) {
+        final AppDialog dialog = new AppDialog(context, R.layout.dialog_loading2, 0, 0);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.sv_loading_bg);
+        if (!TextUtils.isEmpty(text)) {
+            TextView tv = dialog.findViewById(R.id.tv_loading);
+            tv.setVisibility(View.VISIBLE);
+            tv.setText(text);
+        }
+        return dialog;
+    }
+
+    public void startLoadingAnim() {
+        GifView ivRotate = findViewById(R.id.ivRotate);
+        if (ivRotate != null) {
+            ivRotate.play();
+        }
+    }
+
+
+
+    /**
+     * dialog
+     */
+    public static AppDialog customAppDialog(Context context, @LayoutRes int layoutRes) {
+        return new AppDialog(context, layoutRes, 0, 0);
+    }
 }
