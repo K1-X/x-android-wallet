@@ -61,4 +61,13 @@ public class AppDialog extends Dialog {
         startLoadingAnim();
         show();
     }
+
+    @Override
+    public void dismiss() {
+        GifView ivRotate = findViewById(R.id.ivRotate);
+        if (ivRotate != null) {
+            ivRotate.pause();
+        }
+        super.dismiss();
+    }
 }
