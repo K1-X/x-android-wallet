@@ -69,4 +69,14 @@ public class ChooseOpDialog extends Dialog {
         desTv.setText(des);
         return this;
     }
+
+    public ChooseOpDialog setCancel(String cancel) {
+        cancelTv.setText(cancel);
+        return this;
+    }
+
+    public ChooseOpDialog setOk(String ok) {
+        okTv.setText(ok);
+        return this;
+    }
 }
