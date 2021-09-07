@@ -59,4 +59,14 @@ public class ChooseOpDialog extends Dialog {
 
 
     }
+
+    public ChooseOpDialog setTitle(String title) {
+        titleTv.setText(title);
+        return this;
+    }
+
+    public ChooseOpDialog setDes(String des) {
+        desTv.setText(des);
+        return this;
+    }
 }
