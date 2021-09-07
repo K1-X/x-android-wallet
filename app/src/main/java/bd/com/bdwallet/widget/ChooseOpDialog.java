@@ -79,4 +79,18 @@ public class ChooseOpDialog extends Dialog {
         okTv.setText(ok);
         return this;
     }
+
+    public void setOnOkClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+        // okTv.setOnClickListener(listener);
+    }
+
+    public void setOnCancelClickListener(View.OnClickListener listener) {
+        this.cancelListener = listener;
+        // okTv.setOnClickListener(listener);
+    }
+
+    public ChooseOpDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+    }
 }
