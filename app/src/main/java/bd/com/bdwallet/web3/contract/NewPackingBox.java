@@ -186,4 +186,50 @@ public class NewPackingBox extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
+
+    public RemoteCall<Boolean> isPullDown(BigInteger _pidx) {
+        final Function function = new Function("isPullDown", 
+                Arrays.<Type>asList(new Uint256(_pidx)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<TransactionReceipt> kill() {
+        final Function function = new Function(
+                "kill", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> appendEntryForBox(BigInteger _peroid, String _detailInfo) {
+        final Function function = new Function(
+                "appendEntryForBox", 
+                Arrays.<Type>asList(new Uint256(_peroid),
+                new Utf8String(_detailInfo)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> authorizedIdentify() {
+        final Function function = new Function("authorizedIdentify", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> retriveEntryByPeroid(BigInteger _pidx, BigInteger _peroid) {
+        final Function function = new Function("retriveEntryByPeroid", 
+                Arrays.<Type>asList(new Uint256(_pidx),
+                new Uint256(_peroid)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> categoryIdentify() {
+        final Function function = new Function("categoryIdentify", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
 }
