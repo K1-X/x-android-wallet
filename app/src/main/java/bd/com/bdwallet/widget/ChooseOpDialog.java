@@ -37,4 +37,26 @@ public class ChooseOpDialog extends Dialog {
 
     }
 
+    private void setListener() {
+        cancelTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cancelListener != null) {
+                    cancelListener.onClick(v);
+                }
+            }
+        });
+
+
+        okTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onClick(v);
+                }
+            }
+        });
+
+
+    }
 }
