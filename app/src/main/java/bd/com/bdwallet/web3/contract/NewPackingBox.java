@@ -156,4 +156,34 @@ public class NewPackingBox extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
+
+    public RemoteCall<String> retriveAllEntry(BigInteger _pidx) {
+        final Function function = new Function("retriveAllEntry", 
+                Arrays.<Type>asList(new Uint256(_pidx)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<Boolean> isDone(BigInteger _pidx) {
+        final Function function = new Function("isDone", 
+                Arrays.<Type>asList(new Uint256(_pidx)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
+        return executeRemoteCallSingleValueReturn(function, Boolean.class);
+    }
+
+    public RemoteCall<TransactionReceipt> setTokenOwner(BigInteger _pidx, String _key) {
+        final Function function = new Function(
+                "setTokenOwner", 
+                Arrays.<Type>asList(new Uint256(_pidx),
+                new Address(_key)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> ownerBlockNumber() {
+        final Function function = new Function("ownerBlockNumber", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
 }
