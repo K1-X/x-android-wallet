@@ -39,4 +39,18 @@ public class CommonItemView extends RelativeLayout {
     public CommonItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }    
+
+    public CommonItemView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        View.inflate(context, R.layout.item_common_line_text_layout, this);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonItemView);
+
+        des = a.getString(R.styleable.CommonItemView_textDes);
+        vaue = a.getString(R.styleable.CommonItemView_textValue);
+        showLeftIcon = a.getBoolean(R.styleable.CommonItemView_isLeftIconShow, false);
+        showRightIcon = a.getBoolean(R.styleable.CommonItemView_showmTextRightIcon, true);
+        leftSrc = a.getResourceId(R.styleable.CommonItemView_LeftIcon, -1);
+        rightSrc = a.getResourceId(R.styleable.CommonItemView_text_right_src, -1);
+        showValRightIcon = a.getBoolean(R.styleable.CommonItemView_showValRightIcon, true);
+    }
 }
