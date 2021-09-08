@@ -27,5 +27,16 @@ public class CommonItemView extends RelativeLayout {
     private boolean showLeftIcon;
     private boolean showRightIcon;
     private boolean showValRightIcon;
-    
+
+
+    private int leftSrc;
+    private int rightSrc;
+
+    public CommonItemView(Context context) {
+        this(context, null);
+    }
+
+    public CommonItemView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }    
 }
