@@ -15,5 +15,17 @@ import bd.com.bdwallet.R;
 
 
 public class CommonItemView extends RelativeLayout {
+
+    private TextView mDesTv;
+    private TextView mValueTv;
+
+    private ImageView mIcon;
+    private ImageView mRightImageView;
+
+    private String des;
+    private String vaue;
+    private boolean showLeftIcon;
+    private boolean showRightIcon;
+    private boolean showValRightIcon;
     
 }
