@@ -88,4 +88,14 @@ public class CommonItemView extends RelativeLayout {
             mValueTv.setCompoundDrawables(null, null, null, null);
         }
     }
+
+    public CommonItemView setRightImageViewVisible(int visible) {
+        mRightImageView.setVisibility(visible);
+        return this;
+    }
+
+    public CommonItemView setRightImageViewRes(@DrawableRes int resId) {
+        mRightImageView.setImageResource(resId);
+        return this;
+    }
 }
