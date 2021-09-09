@@ -94,4 +94,37 @@ public class PackingBox extends Contract {
         }
         return responses;
     }
+
+    public Observable<OwnerUpdateEventResponse> ownerUpdateEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("OwnerUpdate", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, OwnerUpdateEventResponse>() {
+            @Override
+            public OwnerUpdateEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                OwnerUpdateEventResponse typedResponse = new OwnerUpdateEventResponse();
+                typedResponse.log = log;
+                typedResponse._prevOwner = (String) eventValues.getNonIndexedValues().get(0).getValue();
+                typedResponse._newOwner = (String) eventValues.getNonIndexedValues().get(1).getValue();
+                return typedResponse;
+            }
+        });
+    }
+
+    public RemoteCall<String> productList() {
+        final Function function = new Function("productList", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<BigInteger> once() {
+        final Function function = new Function("once", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
 }
