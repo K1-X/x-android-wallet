@@ -180,4 +180,98 @@ public class PackingBox extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
+
+    public RemoteCall<String> boxVersion() {
+        final Function function = new Function("boxVersion", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> newOwner() {
+        final Function function = new Function("newOwner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> authIdentify() {
+        final Function function = new Function("authIdentify", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> archiveIdentify() {
+        final Function function = new Function("archiveIdentify", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> appendEntry(BigInteger _peroid, String _detailInfo) {
+        final Function function = new Function(
+                "appendEntry", 
+                Arrays.<Type>asList(new Uint256(_peroid),
+                new Utf8String(_detailInfo)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> packAuthAddress() {
+        final Function function = new Function("packAuthAddress", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public static RemoteCall<PackingBox> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, List<String> _plist, String _authAddress, String _archiveAddress) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_plist, Address.class)),
+                new Address(_authAddress),
+                new Address(_archiveAddress)));
+        return deployRemoteCall(PackingBox.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<PackingBox> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, List<String> _plist, String _authAddress, String _archiveAddress) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_plist, Address.class)),
+                new Address(_authAddress),
+                new Address(_archiveAddress)));
+        return deployRemoteCall(PackingBox.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static PackingBox load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new PackingBox(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static PackingBox load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new PackingBox(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
