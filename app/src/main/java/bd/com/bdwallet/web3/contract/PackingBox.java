@@ -127,4 +127,36 @@ public class PackingBox extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
+
+        public RemoteCall<String> archiveAddr() {
+        final Function function = new Function("archiveAddr", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> version() {
+        final Function function = new Function("version", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> addProducts(List<String> _plist, String _authAddress) {
+        final Function function = new Function(
+                "addProducts", 
+                Arrays.<Type>asList(new DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_plist, Address.class)),
+                new Address(_authAddress)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> acceptOwnership() {
+        final Function function = new Function(
+                "acceptOwnership", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
