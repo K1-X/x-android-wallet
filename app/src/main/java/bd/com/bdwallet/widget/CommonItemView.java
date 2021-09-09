@@ -98,4 +98,14 @@ public class CommonItemView extends RelativeLayout {
         mRightImageView.setImageResource(resId);
         return this;
     }
+
+    public CommonItemView setTextDes(String des) {
+        mDesTv.setText(des);
+        return this;
+    }
+
+    public CommonItemView setTextDes(@StringRes int strId) {
+        mDesTv.setText(strId);
+        return this;
+    }
 }
