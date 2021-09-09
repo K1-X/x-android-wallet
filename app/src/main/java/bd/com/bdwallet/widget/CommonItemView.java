@@ -108,4 +108,14 @@ public class CommonItemView extends RelativeLayout {
         mDesTv.setText(strId);
         return this;
     }
+
+    public CommonItemView setTextValue(String value) {
+        mValueTv.setText(value);
+        return this;
+    }
+
+    public CommonItemView setTextValue(@StringRes int strId) {
+        mValueTv.setText(strId);
+        return this;
+    }
 }
