@@ -53,4 +53,39 @@ public class CommonItemView extends RelativeLayout {
         rightSrc = a.getResourceId(R.styleable.CommonItemView_text_right_src, -1);
         showValRightIcon = a.getBoolean(R.styleable.CommonItemView_showValRightIcon, true);
     }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mDesTv = (TextView) findViewById(R.id.tv_des);
+        mValueTv = (TextView) findViewById(R.id.tv_value);
+        mIcon = findViewById(R.id.iv_icon);
+        mRightImageView = findViewById(R.id.iv_right_icon);
+        mDesTv.setText(des);
+        mValueTv.setText(vaue);
+
+        if (!showRightIcon) {
+            mDesTv.setCompoundDrawables(null, null, null, null);
+        }
+
+        if (leftSrc != -1) {
+            mIcon.setImageDrawable(getResources().getDrawable(leftSrc));
+        }
+
+        if (rightSrc != -1) {
+            Drawable drawable = getResources().getDrawable(rightSrc);
+            drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());
+            mDesTv.setCompoundDrawables(null, null, drawable, null);
+        }
+
+        if (showLeftIcon) {
+            mIcon.setVisibility(VISIBLE);
+        } else {
+            mIcon.setVisibility(GONE);
+        }
+
+        if (!showValRightIcon) {
+            mValueTv.setCompoundDrawables(null, null, null, null);
+        }
+    }
 }
