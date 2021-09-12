@@ -37,5 +37,20 @@ public class Product extends Contract {
         super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
     }
 
-    
+    public List<TransferProxyEventResponse> getTransferProxyEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("TransferProxy", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<TransferProxyEventResponse> responses = new ArrayList<TransferProxyEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            TransferProxyEventResponse typedResponse = new TransferProxyEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse._paddr = (String) eventValues.getIndexedValues().get(0).getValue();
+            typedResponse._taddr = (String) eventValues.getIndexedValues().get(1).getValue();
+            typedResponse._value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }    
 }
