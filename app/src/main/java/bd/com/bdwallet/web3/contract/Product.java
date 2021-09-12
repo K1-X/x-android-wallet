@@ -53,4 +53,24 @@ public class Product extends Contract {
         }
         return responses;
     }    
+
+    public Observable<TransferProxyEventResponse> transferProxyEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("TransferProxy", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, TransferProxyEventResponse>() {
+            @Override
+            public TransferProxyEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                TransferProxyEventResponse typedResponse = new TransferProxyEventResponse();
+                typedResponse.log = log;
+                typedResponse._paddr = (String) eventValues.getIndexedValues().get(0).getValue();
+                typedResponse._taddr = (String) eventValues.getIndexedValues().get(1).getValue();
+                typedResponse._value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+                return typedResponse;
+            }
+        });
+    }
 }
