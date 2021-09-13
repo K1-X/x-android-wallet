@@ -37,4 +37,15 @@ public class CustomRefreshFooter extends LinearLayout implements RefreshFooter {
     public CustomRefreshFooter(Context context) {
         this(context, null, 0);
     }    
+
+    public CustomRefreshFooter(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public CustomRefreshFooter(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        View view = View.inflate(context, R.layout.layout_refresh_header, this);
+        imageView = view.findViewById(R.id.iv_loading);
+        textView = view.findViewById(R.id.tv_loading);
+    }
 }
