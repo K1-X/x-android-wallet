@@ -145,4 +145,42 @@ public class Product extends Contract {
             }
         });
     }
+
+    public RemoteCall<TransactionReceipt> withdrawERC20Token(String _tokenOwner) {
+        final Function function = new Function(
+                "withdrawERC20Token", 
+                Arrays.<Type>asList(new Utf8String(_tokenOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> ownerBlockNumber() {
+        final Function function = new Function("ownerBlockNumber", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public RemoteCall<TransactionReceipt> kill() {
+        final Function function = new Function(
+                "kill", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> authorizedIdentify() {
+        final Function function = new Function("authorizedIdentify", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> setTokenOwner(String _tokenOwner) {
+        final Function function = new Function(
+                "setTokenOwner", 
+                Arrays.<Type>asList(new Utf8String(_tokenOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
