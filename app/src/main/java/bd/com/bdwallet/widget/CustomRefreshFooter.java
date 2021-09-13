@@ -24,5 +24,17 @@ import bd.com.bdwallet.R;
  * footer
  */
 public class CustomRefreshFooter extends LinearLayout implements RefreshFooter {
-    
+
+    private ImageView imageView;
+    private TextView textView;
+    private AnimationDrawable mAnimPull;
+    private AnimationDrawable mAnimRefresh;
+
+    private RotateAnimation mRotateAnimation;
+    private Runnable mRunnable;
+    private static final String TAG = "CustomRefreshFooter";
+
+    public CustomRefreshFooter(Context context) {
+        this(context, null, 0);
+    }    
 }
