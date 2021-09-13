@@ -254,4 +254,84 @@ public class Product extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
+
+    public RemoteCall<TransactionReceipt> appendEntry(BigInteger _peroid, String _detailInfo) {
+        final Function function = new Function(
+                "appendEntry", 
+                Arrays.<Type>asList(new Uint256(_peroid),
+                new Utf8String(_detailInfo)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> retriveEntryByPeroid(BigInteger _peroid) {
+        final Function function = new Function("retriveEntryByPeroid", 
+                Arrays.<Type>asList(new Uint256(_peroid)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public static RemoteCall<Product> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, String _archives, String _category, String _token, String _authorized, String _tokenOwner, String _uuid) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Address(_archives),
+                new Address(_category),
+                new Address(_token),
+                new Address(_authorized),
+                new Utf8String(_tokenOwner),
+                new Utf8String(_uuid)));
+        return deployRemoteCall(Product.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<Product> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _archives, String _category, String _token, String _authorized, String _tokenOwner, String _uuid) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Address(_archives),
+                new Address(_category),
+                new Address(_token),
+                new Address(_authorized),
+                new Utf8String(_tokenOwner),
+                new Utf8String(_uuid)));
+        return deployRemoteCall(Product.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static Product load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Product(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static Product load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Product(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class TransferProxyEventResponse {
+        public Log log;
+
+        public String _paddr;
+
+        public String _taddr;
+
+        public BigInteger _value;
+    }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
