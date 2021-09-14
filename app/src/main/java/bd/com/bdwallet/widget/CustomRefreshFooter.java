@@ -65,4 +65,48 @@ public class CustomRefreshFooter extends LinearLayout implements RefreshFooter {
     public void setPrimaryColors(int... colors) {
 
     }
+
+    @Override
+    public void onInitialized(@NonNull RefreshKernel kernel, int height, int maxDragHeight) {
+
+    }
+
+    @Override
+    public void onMoving(boolean isDragging, float percent, int offset, int height, int maxDragHeight) {
+
+    }
+
+    @Override
+    public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
+        switch (newState) {
+            case None:
+                break;
+            case PullUpToLoad:
+                textView.setText(R.string.pullup_to_load);
+                break;
+            case Loading:
+            case LoadReleased:
+                textView.setText(R.string.loading_footer);
+                mAnimRefresh = (AnimationDrawable) imageView.getBackground();
+                mAnimRefresh.start();
+                mRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        mRotateAnimation = getRotateAnimation();
+                        imageView.startAnimation(mRotateAnimation);
+                    }
+                };
+
+                imageView.postDelayed(mRunnable, 640);
+
+                break;
+            case ReleaseToLoad:
+                textView.setText(R.string.release_to_load);
+                break;
+            case Refreshing:
+                textView.setText(R.string.refreshing_footer);
+                break;
+
+        }
+    }
 }
