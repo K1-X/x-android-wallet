@@ -109,4 +109,19 @@ public class CustomRefreshFooter extends LinearLayout implements RefreshFooter {
 
         }
     }
+
+    @Override
+    public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
+        if (mAnimRefresh != null && mAnimRefresh.isRunning()) {
+            mAnimRefresh.stop();
+        }
+        if (mAnimPull != null && mAnimPull.isRunning()) {
+            mAnimPull.stop();
+        }
+        if (mRotateAnimation != null) {
+            mRotateAnimation.cancel();
+        }
+
+        return 100;
+    }
 }
