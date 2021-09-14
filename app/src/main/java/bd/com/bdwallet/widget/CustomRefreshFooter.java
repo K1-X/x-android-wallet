@@ -48,4 +48,21 @@ public class CustomRefreshFooter extends LinearLayout implements RefreshFooter {
         imageView = view.findViewById(R.id.iv_loading);
         textView = view.findViewById(R.id.tv_loading);
     }
+
+    @NonNull
+    @Override
+    public View getView() {
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public SpinnerStyle getSpinnerStyle() {
+        return SpinnerStyle.Translate;
+    }
+
+    @Override
+    public void setPrimaryColors(int... colors) {
+
+    }
 }
