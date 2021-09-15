@@ -166,4 +166,30 @@ public class Token extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
+
+    public RemoteCall<String> symbol() {
+        final Function function = new Function("symbol", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transfer(String _to, BigInteger _value) {
+        final Function function = new Function(
+                "transfer", 
+                Arrays.<Type>asList(new Address(_to),
+                new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> approveAndCall(String _spender, BigInteger _value, byte[] _extraData) {
+        final Function function = new Function(
+                "approveAndCall", 
+                Arrays.<Type>asList(new Address(_spender),
+                new Uint256(_value),
+                new org.web3j.abi.datatypes.DynamicBytes(_extraData)), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
