@@ -135,4 +135,21 @@ public class Token extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
+
+    public RemoteCall<TransactionReceipt> transferFrom(String _from, String _to, BigInteger _value) {
+        final Function function = new Function(
+                "transferFrom", 
+                Arrays.<Type>asList(new Address(_from),
+                new Address(_to),
+                new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> decimals() {
+        final Function function = new Function("decimals", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint8>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
 }
