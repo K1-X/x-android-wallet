@@ -192,4 +192,56 @@ public class Token extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+   public RemoteCall<BigInteger> allowance(String _owner, String _spender) {
+        final Function function = new Function("allowance", 
+                Arrays.<Type>asList(new Address(_owner),
+                new Address(_spender)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public static RemoteCall<Token> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Uint256(_initialAmount),
+                new Utf8String(_tokenName),
+                new Uint8(_decimalUnits),
+                new Utf8String(_tokenSymbol)));
+        return deployRemoteCall(Token.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<Token> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, BigInteger _initialAmount, String _tokenName, BigInteger _decimalUnits, String _tokenSymbol) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Uint256(_initialAmount),
+                new Utf8String(_tokenName),
+                new Uint8(_decimalUnits),
+                new Utf8String(_tokenSymbol)));
+        return deployRemoteCall(Token.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static Token load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Token(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static Token load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new Token(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class TransferEventResponse {
+        public Log log;
+
+        public String _from;
+
+        public String _to;
+
+        public BigInteger _value;
+    }
+
+    public static class ApprovalEventResponse {
+        public Log log;
+
+        public String _owner;
+
+        public String _spender;
+
+        public BigInteger _value;
+    }
 }
