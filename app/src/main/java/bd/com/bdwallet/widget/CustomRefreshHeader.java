@@ -23,5 +23,16 @@ import bd.com.bdwallet.R;
 
 public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
     
+    private ImageView imageView;
+    private TextView textView;
+    private AnimationDrawable mAnimPull;
+    private AnimationDrawable mAnimRefresh;
 
+    private RotateAnimation mRotateAnimation;
+    private Runnable mRunnable;
+    private static final String TAG = "CustomRefreshHeader";
+
+    public CustomRefreshHeader(Context context) {
+        this(context, null, 0);
+    }
 }
