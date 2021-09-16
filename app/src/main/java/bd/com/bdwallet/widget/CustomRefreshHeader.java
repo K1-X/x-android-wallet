@@ -35,4 +35,21 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
     public CustomRefreshHeader(Context context) {
         this(context, null, 0);
     }
+
+    public CustomRefreshHeader(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public CustomRefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        View view = View.inflate(context, R.layout.layout_refresh_header, this);
+        imageView = view.findViewById(R.id.iv_loading);
+        textView = view.findViewById(R.id.tv_loading);
+    }
+
+    @NonNull
+    @Override
+    public View getView() {
+        return this;
+    }
 }
