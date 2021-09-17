@@ -15,5 +15,13 @@ import bd.com.bdwallet.R;
 
 
 public class MessageDialog extends Dialog {
-    
+
+    private TextView titleTv;
+    private TextView desTv;
+    private TextView accountTv;
+    private Context mContext;
+    private TextView cancelTv;
+    private TextView okTv;
+    private OnOkClickListener listener;
+    private String pwdStr;    
 }
