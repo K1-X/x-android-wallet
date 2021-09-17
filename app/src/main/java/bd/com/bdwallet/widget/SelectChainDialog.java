@@ -57,4 +57,17 @@ public class SelectChainDialog extends Dialog {
         sureTv = findViewById(R.id.sure_tv);
         setCanceledOnTouchOutside(false);
     }
+
+    public void setData(List<ChainEntity> mwalletNames, String title, String titleDes) {
+        this.mwalletNames.clear();
+        this.mwalletNames.addAll(mwalletNames);
+        originalData.addAll(mwalletNames);
+        this.title = title;
+        this.titleDes = titleDes;
+        titleTv.setText(title);
+        titleDesTv.setText(titleDes);
+        adapter = new MyAdapter(mwalletNames);
+        listView.setAdapter(adapter);
+        setListener();
+    }
 }
