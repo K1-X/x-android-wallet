@@ -37,5 +37,35 @@ public class SuperConductToken extends Contract {
         super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
     }
 
+    public List<PauseEventResponse> getPauseEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("Pause", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList());
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<PauseEventResponse> responses = new ArrayList<PauseEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            PauseEventResponse typedResponse = new PauseEventResponse();
+            typedResponse.log = eventValues.getLog();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
+
+    public Observable<PauseEventResponse> pauseEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Pause", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList());
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, PauseEventResponse>() {
+            @Override
+            public PauseEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                PauseEventResponse typedResponse = new PauseEventResponse();
+                typedResponse.log = log;
+                return typedResponse;
+            }
+        });
+    }
     
 }
