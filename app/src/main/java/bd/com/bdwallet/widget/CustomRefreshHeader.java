@@ -68,4 +68,45 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
     public void onInitialized(@NonNull RefreshKernel kernel, int height, int maxDragHeight) {
 
     }
+
+    @Override
+    public void onMoving(boolean isDragging, float percent, int offset, int height, int maxDragHeight) {
+
+    }
+
+    @Override
+    public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
+        switch (newState) {
+            //1,：
+            case PullDownToRefresh:
+                textView.setText(R.string.pulldown_to_refresh);
+                imageView.setImageResource(R.drawable.icon_loading_16);
+                break;
+            //2,：
+            case ReleaseToRefresh:
+
+                textView.setText(R.string.release_to_refresh);
+                imageView.setImageResource(R.drawable.icon_loading_16);
+                break;
+            //3,：
+            case Refreshing:
+
+                imageView.setImageResource(R.drawable.bg_loading);
+                textView.setText(R.string.refreshing);
+                mAnimRefresh = (AnimationDrawable) imageView.getBackground();
+                mAnimRefresh.start();
+                mRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        mRotateAnimation = getRotateAnimation();
+                        imageView.startAnimation(mRotateAnimation);
+                    }
+                };
+
+                imageView.postDelayed(mRunnable, 640);
+
+                break;
+
+        }
+    }
 }
