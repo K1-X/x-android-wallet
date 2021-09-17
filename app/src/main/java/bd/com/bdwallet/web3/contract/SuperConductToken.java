@@ -67,5 +67,35 @@ public class SuperConductToken extends Contract {
             }
         });
     }
-    
+
+    public List<UnpauseEventResponse> getUnpauseEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("Unpause", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList());
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<UnpauseEventResponse> responses = new ArrayList<UnpauseEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            UnpauseEventResponse typedResponse = new UnpauseEventResponse();
+            typedResponse.log = eventValues.getLog();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
+
+    public Observable<UnpauseEventResponse> unpauseEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Unpause", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList());
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, UnpauseEventResponse>() {
+            @Override
+            public UnpauseEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                UnpauseEventResponse typedResponse = new UnpauseEventResponse();
+                typedResponse.log = log;
+                return typedResponse;
+            }
+        });
+    }    
 }
