@@ -70,4 +70,9 @@ public class SelectChainDialog extends Dialog {
         listView.setAdapter(adapter);
         setListener();
     }
+
+    public void setEditTvVisiable() {
+        searchEt.setVisibility(View.VISIBLE);
+        titleDesTv.setVisibility(View.GONE);
+    }
 }
