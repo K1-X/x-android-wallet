@@ -24,4 +24,18 @@ public class MessageDialog extends Dialog {
     private TextView okTv;
     private OnOkClickListener listener;
     private String pwdStr;    
+
+    public MessageDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.dialog_messsage_layout);
+        cancelTv = (TextView) findViewById(R.id.cancel_tv);
+        okTv = (TextView) findViewById(R.id.ok_tv);
+        setCanceledOnTouchOutside(false);
+        titleTv = (TextView) findViewById(R.id.title_tv);
+        desTv = (TextView) findViewById(R.id.title_des_tv);
+        accountTv = (TextView) findViewById(R.id.account_name_tv);
+        setListener();
+
+    }
 }
