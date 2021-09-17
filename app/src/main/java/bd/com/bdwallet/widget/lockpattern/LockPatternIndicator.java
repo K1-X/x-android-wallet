@@ -34,4 +34,11 @@ public class LockPatternIndicator extends View {
         super(context, attrs, defStyleAttr);
         this.init();
     }    
+
+    private void init() {
+        //initViewSize(context, attrs);
+        initRadius();
+        initPaint();
+        init9IndicatorCells();
+    }
 }
