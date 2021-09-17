@@ -38,4 +38,23 @@ public class SelectChainDialog extends Dialog {
     private String titleDes;
     private MyAdapter adapter;
     private AdapterView.OnItemClickListener listener;    
+
+    //tech
+    AdapterView<?> parent;
+    View view;
+    int position;
+    long id;
+
+    public SelectChainDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.dialog_select_wallet_layout);
+        listView = (ListView) findViewById(R.id.user_lv);
+        titleTv = (TextView) findViewById(R.id.title_tv);
+        titleDesTv = (TextView) findViewById(R.id.title_des_tv);
+        searchEt = (EditText) findViewById(R.id.search_et);
+        cancelTv = (TextView) findViewById(R.id.cancel_tv);
+        sureTv = findViewById(R.id.sure_tv);
+        setCanceledOnTouchOutside(false);
+    }
 }
