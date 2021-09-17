@@ -134,4 +134,25 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
     public void onStartAnimator(@NonNull RefreshLayout refreshLayout, int height, int maxDragHeight) {
 
     }
+
+    @Override
+    public void onHorizontalDrag(float percentX, int offsetX, int offsetMax) {
+
+    }
+
+    @Override
+    public boolean isSupportHorizontalDrag() {
+        return false;
+    }
+
+
+    private RotateAnimation getRotateAnimation() {
+        RotateAnimation rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setDuration(1200);
+        LinearInterpolator lin = new LinearInterpolator();
+        rotateAnimation.setInterpolator(lin);
+        rotateAnimation.setRepeatCount(Animation.INFINITE);
+        rotateAnimation.cancel();
+        return rotateAnimation;
+    }
 }
