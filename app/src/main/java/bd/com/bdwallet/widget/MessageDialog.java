@@ -38,4 +38,24 @@ public class MessageDialog extends Dialog {
         setListener();
 
     }
+
+    private void setListener() {
+        cancelTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        okTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener!=null){
+                    listener.onOkClick(pwdStr);
+                }
+                dismiss();
+            }
+        });
+
+    }
 }
