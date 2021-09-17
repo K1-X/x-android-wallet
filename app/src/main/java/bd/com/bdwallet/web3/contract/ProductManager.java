@@ -59,4 +59,23 @@ public class ProductManager extends Contract {
         return responses;
     }
     
+    public Observable<CreateEventResponse> createEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Create", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, CreateEventResponse>() {
+            @Override
+            public CreateEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                CreateEventResponse typedResponse = new CreateEventResponse();
+                typedResponse.log = log;
+                typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
+                typedResponse._address = (String) eventValues.getIndexedValues().get(1).getValue();
+                typedResponse.errno = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+                return typedResponse;
+            }
+        });
+    }
 }
