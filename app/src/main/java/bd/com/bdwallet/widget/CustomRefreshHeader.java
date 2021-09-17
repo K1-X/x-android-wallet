@@ -109,4 +109,29 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
 
         }
     }
+
+    @Override
+    public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
+        if (mAnimRefresh != null && mAnimRefresh.isRunning()) {
+            mAnimRefresh.stop();
+        }
+        if (mAnimPull != null && mAnimPull.isRunning()) {
+            mAnimPull.stop();
+        }
+        if (mRotateAnimation != null) {
+            mRotateAnimation.cancel();
+        }
+
+        return 100;
+    }
+
+    @Override
+    public void onReleased(@NonNull RefreshLayout refreshLayout, int height, int maxDragHeight) {
+
+    }
+
+    @Override
+    public void onStartAnimator(@NonNull RefreshLayout refreshLayout, int height, int maxDragHeight) {
+
+    }
 }
