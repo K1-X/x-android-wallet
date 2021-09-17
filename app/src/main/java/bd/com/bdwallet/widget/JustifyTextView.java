@@ -18,4 +18,9 @@ public class JustifyTextView extends android.support.v7.widget.AppCompatTextView
     public JustifyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }    
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+    }
 }
