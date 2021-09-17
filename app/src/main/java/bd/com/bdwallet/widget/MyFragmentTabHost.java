@@ -74,4 +74,41 @@ public class MyFragmentTabHost extends TabHost
             return v;
         }
     }
+
+    static class SavedState extends BaseSavedState {
+        String curTab;
+
+        SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        private SavedState(Parcel in) {
+            super(in);
+            curTab = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeString(curTab);
+        }
+
+        @Override
+        public String toString() {
+            return "FragmentTabHost.SavedState{"
+                    + Integer.toHexString(System.identityHashCode(this))
+                    + " curTab=" + curTab + "}";
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR
+                = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+    }
 }
