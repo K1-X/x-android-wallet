@@ -20,5 +20,10 @@ import bd.com.bdwallet.module.transaction.model.domian.SoSoBean;
 import bd.com.bdwallet.module.transaction.model.domian.SoSoInnerItemBean;
 
 public class SoSoItemView extends LinearLayout {
-    
+
+    private TextView title;
+    private RecyclerView mRev;
+    private List<SoSoInnerItemBean> datas = new ArrayList<>(5);
+    private CommonAdapter<SoSoInnerItemBean> adapter;
+    private Context context;    
 }
