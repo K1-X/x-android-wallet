@@ -52,4 +52,20 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
     public View getView() {
         return this;
     }
+
+    @NonNull
+    @Override
+    public SpinnerStyle getSpinnerStyle() {
+        return SpinnerStyle.Translate;
+    }
+
+    @Override
+    public void setPrimaryColors(int... colors) {
+
+    }
+
+    @Override
+    public void onInitialized(@NonNull RefreshKernel kernel, int height, int maxDragHeight) {
+
+    }
 }
