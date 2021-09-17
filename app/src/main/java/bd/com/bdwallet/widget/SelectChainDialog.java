@@ -24,5 +24,18 @@ import bd.com.bdwallet.module.common.lvadapter.SuperAdapter;
 import bd.com.walletdb.entity.ChainEntity;
 
 public class SelectChainDialog extends Dialog {
-    
+
+    private ListView listView;
+    private TextView titleTv;
+    private TextView titleDesTv;
+    private TextView cancelTv;
+    private TextView sureTv;
+    private EditText searchEt;
+    private List<ChainEntity> mwalletNames = new ArrayList<>();
+    private List<ChainEntity> originalData = new ArrayList<>();
+    private Context mContext;
+    private String title;
+    private String titleDes;
+    private MyAdapter adapter;
+    private AdapterView.OnItemClickListener listener;    
 }
