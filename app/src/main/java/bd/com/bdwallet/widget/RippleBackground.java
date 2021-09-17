@@ -20,5 +20,24 @@ import bd.com.bdwallet.R;
 
 public class RippleBackground extends RelativeLayout {
 
+    private static final int DEFAULT_RIPPLE_COUNT = 6;
+    private static final int DEFAULT_DURATION_TIME = 3000;
+    private static final float DEFAULT_SCALE = 2.3f;
+    private static final int DEFAULT_FILL_TYPE = 0;
+
+    private int rippleColor;
+    private float rippleStrokeWidth;
+    private float rippleRadius;
+    private int rippleDurationTime;
+    private int rippleAmount;
+    private int rippleDelay;
+    private float rippleScale;
+    private int rippleType;
+    private Paint paint;
+    private boolean animationRunning = false;
+    private AnimatorSet animatorSet;
+    private ArrayList<Animator> animatorList;
+    private LayoutParams rippleParams;
+    private ArrayList<RippleView> rippleViewList = new ArrayList<RippleView>();
     
 }
