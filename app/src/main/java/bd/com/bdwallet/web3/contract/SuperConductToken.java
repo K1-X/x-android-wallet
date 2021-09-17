@@ -98,4 +98,41 @@ public class SuperConductToken extends Contract {
             }
         });
     }    
+
+    public List<ApprovalEventResponse> getApprovalEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("Approval", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<ApprovalEventResponse> responses = new ArrayList<ApprovalEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            ApprovalEventResponse typedResponse = new ApprovalEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
+            typedResponse.spender = (String) eventValues.getIndexedValues().get(1).getValue();
+            typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
+
+    public Observable<ApprovalEventResponse> approvalEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Approval", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, ApprovalEventResponse>() {
+            @Override
+            public ApprovalEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                ApprovalEventResponse typedResponse = new ApprovalEventResponse();
+                typedResponse.log = log;
+                typedResponse.owner = (String) eventValues.getIndexedValues().get(0).getValue();
+                typedResponse.spender = (String) eventValues.getIndexedValues().get(1).getValue();
+                typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+                return typedResponse;
+            }
+        });
+    }
 }
