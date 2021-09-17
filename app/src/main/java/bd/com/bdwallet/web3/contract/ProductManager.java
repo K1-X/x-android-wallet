@@ -95,4 +95,40 @@ public class ProductManager extends Contract {
         }
         return responses;
     }
+
+    public Observable<ResponseEventResponse> responseEventObservable(DefaultBlockParameter startBlock, DefaultBlockParameter endBlock) {
+        final Event event = new Event("Response", 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Utf8String>() {}),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        EthFilter filter = new EthFilter(startBlock, endBlock, getContractAddress());
+        filter.addSingleTopic(EventEncoder.encode(event));
+        return web3j.ethLogObservable(filter).map(new Func1<Log, ResponseEventResponse>() {
+            @Override
+            public ResponseEventResponse call(Log log) {
+                EventValuesWithLog eventValues = extractEventParametersWithLog(event, log);
+                ResponseEventResponse typedResponse = new ResponseEventResponse();
+                typedResponse.log = log;
+                typedResponse.from = (String) eventValues.getIndexedValues().get(0).getValue();
+                typedResponse.errmsg = (byte[]) eventValues.getIndexedValues().get(1).getValue();
+                typedResponse.errno = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
+                return typedResponse;
+            }
+        });
+    }
+
+    public List<OwnerUpdateEventResponse> getOwnerUpdateEvents(TransactionReceipt transactionReceipt) {
+        final Event event = new Event("OwnerUpdate", 
+                Arrays.<TypeReference<?>>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Address>() {}));
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(event, transactionReceipt);
+        ArrayList<OwnerUpdateEventResponse> responses = new ArrayList<OwnerUpdateEventResponse>(valueList.size());
+        for (EventValuesWithLog eventValues : valueList) {
+            OwnerUpdateEventResponse typedResponse = new OwnerUpdateEventResponse();
+            typedResponse.log = eventValues.getLog();
+            typedResponse._prevOwner = (String) eventValues.getNonIndexedValues().get(0).getValue();
+            typedResponse._newOwner = (String) eventValues.getNonIndexedValues().get(1).getValue();
+            responses.add(typedResponse);
+        }
+        return responses;
+    }
 }
