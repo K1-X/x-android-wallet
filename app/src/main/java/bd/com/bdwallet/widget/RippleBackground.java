@@ -40,4 +40,18 @@ public class RippleBackground extends RelativeLayout {
     private LayoutParams rippleParams;
     private ArrayList<RippleView> rippleViewList = new ArrayList<RippleView>();
     
+
+    public RippleBackground(Context context) {
+        super(context);
+    }
+
+    public RippleBackground(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs);
+    }
+
+    public RippleBackground(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
 }
