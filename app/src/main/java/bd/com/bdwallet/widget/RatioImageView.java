@@ -38,4 +38,29 @@ public class RatioImageView extends ImageView {
 
         a.recycle();
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        if (w2hratio > 0) {//
+            int width = MeasureSpec.getSize(widthMeasureSpec);
+            int height = MeasureSpec.getSize(heightMeasureSpec);
+            if (height > 0) {
+                width = (int) ((float) height * w2hratio);
+            }
+            setMeasuredDimension(width, height);
+
+        }else if (h2wratio > 0) {//
+            int width = MeasureSpec.getSize(widthMeasureSpec);
+            int height = MeasureSpec.getSize(heightMeasureSpec);
+
+            if (width > 0) {
+                height = (int) ((float) width * h2wratio);
+            }
+            setMeasuredDimension(width, height);
+        } else {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
+    }
 }
