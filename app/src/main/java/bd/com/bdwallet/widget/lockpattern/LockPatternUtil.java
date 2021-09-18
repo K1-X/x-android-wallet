@@ -27,4 +27,32 @@ public class LockPatternUtil {
         }
     }
     
+
+    /**
+     * dip to px
+     *
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * check the touch cell is or not in the circle
+     *
+     * @param sx
+     * @param sy
+     * @param r      the radius of circle
+     * @param x      the x position of circle's center point
+     * @param y      the y position of circle's center point
+     * @param offset the offset to the frame of the circle
+     *               (if offset > 0 : the offset is inside the circle; if offset < 0 : the offset is outside the circle)
+     * @return
+     */
+    public static boolean checkInRound(float sx, float sy, float r, float x, float y, float offset) {
+        return Math.sqrt((sx - x + offset) * (sx - x + offset) + (sy - y + offset) * (sy - y + offset)) < r;
+    }
 }
