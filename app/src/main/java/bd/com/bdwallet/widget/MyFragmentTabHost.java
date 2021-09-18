@@ -283,4 +283,70 @@ public class MyFragmentTabHost extends TabHost
         super.onDetachedFromWindow();
         mAttached = false;
     }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SavedState ss = new SavedState(superState);
+        ss.curTab = getCurrentTabTag();
+        return ss;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        SavedState ss = (SavedState)state;
+        super.onRestoreInstanceState(ss.getSuperState());
+        setCurrentTabByTag(ss.curTab);
+    }
+
+    @Override
+    public void onTabChanged(String tabId) {
+        if (mAttached) {
+            FragmentTransaction ft = doTabChanged(tabId, null);
+            if (ft != null) {
+                ft.commit();
+            }
+        }
+        if (mOnTabChangeListener != null) {
+            mOnTabChangeListener.onTabChanged(tabId);
+        }
+    }
+
+    private FragmentTransaction doTabChanged(String tabId, FragmentTransaction ft) {
+        TabInfo newTab = null;
+        for (int i=0; i<mTabs.size(); i++) {
+            TabInfo tab = mTabs.get(i);
+            if (tab.tag.equals(tabId)) {
+                newTab = tab;
+            }
+        }
+        if (newTab == null) {
+            throw new IllegalStateException("No tab known for tag " + tabId);
+        }
+        if (mLastTab != newTab) {
+            if (ft == null) {
+                ft = mFragmentManager.beginTransaction();
+            }
+            if (mLastTab != null) {
+                if (mLastTab.fragment != null) {
+//                    ft.detach(mLastTab.fragment);
+                    ft.hide(mLastTab.fragment);
+
+                }
+            }
+            if (newTab != null) {
+                if (newTab.fragment == null) {
+                    newTab.fragment = Fragment.instantiate(mContext,
+                            newTab.clss.getName(), newTab.args);
+                    ft.add(mContainerId, newTab.fragment, newTab.tag);
+                } else {
+//                    ft.attach(newTab.fragment);
+                    ft.show(newTab.fragment);
+                }
+            }
+
+            mLastTab = newTab;
+        }
+        return ft;
+    }
 }
