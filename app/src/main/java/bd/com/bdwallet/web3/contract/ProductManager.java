@@ -157,4 +157,36 @@ public class ProductManager extends Contract {
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
+
+    public RemoteCall<TransactionReceipt> createProductTest(BigInteger _value) {
+        final Function function = new Function(
+                "createProductTest", 
+                Arrays.<Type>asList(new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> setAuthorizedList(List<String> _list) {
+        final Function function = new Function(
+                "setAuthorizedList", 
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_list, Address.class))),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> authorizedAddresses() {
+        final Function function = new Function("authorizedAddresses", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> updateTokenAddress(String _token) {
+        final Function function = new Function(
+                "updateTokenAddress", 
+                Arrays.<Type>asList(new Address(_token)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
