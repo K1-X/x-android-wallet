@@ -78,4 +78,12 @@ public class MessageDialog extends Dialog {
         this.listener = listener;
          //okTv.setOnClickListener(listener);
     }
+
+    public MessageDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+    }
+
+    public interface OnOkClickListener {
+        void onOkClick(String pwd);
+    }
 }
