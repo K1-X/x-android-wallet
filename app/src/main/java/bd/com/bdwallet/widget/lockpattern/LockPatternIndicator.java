@@ -69,4 +69,24 @@ public class LockPatternIndicator extends View {
             throw new IllegalArgumentException("the width must be equals height");
         }
     }
+
+    private void initRadius() {
+        this.radius = (this.width - offset * 2) / 4 / 2;
+        this.cellBoxHeight = (this.height - offset * 2) / 3;
+        this.cellBoxWidth = (this.width - offset * 2) / 3;
+    }
+
+    private void initPaint() {
+        defaultPaint = new Paint();
+        defaultPaint.setColor(getResources().getColor(R.color.cyan_normal));
+        defaultPaint.setStrokeWidth(3.0f);
+        defaultPaint.setStyle(Paint.Style.STROKE);
+        defaultPaint.setAntiAlias(true);
+
+        selectPaint = new Paint();
+        selectPaint.setColor(getResources().getColor(R.color.cyan_click));
+        selectPaint.setStrokeWidth(3.0f);
+        selectPaint.setStyle(Paint.Style.FILL);
+        selectPaint.setAntiAlias(true);
+    }
 }
