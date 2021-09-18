@@ -236,4 +236,51 @@ public class MyFragmentTabHost extends TabHost
         mTabs.add(info);
         addTab(tabSpec);
     }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        String currentTab = getCurrentTabTag();
+
+        // Go through all tabs and make sure their fragments match
+        // the correct state.
+        FragmentTransaction ft = null;
+        for (int i=0; i<mTabs.size(); i++) {
+            TabInfo tab = mTabs.get(i);
+            tab.fragment = mFragmentManager.findFragmentByTag(tab.tag);
+            if (tab.fragment != null) {
+//            if (tab.fragment != null && !tab.fragment.isDetached()) {
+                if (tab.tag.equals(currentTab)) {
+                    // The fragment for this tab is already there and
+                    // active, and it is what we really want to have
+                    // as the current tab.  Nothing to do.
+                    mLastTab = tab;
+                } else {
+                    // This fragment was restored in the active state,
+                    // but is not the current tab.  Deactivate it.
+                    if (ft == null) {
+                        ft = mFragmentManager.beginTransaction();
+                    }
+//                    ft.detach(tab.fragment);
+                    ft.hide(tab.fragment);
+                }
+            }
+        }
+
+        // We are now ready to go.  Make sure we are switched to the
+        // correct tab.
+        mAttached = true;
+        ft = doTabChanged(currentTab, ft);
+        if (ft != null) {
+            ft.commit();
+            mFragmentManager.executePendingTransactions();
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mAttached = false;
+    }
 }
