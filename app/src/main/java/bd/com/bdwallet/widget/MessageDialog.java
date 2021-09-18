@@ -58,4 +58,14 @@ public class MessageDialog extends Dialog {
         });
 
     }
+
+    public MessageDialog setTitle(String title) {
+        titleTv.setText(title);
+        return this;
+    }
+
+    public MessageDialog setDes(String des) {
+        desTv.setText(des);
+        return this;
+    }
 }
