@@ -55,4 +55,31 @@ public class LockPatternUtil {
     public static boolean checkInRound(float sx, float sy, float r, float x, float y, float offset) {
         return Math.sqrt((sx - x + offset) * (sx - x + offset) + (sy - y + offset) * (sy - y + offset)) < r;
     }
+
+    /**
+     * get distance between two points
+     *
+     * @param fpX first point x position
+     * @param fpY first point y position
+     * @param spX second point x position
+     * @param spY second point y position
+     * @return
+     */
+    public static float getDistanceBetweenTwoPoints(float fpX, float fpY, float spX, float spY) {
+        return (float) Math.sqrt((spX - fpX) * (spX - fpX) + (spY - fpY) * (spY - fpY));
+    }
+
+    /**
+     * get the angle which the line intersect x axis
+     *
+     * @param fpX
+     * @param fpY
+     * @param spX
+     * @param spY
+     * @param distance
+     * @return degrees
+     */
+    public static float getAngleLineIntersectX(float fpX, float fpY, float spX, float spY, float distance) {
+        return (float) Math.toDegrees(Math.acos((spX - fpX) / distance));
+    }
 }
