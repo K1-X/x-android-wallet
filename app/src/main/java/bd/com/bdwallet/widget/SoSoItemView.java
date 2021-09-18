@@ -34,4 +34,17 @@ public class SoSoItemView extends LinearLayout {
     public SoSoItemView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
+
+    public SoSoItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        this.context = context;
+        View.inflate(context, R.layout.soso_item_view, this);
+        initView();
+    }
+
+    private void initView() {
+        title = findViewById(R.id.soso_title);
+        mRev = findViewById(R.id.rev_soso_inner);
+        initAdapter();
+    }
 }
