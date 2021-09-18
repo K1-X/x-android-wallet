@@ -35,4 +35,24 @@ public class SosoLoadingDialog {
         gifView.play();
     }    
 
+    public static void cancleDialog() {
+        if (loadingDialog != null) {
+            if(gifView!=null){
+                gifView.pause();
+            }
+            loadingDialog.dismiss();
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                if (loadingDialog.getWindow().getDecorView().isAttachedToWindow()) {
+//                    loadingDialog.dismiss();
+//                } else {
+//                    Log.d("", " warn dialog not attached to window!!!");
+//                }
+//            } else {
+//                loadingDialog.dismiss();
+//            }
+        }
+        loadingDialog = null;
+
+    }
 }
