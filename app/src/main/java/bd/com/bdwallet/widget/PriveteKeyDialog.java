@@ -13,6 +13,22 @@ import bd.com.bdwallet.R;
 import bd.com.bdwallet.util.ResourceUtil;
 
 public class PriveteKeyDialog extends Dialog {
-    
+
+    private Context mContext;
+    private TextView okTv;
+    private String privateKey;
+    private TextView privateKeyTv;
+    private ImageView mCancelIv;
+    public PriveteKeyDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.dialog_privatekey_info);
+        okTv = (TextView) findViewById(R.id.ok_tv);
+        privateKeyTv=findViewById(R.id.private_name_tv);
+        mCancelIv=findViewById(R.id.cancel_iv);
+        setCanceledOnTouchOutside(false);
+        setListener();
+
+    }    
 
 }
