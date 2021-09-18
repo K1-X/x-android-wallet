@@ -242,4 +242,87 @@ public class SuperConductToken extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+    public RemoteCall<String> owner() {
+        final Function function = new Function("owner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> symbol() {
+        final Function function = new Function("symbol", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transfer(String _to, BigInteger _value) {
+        final Function function = new Function(
+                "transfer", 
+                Arrays.<Type>asList(new Address(_to),
+                new Uint256(_value)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<BigInteger> allowance(String _owner, String _spender) {
+        final Function function = new Function("allowance", 
+                Arrays.<Type>asList(new Address(_owner),
+                new Address(_spender)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public static RemoteCall<SuperConductToken> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(SuperConductToken.class, web3j, credentials, gasPrice, gasLimit, BINARY, "");
+    }
+
+    public static RemoteCall<SuperConductToken> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(SuperConductToken.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
+    }
+
+    public static SuperConductToken load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new SuperConductToken(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static SuperConductToken load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new SuperConductToken(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class PauseEventResponse {
+        public Log log;
+    }
+
+    public static class UnpauseEventResponse {
+        public Log log;
+    }
+
+    public static class ApprovalEventResponse {
+        public Log log;
+
+        public String owner;
+
+        public String spender;
+
+        public BigInteger value;
+    }
+
+    public static class TransferEventResponse {
+        public Log log;
+
+        public String from;
+
+        public String to;
+
+        public BigInteger value;
+    }
 }
