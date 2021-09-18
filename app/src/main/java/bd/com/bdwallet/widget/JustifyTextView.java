@@ -98,4 +98,12 @@ public class JustifyTextView extends android.support.v7.widget.AppCompatTextView
     private boolean isFirstLineOfParagraph(int lineStart, String line) {
         return line.length() > 3 && line.charAt(0) == ' ' && line.charAt(1) == ' ';
     }
+
+    private boolean needScale(String line) {
+        if (line == null || line.length() == 0) {
+            return false;
+        } else {
+            return line.charAt(line.length() - 1) != '\n';
+        }
+    }
 }
