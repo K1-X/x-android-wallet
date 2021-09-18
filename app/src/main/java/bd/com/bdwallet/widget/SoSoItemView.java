@@ -47,4 +47,16 @@ public class SoSoItemView extends LinearLayout {
         mRev = findViewById(R.id.rev_soso_inner);
         initAdapter();
     }
+
+    private void initAdapter() {
+        adapter = new CommonAdapter<SoSoInnerItemBean>(context, R.layout.archives_inner_item_view, datas) {
+            @Override
+            protected void convert(ViewHolder holder, SoSoInnerItemBean soSoInnerItemBean, int position) {
+                holder.setText(R.id.key_tv, soSoInnerItemBean.getKey());
+                holder.setText(R.id.value_tv, soSoInnerItemBean.getValue());
+            }
+        };
+        mRev.setLayoutManager(new LinearLayoutManager(context));
+        mRev.setAdapter(adapter);
+    }
 }
