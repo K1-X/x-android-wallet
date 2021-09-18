@@ -68,4 +68,14 @@ public class MessageDialog extends Dialog {
         desTv.setText(des);
         return this;
     }
+
+    public MessageDialog setAccount(String account) {
+        accountTv.setText(account);
+        return this;
+    }
+
+    public void setOnOkClickListener(OnOkClickListener listener) {
+        this.listener = listener;
+         //okTv.setOnClickListener(listener);
+    }
 }
