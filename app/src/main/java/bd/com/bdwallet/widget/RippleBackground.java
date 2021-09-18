@@ -134,4 +134,8 @@ public class RippleBackground extends RelativeLayout {
             animationRunning = false;
         }
     }
+
+    public boolean isRippleAnimationRunning() {
+        return animationRunning;
+    }
 }
