@@ -26,4 +26,12 @@ public class SoSoItemView extends LinearLayout {
     private List<SoSoInnerItemBean> datas = new ArrayList<>(5);
     private CommonAdapter<SoSoInnerItemBean> adapter;
     private Context context;    
+
+    public SoSoItemView(Context context) {
+        this(context, null);
+    }
+
+    public SoSoItemView(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 }
