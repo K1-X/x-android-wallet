@@ -106,4 +106,16 @@ public class SelectChainDialog extends Dialog {
         super.onCreate(savedInstanceState);
 
     }
+
+    class MyAdapter extends SuperAdapter {
+
+        public MyAdapter(List dates) {
+            super(dates);
+        }
+
+        @Override
+        public BaseHolder getSpecialHolder() {
+            return new SelectChainHolder(mContext);
+        }
+    }
 }
