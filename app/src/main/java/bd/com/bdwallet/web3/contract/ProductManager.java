@@ -270,4 +270,54 @@ public class ProductManager extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+    public static RemoteCall<ProductManager> deploy(Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit, String _token, String _feeToken, BigInteger _qrcodeFee) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Address(_token),
+                new Address(_feeToken),
+                new Uint256(_qrcodeFee)));
+        return deployRemoteCall(ProductManager.class, web3j, credentials, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static RemoteCall<ProductManager> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit, String _token, String _feeToken, BigInteger _qrcodeFee) {
+        String encodedConstructor = FunctionEncoder.encodeConstructor(Arrays.<Type>asList(new Address(_token),
+                new Address(_feeToken),
+                new Uint256(_qrcodeFee)));
+        return deployRemoteCall(ProductManager.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, encodedConstructor);
+    }
+
+    public static ProductManager load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
+        return new ProductManager(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    public static ProductManager load(String contractAddress, Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new ProductManager(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static class CreateEventResponse {
+        public Log log;
+
+        public String from;
+
+        public String _address;
+
+        public BigInteger errno;
+    }
+
+    public static class ResponseEventResponse {
+        public Log log;
+
+        public String from;
+
+        public byte[] errmsg;
+
+        public BigInteger errno;
+    }
+
+    public static class OwnerUpdateEventResponse {
+        public Log log;
+
+        public String _prevOwner;
+
+        public String _newOwner;
+    }
 }
