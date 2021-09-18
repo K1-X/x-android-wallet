@@ -96,4 +96,14 @@ public class SelectChainDialog extends Dialog {
             });
         }
     }
+
+    public SelectChainDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 }
