@@ -115,4 +115,121 @@ public class LockPatternIndicator extends View {
         }
     }
 
+    /**
+     * set indicator
+     *
+     * @param cells
+     */
+    public void setIndicator(List<LockPatternView.Cell> cells) {
+        for (LockPatternView.Cell cell : cells) {
+            for (int i = 0; i < mIndicatorCells.length; i++) {
+                for (int j = 0; j < mIndicatorCells[i].length; j++) {
+                    if (cell.getIndex() == mIndicatorCells[i][j].getIndex()) {
+                        //Log.e(TAG, String.valueOf(cell.getRow() * 3 + cell.getColumn() + 1));
+                        mIndicatorCells[i][j].setStatus(IndicatorCell.STATE_CHECK);
+                    }
+                }
+            }
+        }
+        this.postInvalidate();
+    }
+
+    /**
+     * set default indicator
+     */
+    public void setDefaultIndicator() {
+        for (int i = 0; i < mIndicatorCells.length; i++) {
+            for (int j = 0; j < mIndicatorCells[i].length; j++) {
+                mIndicatorCells[i][j].setStatus(IndicatorCell.STATE_NORMAL);
+            }
+        }
+        this.postInvalidate();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        drawToCanvas(canvas);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        this.width = getMeasuredWidth();
+        this.height = getMeasuredHeight();
+        if (this.width != this.height) {
+            throw new IllegalArgumentException("the width must be equals height");
+        }
+        this.initRadius();
+        this.set9IndicatorCellsSize();
+        this.invalidate();
+    }
+
+    /**
+     * draw the view to canvas
+     *
+     * @param canvas
+     */
+    private void drawToCanvas(Canvas canvas) {
+        for (int i = 0; i < mIndicatorCells.length; i++) {
+            for (int j = 0; j < mIndicatorCells[i].length; j++) {
+                if (mIndicatorCells[i][j].getStatus() == IndicatorCell.STATE_NORMAL) {
+                    canvas.drawCircle(mIndicatorCells[i][j].getX(), mIndicatorCells[i][j].getY(), radius, defaultPaint);
+                } else if (mIndicatorCells[i][j].getStatus() == IndicatorCell.STATE_CHECK) {
+                    canvas.drawCircle(mIndicatorCells[i][j].getX(), mIndicatorCells[i][j].getY(), radius, selectPaint);
+                }
+            }
+        }
+    }
+
+    public class IndicatorCell {
+        private int x;// the center x of circle
+        private int y;// the center y of circle
+        private int status = 0;//default
+        private int index;// the cell value
+
+        public static final int STATE_NORMAL = 0;
+        public static final int STATE_CHECK = 1;
+
+        public IndicatorCell() {
+        }
+
+        public IndicatorCell(int x, int y, int index) {
+            this.x = x;
+            this.y = y;
+            this.index = index;
+        }
+
+        public int getX() {
+            return this.x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return this.y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
+
+        public int getStatus() {
+            return this.status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIndex() {
+            return this.index;
+        }
+
+        public void setIndex(int index) {
+            this.index = index;
+        }
+    }
 }
