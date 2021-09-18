@@ -31,4 +31,19 @@ public class PriveteKeyDialog extends Dialog {
 
     }    
 
+    private void setListener() {
+        okTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ResourceUtil.setPrimaryClip(getContext(),privateKeyTv.getText().toString().trim());
+                Toast.makeText(getContext(),"",Toast.LENGTH_SHORT).show();
+            }
+        });
+        mCancelIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 }
