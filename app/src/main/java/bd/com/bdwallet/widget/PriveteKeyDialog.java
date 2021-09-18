@@ -46,4 +46,9 @@ public class PriveteKeyDialog extends Dialog {
             }
         });
     }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+        privateKeyTv.setText(privateKey);
+    }
 }
