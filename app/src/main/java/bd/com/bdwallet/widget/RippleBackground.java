@@ -138,4 +138,19 @@ public class RippleBackground extends RelativeLayout {
     public boolean isRippleAnimationRunning() {
         return animationRunning;
     }
+
+    private class RippleView extends View {
+
+        public RippleView(Context context) {
+            super(context);
+            this.setVisibility(View.INVISIBLE);
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            int radius = (Math.min(getWidth(), getHeight())) / 2;
+            canvas.drawCircle(radius, radius, radius - rippleStrokeWidth, paint);
+        }
+    }
+
 }
