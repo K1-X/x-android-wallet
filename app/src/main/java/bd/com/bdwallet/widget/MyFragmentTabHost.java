@@ -160,4 +160,80 @@ public class MyFragmentTabHost extends TabHost
                     LinearLayout.LayoutParams.FILL_PARENT, 0, 1));
         }
     }
+
+    /**
+     * @deprecated Don't call the original TabHost setup, you must instead
+     * call {@link #setup(Context, FragmentManager)} or
+     * {@link #setup(Context, FragmentManager, int)}.
+     */
+    @Override
+    @Deprecated
+    public void setup() {
+        throw new IllegalStateException(
+                "Must call setup() that takes a Context and FragmentManager");
+    }
+
+    public void setup(Context context, FragmentManager manager) {
+        ensureHierarchy(context);  // Ensure views required by super.setup()
+        super.setup();
+        mContext = context;
+        mFragmentManager = manager;
+        ensureContent();
+    }
+
+    public void setup(Context context, FragmentManager manager, int containerId) {
+        ensureHierarchy(context);  // Ensure views required by super.setup()
+        super.setup();
+        mContext = context;
+        mFragmentManager = manager;
+        mContainerId = containerId;
+        ensureContent();
+        mRealTabContent.setId(containerId);
+
+        // We must have an ID to be able to save/restore our state.  If
+        // the owner hasn't set one at this point, we will set it ourself.
+        if (getId() == View.NO_ID) {
+            setId(android.R.id.tabhost);
+        }
+    }
+
+    private void ensureContent() {
+        if (mRealTabContent == null) {
+            mRealTabContent = (FrameLayout)findViewById(mContainerId);
+            if (mRealTabContent == null) {
+                throw new IllegalStateException(
+                        "No tab content FrameLayout found for id " + mContainerId);
+            }
+        }
+    }
+
+    @Override
+    public void setOnTabChangedListener(OnTabChangeListener l) {
+        mOnTabChangeListener = l;
+    }
+
+    public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
+        tabSpec.setContent(new DummyTabFactory(mContext));
+        String tag = tabSpec.getTag();
+
+        TabInfo info = new TabInfo(tag, clss, args);
+
+        if (mAttached) {
+            // If we are already attached to the window, then check to make
+            // sure this tab's fragment is inactive if it exists.  This shouldn't
+            // normally happen.
+            info.fragment = mFragmentManager.findFragmentByTag(tag);
+            // add by pagoda 2016-11-02
+//            if (info.fragment != null && !info.fragment.isDetached()) {
+            if (info.fragment != null && !info.fragment.isHidden()){
+                FragmentTransaction ft = mFragmentManager.beginTransaction();
+//                ft.detach(info.fragment);
+                ft.hide(info.fragment);
+                ft.commit();
+            }
+        }
+
+        mTabs.add(info);
+        addTab(tabSpec);
+    }
 }
