@@ -111,4 +111,53 @@ public class MyFragmentTabHost extends TabHost
             }
         };
     }
+
+    public MyFragmentTabHost(Context context) {
+        // Note that we call through to the version that takes an AttributeSet,
+        // because the simple Context construct can result in a broken object!
+        super(context, null);
+        initFragmentTabHost(context, null);
+    }
+
+    public MyFragmentTabHost(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initFragmentTabHost(context, attrs);
+    }
+
+    private void initFragmentTabHost(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs,
+                new int[] { android.R.attr.inflatedId }, 0, 0);
+        mContainerId = a.getResourceId(0, 0);
+        a.recycle();
+
+        super.setOnTabChangedListener(this);
+    }
+
+    private void ensureHierarchy(Context context) {
+        // If owner hasn't made its own view hierarchy, then as a convenience
+        // we will construct a standard one here.
+        if (findViewById(android.R.id.tabs) == null) {
+            LinearLayout ll = new LinearLayout(context);
+            ll.setOrientation(LinearLayout.VERTICAL);
+            addView(ll, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.FILL_PARENT,
+                    ViewGroup.LayoutParams.FILL_PARENT));
+
+            TabWidget tw = new TabWidget(context);
+            tw.setId(android.R.id.tabs);
+            tw.setOrientation(TabWidget.HORIZONTAL);
+            ll.addView(tw, new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.FILL_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT, 0));
+
+            FrameLayout fl = new FrameLayout(context);
+            fl.setId(android.R.id.tabcontent);
+            ll.addView(fl, new LinearLayout.LayoutParams(0, 0, 0));
+
+            mRealTabContent = fl = new FrameLayout(context);
+            mRealTabContent.setId(mContainerId);
+            ll.addView(fl, new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT, 0, 1));
+        }
+    }
 }
