@@ -125,4 +125,35 @@ public class LockPatternUtil {
             }
         }
     }
+
+    public static String getPatternText(List<LockPatternView.Cell> pattern) {
+        if (pattern == null) {
+            return null;
+        } else {
+            int size = pattern.size();
+            String patternText = "";
+            for (int i = 0; i < size; i++) {
+                LockPatternView.Cell cell = pattern.get(i);
+                patternText += cell.getIndex();
+            }
+            return patternText;
+        }
+    }
+
+    /**
+     * Check to see if a pattern matches the saved pattern. If no pattern
+     * exists, always returns true.
+     *
+     * @param pattern
+     * @param bytes
+     * @return Whether the pattern matches the stored one.
+     */
+    public static boolean checkPattern(List<LockPatternView.Cell> pattern, byte[] bytes) {
+        if (pattern == null || bytes == null) {
+            return false;
+        } else {
+            byte[] bytes2 = patternToHash(pattern);
+            return Arrays.equals(bytes, bytes2);
+        }
+    }
 }
