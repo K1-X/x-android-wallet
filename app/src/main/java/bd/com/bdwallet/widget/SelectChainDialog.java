@@ -75,4 +75,25 @@ public class SelectChainDialog extends Dialog {
         searchEt.setVisibility(View.VISIBLE);
         titleDesTv.setVisibility(View.GONE);
     }
+
+    public void setOnItemClickListener(final AdapterView.OnItemClickListener listener) {
+        if (listView != null) {
+            SelectChainDialog.this.listener = listener;
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // dismiss();
+                    for(int i=0;i<mwalletNames.size();i++){
+                        mwalletNames.get(i).setSelected(false);
+                    }
+                    mwalletNames.get(position).setSelected(true);
+                    SelectChainDialog.this.parent = parent;
+                    SelectChainDialog.this.view = view;
+                    SelectChainDialog.this.position = position;
+                    SelectChainDialog.this.id = id;
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
+    }
 }
