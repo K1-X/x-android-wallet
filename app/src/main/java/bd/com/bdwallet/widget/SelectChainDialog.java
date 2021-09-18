@@ -118,4 +118,48 @@ public class SelectChainDialog extends Dialog {
             return new SelectChainHolder(mContext);
         }
     }
+
+    private void setListener() {
+        sureTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null && parent != null) {
+                    listener.onItemClick(parent, view, position, id);
+                }else if (listener != null) {
+                    for (ChainEntity env : mwalletNames) {
+                        if (env.isSelected() == true) {
+                            listener.onItemClick(parent, view, mwalletNames.indexOf(env), id);
+                            break;
+                        }
+                    }
+                }
+                dismiss();
+            }
+        });
+        cancelTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+        searchEt.addTextChangedListener(new TextWatcherProxy(new TextWatcherProxy.OnEdit() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                String result = s.toString();
+                mwalletNames.clear();
+                if (TextUtils.isEmpty(result)) {
+                    mwalletNames.addAll(originalData);
+                } else {
+                    for (ChainEntity entity : originalData) {
+                        if (entity.getName().contains(result)) {
+                            mwalletNames.add(entity);
+                        }
+                    }
+                }
+                adapter.bindtems(mwalletNames);
+                adapter.notifyDataSetChanged();
+            }
+        }) {
+        });
+    }
 }
