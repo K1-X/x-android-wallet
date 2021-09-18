@@ -63,4 +63,34 @@ public class JustifyTextView extends android.support.v7.widget.AppCompatTextView
             mLineY += textHeight;
         }
     }
+
+    private void drawScaledText(Canvas canvas, int lineStart, String line, float lineWidth) {
+        float x = 0;
+        if (isFirstLineOfParagraph(lineStart, line)) {
+            String blanks = "  ";
+            canvas.drawText(blanks, x, mLineY, getPaint());
+            float bw = StaticLayout.getDesiredWidth(blanks, getPaint());
+            x += bw;
+
+            line = line.substring(3);
+        }
+
+        int gapCount = line.length() - 1;
+        int i = 0;
+        if (line.length() > 2 && line.charAt(0) == 12288 && line.charAt(1) == 12288) {
+            String substring = line.substring(0, 2);
+            float cw = StaticLayout.getDesiredWidth(substring, getPaint());
+            canvas.drawText(substring, x, mLineY, getPaint());
+            x += cw;
+            i += 2;
+        }
+
+        float d = (mViewWidth - lineWidth) / gapCount;
+        for (; i < line.length(); i++) {
+            String c = String.valueOf(line.charAt(i));
+            float cw = StaticLayout.getDesiredWidth(c, getPaint());
+            canvas.drawText(c, x, mLineY, getPaint());
+            x += cw + d;
+        }
+    }
 }
