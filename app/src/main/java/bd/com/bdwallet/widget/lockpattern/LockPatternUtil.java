@@ -82,4 +82,47 @@ public class LockPatternUtil {
     public static float getAngleLineIntersectX(float fpX, float fpY, float spX, float spY, float distance) {
         return (float) Math.toDegrees(Math.acos((spX - fpX) / distance));
     }
+
+    /**
+     * get the angle which the line intersect y axis
+     *
+     * @param fpX
+     * @param fpY
+     * @param spX
+     * @param spY
+     * @param distance
+     * @return degrees
+     */
+    public static float getAngleLineIntersectY(float fpX, float fpY, float spX, float spY, float distance) {
+        return (float) Math.toDegrees(Math.acos((spY - fpY) / distance));
+    }
+
+    /**
+     * Generate an SHA-1 hash for the pattern. Not the most secure, but it is at
+     * least a second level of protection. First level is that the file is in a
+     * location only readable by the system process.
+     *
+     * @param pattern
+     * @return the hash of the pattern in a byte array.
+     */
+    public static byte[] patternToHash(List<LockPatternView.Cell> pattern) {
+        if (pattern == null) {
+            return null;
+        } else {
+            int size = pattern.size();
+            byte[] res = new byte[size];
+            for (int i = 0; i < size; i++) {
+                LockPatternView.Cell cell = pattern.get(i);
+                res[i] = (byte) cell.getIndex();
+            }
+            MessageDigest md = null;
+            try {
+                md = MessageDigest.getInstance("SHA-1");
+                return md.digest(res);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+                return res;
+            }
+        }
+    }
 }
