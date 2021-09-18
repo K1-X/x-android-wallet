@@ -189,4 +189,85 @@ public class ProductManager extends Contract {
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
+
+    public RemoteCall<TransactionReceipt> createPackingBox(String _archives, String _category, String _authorized, BigInteger _value, List<String> _keys) {
+        final Function function = new Function(
+                "createPackingBox", 
+                Arrays.<Type>asList(new Address(_archives),
+                new Address(_category),
+                new Address(_authorized),
+                new Uint256(_value),
+                new org.web3j.abi.datatypes.DynamicArray<Address>(
+                        org.web3j.abi.Utils.typeMap(_keys, Address.class))),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> acceptOwnership() {
+        final Function function = new Function(
+                "acceptOwnership", 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> owner() {
+        final Function function = new Function("owner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> pmVersion() {
+        final Function function = new Function("pmVersion", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> tokenAddress() {
+        final Function function = new Function("tokenAddress", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> withdrawToken(String _tokenAddr, BigInteger _amount) {
+        final Function function = new Function(
+                "withdrawToken", 
+                Arrays.<Type>asList(new Address(_tokenAddr),
+                new Uint256(_amount)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<String> feeTokenAddress() {
+        final Function function = new Function("feeTokenAddress", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<String> newOwner() {
+        final Function function = new Function("newOwner", 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteCall<TransactionReceipt> transferOwnership(String _newOwner) {
+        final Function function = new Function(
+                "transferOwnership", 
+                Arrays.<Type>asList(new Address(_newOwner)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    public RemoteCall<TransactionReceipt> withdrawMain(BigInteger _amount) {
+        final Function function = new Function(
+                "withdrawMain", 
+                Arrays.<Type>asList(new Uint256(_amount)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
 }
