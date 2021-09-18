@@ -51,4 +51,8 @@ public class PriveteKeyDialog extends Dialog {
         this.privateKey = privateKey;
         privateKeyTv.setText(privateKey);
     }
+
+    public PriveteKeyDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+    }
 }
