@@ -89,4 +89,30 @@ public class LockPatternIndicator extends View {
         selectPaint.setStyle(Paint.Style.FILL);
         selectPaint.setAntiAlias(true);
     }
+
+    /**
+     * initialize nine cells
+     */
+    private void init9IndicatorCells() {
+        int distance = this.cellBoxWidth + this.cellBoxWidth / 2 - this.radius;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                mIndicatorCells[i][j] = new IndicatorCell(distance * j + radius + offset, distance * i + radius + offset, 3 * i + j + 1);
+            }
+        }
+    }
+
+    /**
+     * set nine indicator cells size
+     */
+    private void set9IndicatorCellsSize() {
+        int distance = this.cellBoxWidth + this.cellBoxWidth / 2 - this.radius;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                mIndicatorCells[i][j].setX(distance * j + radius + offset);
+                mIndicatorCells[i][j].setY(distance * i + radius + offset);
+            }
+        }
+    }
+
 }
