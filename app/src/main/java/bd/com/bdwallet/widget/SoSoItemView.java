@@ -59,4 +59,11 @@ public class SoSoItemView extends LinearLayout {
         mRev.setLayoutManager(new LinearLayoutManager(context));
         mRev.setAdapter(adapter);
     }
+
+    public void updateData(ArchivesBean soSoBean) {
+        this.datas.clear();
+        this.datas.addAll(soSoBean.getInnerDatas());
+        adapter.notifyDataSetChanged();
+        title.setText(soSoBean.getTx());
+    }
 }
