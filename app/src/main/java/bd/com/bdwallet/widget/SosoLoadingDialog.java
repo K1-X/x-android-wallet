@@ -20,6 +20,19 @@ import com.cunoraz.gifview.library.GifView;
 import bd.com.appcore.R;
 
 public class SosoLoadingDialog {
-    
+
+    private static SosoLoadingDialog mLoading;
+    public static Dialog loadingDialog;
+    private static GifView gifView;
+    public static void loadingDialog(Context ct) {
+        cancleDialog();
+        View view = LayoutInflater.from(ct).inflate(R.layout.soso_loading_dialog, null);
+        loadingDialog = new Dialog(ct, R.style.style_loading_dialog);
+        loadingDialog.setContentView(view);
+        loadingDialog.setCanceledOnTouchOutside(false);
+        loadingDialog.show();
+        gifView=view.findViewById(R.id.av_loading_view);
+        gifView.play();
+    }    
 
 }
