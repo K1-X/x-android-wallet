@@ -86,4 +86,16 @@ public class MessageDialog extends Dialog {
     public interface OnOkClickListener {
         void onOkClick(String pwd);
     }
+
+    private void checkCanClick() {
+        if (!TextUtils.isEmpty(pwdStr)) {
+            okTv.setEnabled(true);
+        } else {
+            okTv.setEnabled(false);
+        }
+    }
+
+    public void setSureText(String text){
+        okTv.setText(text);
+    }
 }
