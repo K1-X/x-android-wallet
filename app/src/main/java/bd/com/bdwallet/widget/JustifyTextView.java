@@ -93,4 +93,9 @@ public class JustifyTextView extends android.support.v7.widget.AppCompatTextView
             x += cw + d;
         }
     }
+
+
+    private boolean isFirstLineOfParagraph(int lineStart, String line) {
+        return line.length() > 3 && line.charAt(0) == ' ' && line.charAt(1) == ' ';
+    }
 }
