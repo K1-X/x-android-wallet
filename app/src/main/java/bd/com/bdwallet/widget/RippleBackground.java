@@ -127,4 +127,11 @@ public class RippleBackground extends RelativeLayout {
             animationRunning = true;
         }
     }
+
+    public void stopRippleAnimation() {
+        if (isRippleAnimationRunning()) {
+            animatorSet.end();
+            animationRunning = false;
+        }
+    }
 }
