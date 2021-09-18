@@ -41,4 +41,32 @@ public class LockPatternIndicator extends View {
         initPaint();
         init9IndicatorCells();
     }
+
+    /**
+     * init view size
+     *
+     * @param context
+     * @param attrs
+     */
+    @Deprecated
+    private void initViewSize(Context context, AttributeSet attrs) {
+        for (int i = 0; i < attrs.getAttributeCount(); i++) {
+            String name = attrs.getAttributeName(i);
+            if ("layout_width".equals(name)) {
+                String value = attrs.getAttributeValue(i);
+                this.width = LockPatternUtil.changeSize(context, value);
+                //Log.e(TAG, "layout_width:" + value);
+            }
+            if ("layout_height".equals(attrs.getAttributeName(i))) {
+                String value = attrs.getAttributeValue(i);
+                this.height = LockPatternUtil.changeSize(context, value);
+                //Log.e(TAG, "layout_height:" + value);
+            }
+        }
+        //check the width is or not equals height
+        //if not throw exception
+        if (this.width != this.height) {
+            throw new IllegalArgumentException("the width must be equals height");
+        }
+    }
 }
