@@ -88,4 +88,56 @@ public class LockPatternView extends View {
         this.set9CellsSize();
         this.invalidate();
     }    
+
+    private void drawToCanvas(Canvas canvas) {
+
+        for (int i = 0; i < mCells.length; i++) {
+            for (int j = 0; j < mCells[i].length; j++) {
+                if (mCells[i][j].getStatus() == Cell.STATE_CHECK) {
+                    selectPaint.setStyle(Paint.Style.STROKE);
+                    canvas.drawCircle(mCells[i][j].getX(), mCells[i][j].getY(),
+                        this.cellRadius, this.selectPaint);
+                    selectPaint.setStyle(Paint.Style.FILL);
+                    canvas.drawCircle(mCells[i][j].getX(), mCells[i][j].getY(),
+                        this.cellInnerRadius, this.selectPaint);
+                } else if (mCells[i][j].getStatus() == Cell.STATE_NORMAL) {
+                    canvas.drawCircle(mCells[i][j].getX(), mCells[i][j].getY(),
+                        this.cellRadius, this.defaultPaint);
+                } else if (mCells[i][j].getStatus() == Cell.STATE_CHECK_ERROR) {
+                    errorPaint.setStyle(Paint.Style.STROKE);
+                    canvas.drawCircle(mCells[i][j].getX(), mCells[i][j].getY(),
+                        this.cellRadius, this.errorPaint);
+                    errorPaint.setStyle(Paint.Style.FILL);
+                    canvas.drawCircle(mCells[i][j].getX(), mCells[i][j].getY(),
+                        this.cellInnerRadius, this.errorPaint);
+                }
+            }
+        }
+
+        if (sCells.size() > 0) {
+            //temporary cell: at the beginning the cell is the first of sCells
+            Cell tempCell = sCells.get(0);
+
+            for (int i = 1; i < sCells.size(); i++) {
+                Cell cell = sCells.get(i);
+                if (cell.getStatus() == Cell.STATE_CHECK) {
+                    //drawLineIncludeCircle(tempCell, cell, canvas , selectPaint);
+                    drawLine(tempCell, cell, canvas, selectPaint);
+                    //drawTriangle(tempCell, cell, canvas, selectPaint);
+                    drawNewTriangle(tempCell, cell, canvas, selectPaint);
+                } else if (cell.getStatus() == Cell.STATE_CHECK_ERROR) {
+                    //drawLineIncludeCircle(tempCell, cell, canvas, errorPaint);
+                    drawLine(tempCell, cell, canvas, errorPaint);
+                    //drawTriangle(tempCell, cell, canvas, errorPaint);
+                    drawNewTriangle(tempCell, cell, canvas, errorPaint);
+                }
+                tempCell = cell;
+            }
+
+            if (isActionMove && !isActionUp) {
+                //canvas.drawLine(tempCell.getX(), tempCell.getY(), movingX, movingY, selectPaint);
+                this.drawLineFollowFinger(tempCell, canvas, selectPaint);
+            }
+        }
+    }
 }
