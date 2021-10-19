@@ -25,4 +25,19 @@ public class VerifyPwdDialog extends Dialog {
     private TextView okTv;
     private OnOkClickListener listener;
     private String pwdStr;    
+
+    public VerifyPwdDialog(@NonNull Context context) {
+        super(context, R.style.DialogTranslucentNoTitle);
+        mContext = context;
+        setContentView(R.layout.dialog_login_pwd);
+        pwdCev = (EditText) findViewById(R.id.eidt_pwd_et);
+        cancelTv = (TextView) findViewById(R.id.cancel_tv);
+        okTv = (TextView) findViewById(R.id.ok_tv);
+        setCanceledOnTouchOutside(false);
+        titleTv = (TextView) findViewById(R.id.title_tv);
+        desTv = (TextView) findViewById(R.id.title_des_tv);
+        accountTv = (TextView) findViewById(R.id.account_name_tv);
+        setListener();
+
+    }
 }
