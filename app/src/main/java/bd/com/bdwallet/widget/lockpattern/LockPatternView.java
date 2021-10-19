@@ -204,4 +204,41 @@ public class LockPatternView extends View {
             }
         }
     }
+
+    /**
+     * initialize paints
+     */
+    private void initPaints() {
+        defaultPaint = new Paint();
+        defaultPaint.setColor(getResources().getColor(R.color.cyan_normal));
+        defaultPaint.setStrokeWidth(2.0f);
+        defaultPaint.setStyle(Paint.Style.STROKE);
+        defaultPaint.setAntiAlias(true);
+
+        selectPaint = new Paint();
+        selectPaint.setColor(getResources().getColor(R.color.cyan_click));
+        selectPaint.setStrokeWidth(3.0f);
+        //selectPaint.setStyle(Style.STROKE);
+        selectPaint.setAntiAlias(true);
+
+        errorPaint = new Paint();
+        errorPaint.setColor(getResources().getColor(R.color.red_click));
+        errorPaint.setStrokeWidth(3.0f);
+        //errorPaint.setStyle(Style.STROKE);
+        errorPaint.setAntiAlias(true);
+    }
+
+    /**
+     * initialize paths
+     */
+    private void initPaths() {
+        trianglePath = new Path();
+    }
+
+    /**
+     * initialize matrixs
+     */
+    private void initMatrixs() {
+        triangleMatrix = new Matrix();
+    }
 }
