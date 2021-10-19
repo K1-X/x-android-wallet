@@ -140,4 +140,41 @@ public class LockPatternView extends View {
             }
         }
     }
+
+    /**
+     * initialize the view size (include the view width and the view height fro the AttributeSet)
+     *
+     * @param context
+     * @param attrs
+     */
+    @Deprecated
+    private void initViewSize(Context context, AttributeSet attrs) {
+        for (int i = 0; i < attrs.getAttributeCount(); i++) {
+            String name = attrs.getAttributeName(i);
+            if ("layout_width".equals(name)) {
+                String value = attrs.getAttributeValue(i);
+                this.width = LockPatternUtil.changeSize(context, value);
+            }
+            if ("layout_height".equals(attrs.getAttributeName(i))) {
+                String value = attrs.getAttributeValue(i);
+                this.height = LockPatternUtil.changeSize(context, value);
+            }
+        }
+        //check the width is or not equals height.
+        //if not throw exception
+        if (this.width != this.height) {
+            throw new IllegalArgumentException("the width must be equals height");
+        }
+    }
+
+    /**
+     * initialize cell size (include circle radius, inner circle radius,
+     * cell box width, cell box height)
+     */
+    private void initCellSize() {
+        this.cellRadius = (this.width - offset * 2) / 4 / 2;
+        this.cellInnerRadius = this.cellRadius / 3;
+        this.cellBoxWidth = (this.width - offset * 2) / 3;
+        this.cellBoxHeight = (this.height - offset * 2) / 3;
+    }
 }
