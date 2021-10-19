@@ -177,4 +177,31 @@ public class LockPatternView extends View {
         this.cellBoxWidth = (this.width - offset * 2) / 3;
         this.cellBoxHeight = (this.height - offset * 2) / 3;
     }
+
+    /**
+     * initialize nine cells
+     */
+    private void init9Cells() {
+        //the distance between the center of two circles
+        int distance = this.cellBoxWidth + this.cellBoxWidth / 2 - this.cellRadius;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                mCells[i][j] = new Cell(distance * j + cellRadius + offset,
+                    distance * i + cellRadius + offset, i, j, 3 * i + j + 1);
+            }
+        }
+    }
+
+    /**
+     * set nine cells size
+     */
+    private void set9CellsSize() {
+        int distance = this.cellBoxWidth + this.cellBoxWidth / 2 - this.cellRadius;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                mCells[i][j].setX(distance * j + cellRadius + offset);
+                mCells[i][j].setY(distance * i + cellRadius + offset);
+            }
+        }
+    }
 }
