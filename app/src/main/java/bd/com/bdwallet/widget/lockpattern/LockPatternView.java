@@ -241,4 +241,36 @@ public class LockPatternView extends View {
     private void initMatrixs() {
         triangleMatrix = new Matrix();
     }
+
+    /**
+     * draw line include circle
+     * (the line include inside the circle, the method is deprecated)
+     *
+     * @param preCell
+     * @param nextCell
+     * @param canvas
+     * @param paint
+     */
+    @Deprecated
+    private void drawLineIncludeCircle(Cell preCell, Cell nextCell, Canvas canvas, Paint paint) {
+        canvas.drawLine(preCell.getX(), preCell.getY(), nextCell.getX(), nextCell.getY(), paint);
+    }
+
+    /**
+     * draw line not include circle (check whether the cell between two cells )
+     *
+     * @param preCell
+     * @param nextCell
+     * @param canvas
+     * @param paint
+     */
+    private void drawLine(Cell preCell, Cell nextCell, Canvas canvas, Paint paint) {
+        Cell centerCell = getCellBetweenTwoCells(preCell, nextCell);
+        if (centerCell != null && sCells.contains(centerCell)) {
+            drawLineNotIncludeCircle(centerCell, preCell, canvas, paint);
+            drawLineNotIncludeCircle(centerCell, nextCell, canvas, paint);
+        } else {
+            drawLineNotIncludeCircle(preCell, nextCell, canvas, paint);
+        }
+    }
 }
