@@ -102,4 +102,16 @@ public class VerifyPwdDialog extends Dialog {
     public VerifyPwdDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
     }
+
+    public interface OnOkClickListener {
+        void onOkClick(String pwd);
+    }
+
+    private void checkCanClick() {
+        if (!TextUtils.isEmpty(pwdStr)) {
+            okTv.setEnabled(true);
+        } else {
+            okTv.setEnabled(false);
+        }
+    }
 }
