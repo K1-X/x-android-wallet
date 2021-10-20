@@ -83,4 +83,14 @@ public class VerifyPwdDialog extends Dialog {
         titleTv.setText(title);
         return this;
     }
+
+    public VerifyPwdDialog setDes(String des) {
+        desTv.setText(des);
+        return this;
+    }
+
+    public VerifyPwdDialog setAccount(String account) {
+        accountTv.setText(account);
+        return this;
+    }
 }
