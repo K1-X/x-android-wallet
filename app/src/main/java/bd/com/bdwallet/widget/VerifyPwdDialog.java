@@ -93,4 +93,13 @@ public class VerifyPwdDialog extends Dialog {
         accountTv.setText(account);
         return this;
     }
+
+    public void setOnOkClickListener(OnOkClickListener listener) {
+        this.listener = listener;
+        // okTv.setOnClickListener(listener);
+    }
+
+    public VerifyPwdDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+    }
 }
