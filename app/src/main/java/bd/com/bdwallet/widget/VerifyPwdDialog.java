@@ -78,4 +78,9 @@ public class VerifyPwdDialog extends Dialog {
         });
 
     }
+
+    public VerifyPwdDialog setTitle(String title) {
+        titleTv.setText(title);
+        return this;
+    }
 }
