@@ -50,11 +50,6 @@ public class WalletItemView extends RelativeLayout {
         int resId=ResourceUtil.getDrawbleResIdByName(context,entity.getIconStr());
         walletIv.setImageResource(resId);
         String cuurentAddr=AppSettings.getAppSettings().getCurrentAddress();
-//        if(TextUtils.equals(cuurentAddr,entity.getAddress())){
-//            setBackgroundColor(context.getResources().getColor(R.color.divider));
-//        }else {
-//            setBackgroundColor(context.getResources().getColor(R.color.transparent));
-//        }
         invalidate();
         this.setOnClickListener(new OnClickListener() {
             @Override
