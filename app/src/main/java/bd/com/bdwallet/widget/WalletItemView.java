@@ -17,6 +17,19 @@ import bd.com.walletdb.entity.WalletEntity;
 import de.greenrobot.event.EventBus;
 
 public class WalletItemView extends RelativeLayout {
-    
+
+    private Context context;
+    private TextView walletNameTv;
+    private CircleImageView walletIv;
+    private WalletEntity entity;
+    public WalletItemView(Context context) {
+        super(context);
+        init(context);
+    }
+
+    public WalletItemView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }    
 
 }
