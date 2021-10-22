@@ -32,4 +32,15 @@ public class WalletItemView extends RelativeLayout {
         init(context);
     }    
 
+    public WalletItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    private void init(Context context){
+        this.context=context;
+        LayoutInflater.from(context).inflate(R.layout.item_menu_layout,this,true);
+        walletNameTv=findViewById(R.id.wallet_name_tv);
+        walletIv=findViewById(R.id.wallet_iv);
+    }
 }
