@@ -43,4 +43,27 @@ public class WalletItemView extends RelativeLayout {
         walletNameTv=findViewById(R.id.wallet_name_tv);
         walletIv=findViewById(R.id.wallet_iv);
     }
+
+    public void setContent(final WalletEntity entity){
+        this.entity=entity;
+        walletNameTv.setText(entity.getName());
+        int resId=ResourceUtil.getDrawbleResIdByName(context,entity.getIconStr());
+        walletIv.setImageResource(resId);
+        String cuurentAddr=AppSettings.getAppSettings().getCurrentAddress();
+//        if(TextUtils.equals(cuurentAddr,entity.getAddress())){
+//            setBackgroundColor(context.getResources().getColor(R.color.divider));
+//        }else {
+//            setBackgroundColor(context.getResources().getColor(R.color.transparent));
+//        }
+        invalidate();
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppSettings.getAppSettings().setCurrentAddress(entity.getAddress());
+                WalletChangeEvent event=new WalletChangeEvent();
+                event.setEntity(entity);
+                EventBus.getDefault().post(event);
+            }
+        });
+    }
 }
