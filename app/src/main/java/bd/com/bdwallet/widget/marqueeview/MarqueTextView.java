@@ -18,4 +18,8 @@ public class MarqueTextView extends TextView {
         super(context);
     }    
 
+    @Override
+    public boolean isFocused() {
+        return true;
+    }
 }
