@@ -17,4 +17,8 @@ public class RotateGestureDetector {
     private float x2;
     private float y2;
     
+
+    public RotateGestureDetector(OnRotateListener l) {
+        mListener = l;
+    }
 }
