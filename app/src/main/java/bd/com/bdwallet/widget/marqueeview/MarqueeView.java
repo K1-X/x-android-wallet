@@ -61,5 +61,62 @@ public class MarqueeView<T> extends ViewFlipper {
         super(context, attrs);
         init(context, attrs, 0);
     }
-    
+
+    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MarqueeViewStyle, defStyleAttr, 0);
+
+        interval = typedArray.getInteger(R.styleable.MarqueeViewStyle_mvInterval, interval);
+        hasSetAnimDuration = typedArray.hasValue(R.styleable.MarqueeViewStyle_mvAnimDuration);
+        animDuration = typedArray.getInteger(R.styleable.MarqueeViewStyle_mvAnimDuration, animDuration);
+        singleLine = typedArray.getBoolean(R.styleable.MarqueeViewStyle_mvSingleLine, false);
+        if (typedArray.hasValue(R.styleable.MarqueeViewStyle_mvTextSize)) {
+            textSize = (int) typedArray.getDimension(R.styleable.MarqueeViewStyle_mvTextSize, textSize);
+            textSize = Utils.px2sp(context, textSize);
+        }
+        textColor = typedArray.getColor(R.styleable.MarqueeViewStyle_mvTextColor, textColor);
+        @FontRes int fontRes = typedArray.getResourceId(R.styleable.MarqueeViewStyle_mvFont, 0);
+        if (fontRes != 0) {
+            typeface = ResourcesCompat.getFont(context, fontRes);
+        }
+        int gravityType = typedArray.getInt(R.styleable.MarqueeViewStyle_mvGravity, GRAVITY_CENTER);
+        switch (gravityType) {
+            case GRAVITY_LEFT:
+                gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
+                break;
+            case GRAVITY_CENTER:
+                gravity = Gravity.CENTER;
+                break;
+            case GRAVITY_RIGHT:
+                gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+                break;
+        }
+
+        if (typedArray.hasValue(R.styleable.MarqueeViewStyle_mvDirection)) {
+            direction = typedArray.getInt(R.styleable.MarqueeViewStyle_mvDirection, direction);
+            switch (direction) {
+                case DIRECTION_BOTTOM_TO_TOP:
+                    inAnimResId = R.anim.anim_bottom_in;
+                    outAnimResId = R.anim.anim_top_out;
+                    break;
+                case DIRECTION_TOP_TO_BOTTOM:
+                    inAnimResId = R.anim.anim_top_in;
+                    outAnimResId = R.anim.anim_bottom_out;
+                    break;
+                case DIRECTION_RIGHT_TO_LEFT:
+                    inAnimResId = R.anim.anim_right_in;
+                    outAnimResId = R.anim.anim_left_out;
+                    break;
+                case DIRECTION_LEFT_TO_RIGHT:
+                    inAnimResId = R.anim.anim_left_in;
+                    outAnimResId = R.anim.anim_right_out;
+                    break;
+            }
+        } else {
+            inAnimResId = R.anim.anim_bottom_in;
+            outAnimResId = R.anim.anim_top_out;
+        }
+
+        typedArray.recycle();
+        setFlipInterval(interval);
+    }    
 }
