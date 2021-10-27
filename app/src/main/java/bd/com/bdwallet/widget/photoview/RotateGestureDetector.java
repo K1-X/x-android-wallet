@@ -50,4 +50,12 @@ public class RotateGestureDetector {
                 break;
         }
     }
+
+    private float caculateSlope(MotionEvent event) {
+        x1 = event.getX(0);
+        y1 = event.getY(0);
+        x2 = event.getX(1);
+        y2 = event.getY(1);
+        return (y2 - y1) / (x2 - x1);
+    }
 }
