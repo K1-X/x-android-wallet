@@ -21,4 +21,33 @@ public class RotateGestureDetector {
     public RotateGestureDetector(OnRotateListener l) {
         mListener = l;
     }
+
+    public void onTouchEvent(MotionEvent event) {
+
+        final int Action = event.getActionMasked();
+
+        switch (Action) {
+            case MotionEvent.ACTION_POINTER_DOWN:
+            case MotionEvent.ACTION_POINTER_UP:
+                if (event.getPointerCount() == 2) mPrevSlope = caculateSlope(event);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (event.getPointerCount() > 1) {
+                    mCurrSlope = caculateSlope(event);
+
+                    double currDegrees = Math.toDegrees(Math.atan(mCurrSlope));
+                    double prevDegrees = Math.toDegrees(Math.atan(mPrevSlope));
+
+                    double deltaSlope = currDegrees - prevDegrees;
+
+                    if (Math.abs(deltaSlope) <= MAX_DEGREES_STEP) {
+                        mListener.onRotate((float) deltaSlope, (x2 + x1) / 2, (y2 + y1) / 2);
+                    }
+                    mPrevSlope = mCurrSlope;
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
