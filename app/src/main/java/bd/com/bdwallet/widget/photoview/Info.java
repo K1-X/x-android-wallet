@@ -24,5 +24,15 @@ class Info {
     float mDegrees;
 
     ImageView.ScaleType mScaleType;
-    
+
+    Info(RectF rect, RectF img, RectF widget, RectF base, PointF screenCenter, float scale, float degrees, ImageView.ScaleType scaleType) {
+        mRect.set(rect);
+        mImgRect.set(img);
+        mWidgetRect.set(widget);
+        mScale = scale;
+        mScaleType = scaleType;
+        mDegrees = degrees;
+        mBaseRect.set(base);
+        mScreenCenter.set(screenCenter);
+    }    
 }
