@@ -282,4 +282,44 @@ public class MarqueeView<T> extends ViewFlipper {
         textView.setTag(position);
         return textView;
     }
+
+    public int getPosition() {
+        return (int) getCurrentView().getTag();
+    }
+
+    public List<T> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<T> messages) {
+        this.messages = messages;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position, TextView textView);
+    }
+
+    /**
+     * 
+     *
+     * @param inAnimResId  resID
+     * @param outAnimResID resID
+     */
+    private void setInAndOutAnimation(@AnimRes int inAnimResId, @AnimRes int outAnimResID) {
+        Animation inAnim = AnimationUtils.loadAnimation(getContext(), inAnimResId);
+        if (hasSetAnimDuration) inAnim.setDuration(animDuration);
+        setInAnimation(inAnim);
+
+        Animation outAnim = AnimationUtils.loadAnimation(getContext(), outAnimResID);
+        if (hasSetAnimDuration) outAnim.setDuration(animDuration);
+        setOutAnimation(outAnim);
+    }
+
+    public void setTypeface(Typeface typeface) {
+        this.typeface = typeface;
+    }
 }
