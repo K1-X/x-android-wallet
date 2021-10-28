@@ -173,4 +173,21 @@ public class MarqueeView<T> extends ViewFlipper {
         messages.addAll(list);
         postStart(inAnimResId, outAnimResID);
     }
+
+    public void startWithList(List<T> messages) {
+        startWithList(messages, inAnimResId, outAnimResId);
+    }
+
+    /**
+     * ，
+     *
+     * @param messages     
+     * @param inAnimResId  resID
+     * @param outAnimResID resID
+     */
+    public void startWithList(List<T> messages, @AnimRes int inAnimResId, @AnimRes int outAnimResID) {
+        if (Utils.isEmpty(messages)) return;
+        setMessages(messages);
+        postStart(inAnimResId, outAnimResID);
+    }
 }
