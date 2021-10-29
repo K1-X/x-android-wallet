@@ -102,4 +102,19 @@ public class PhotoView extends AppCompatImageView {
     float pullDownScale = 1F;
     float bgAlpha = 1F;
     long downTimestamp;    
+
+    public PhotoView(Context context) {
+        super(context);
+        init();
+    }
+
+    public PhotoView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public PhotoView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
 }
