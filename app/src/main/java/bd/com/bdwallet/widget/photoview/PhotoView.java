@@ -27,5 +27,12 @@ import android.widget.Scroller;
 
 public class PhotoView extends AppCompatImageView {
 
+    private final static int MIN_ROTATE = 35;
+    private final static int ANIMA_DURING = 340;
+    private final static float MAX_SCALE = 2.5f;
+
+    private int mMinRotate;
+    private int mAnimaDuring;
+    private float mMaxScale;
     
 }
